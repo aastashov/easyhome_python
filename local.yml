@@ -14,11 +14,11 @@ services:
     ports:
       - 65432:5432
 
-  admin:
+  api:
     build:
-      dockerfile: Dockerfile.admin
-      context: .
-    container_name: hsearch_admin
+      context: api/
+    image: "registry.gitlab.com/my_house/my_house_api:latest"
+    container_name: myhouse_api
     environment:
       DJANGO_DEBUG: 'true'
       DJANGO_DB_HOST: hsearch_db

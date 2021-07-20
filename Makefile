@@ -26,3 +26,9 @@ dockerbuild:
 
 dockerrun: dockerbuild
 	docker run -d comov/hsearch:latest
+
+build_api:
+	docker-compose -f local.yml build api
+
+push_api:
+	docker-compose -f local.yml push api

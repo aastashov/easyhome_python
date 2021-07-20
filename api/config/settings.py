@@ -158,6 +158,7 @@ GRAPHENE = {
 # ----------------------------------------------------------------------------
 CORS_ORIGIN_REGEX_WHITELIST = [
     r'^http://(127.0.0.1|localhost):[0-9]00[0-9]',
+    r'https://my-house-api.xyz',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
