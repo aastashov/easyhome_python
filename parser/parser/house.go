@@ -150,8 +150,11 @@ func (s *House) floor(doc *goquery.Document) (int32, int32) {
 
 	currentFloor, err := strconv.Atoi(numData[0])
 	if err != nil {
-		log.Printf("[floor.currentFloor] %s with an error: %s", floor, err)
-		return 0, 0
+		if numData[0] != "цоколь" {
+			log.Printf("[floor.currentFloor] %s with an error: %s", floor, err)
+			return 0, 0
+		}
+		currentFloor = -1
 	}
 
 	maxFloor, err := strconv.Atoi(numData[1])

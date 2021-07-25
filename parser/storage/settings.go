@@ -19,7 +19,7 @@ func (c *Connector) StartSearch(ctx context.Context, id int64, username, title, 
 		return err
 	}
 
-	_, err = c.Conn.Exec(ctx, "UPDATE hsearch_chat SET enable = 1 WHERE chat_id = $1;", chat.Id)
+	_, err = c.Conn.Exec(ctx, "UPDATE hsearch_chat SET enable = 1 WHERE chat_id = $1;", chat.ChatId)
 	return err
 }
 
@@ -44,7 +44,7 @@ func (c *Connector) UpdateSettings(ctx context.Context, chat *structs.Chat) erro
 		chat.Photo,
 		chat.KGS,
 		chat.USD,
-		chat.Id,
+		chat.ChatId,
 	)
 	return err
 }

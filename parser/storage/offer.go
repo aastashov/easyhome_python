@@ -245,8 +245,8 @@ func (c *Connector) ReadNextApartment(ctx context.Context, chat *structs.Chat) (
 		of.images_count
 	FROM hsearch_apartment of
 	LEFT JOIN hsearch_answer u on (of.id = u.apartment_id AND u.chat_id = $1)
-	LEFT JOIN hsearch_tgmessage sm on (of.id = sm.apartment_id AND sm.chat_id = $2)
-	WHERE of.created >= $3
+	LEFT JOIN hsearch_tgmessage sm on (of.id = sm.apartment_id AND sm.chat_id = $1)
+	WHERE of.created >= $2
 		AND (u.dislike is false OR u.dislike IS NULL)
 		AND sm.created IS NULL
 	`)
@@ -265,8 +265,7 @@ func (c *Connector) ReadNextApartment(ctx context.Context, chat *structs.Chat) (
 	err := c.Conn.QueryRow(
 		ctx,
 		query.String(),
-		chat.ChatId,
-		chat.ChatId,
+		chat.Id,
 		now.Add(-c.relevanceTime).Unix(),
 	).Scan(
 		&apartment.Id,

@@ -2,6 +2,7 @@ package bot
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"strconv"
 	"strings"
@@ -183,6 +184,7 @@ func (b *Bot) priceWaiterCallback(ctx context.Context, message *tgbotapi.Message
 		b.SendError("priceWaiterCallback.ReadChat", err, message.Chat.ID)
 		return
 	}
+	fmt.Println("Chat: ", chat.Id)
 
 	switch a.currency {
 	case "USD":
@@ -196,6 +198,7 @@ func (b *Bot) priceWaiterCallback(ctx context.Context, message *tgbotapi.Message
 		b.SendError("priceWaiterCallback.UpdateSettings", err, message.Chat.ID)
 		return
 	}
+	fmt.Println("Chat: ", chat.Id)
 
 	b.clearRetry(ctx, message.Chat, message.MessageID)
 }
