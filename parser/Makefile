@@ -24,5 +24,8 @@ restore:
 dockerbuild:
 	RELEASE=development docker build -t comov/hsearch:latest .
 
+dockerpush:
+	docker push comov/hsearch:latest
+
 dockerrun: dockerbuild
 	docker run -d comov/hsearch:latest

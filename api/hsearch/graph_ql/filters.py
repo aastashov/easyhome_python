@@ -1,6 +1,8 @@
 import django_filters
 from graphene import DateTime
+from graphene.utils.str_converters import to_snake_case
 from graphene_django.converter import convert_django_field
+from graphene_django.filter import DjangoFilterConnectionField
 from unixtimestampfield import UnixTimeStampField
 
 from hsearch.models import Apartment, Image
@@ -9,6 +11,17 @@ from hsearch.models import Apartment, Image
 @convert_django_field.register(UnixTimeStampField)
 def convert_field_to_string(field, registry=None):
     return DateTime(description=field.help_text, required=not field.null)
+
+
+class OrderedDjangoFilterConnectionField(DjangoFilterConnectionField):
+    @classmethod
+    def resolve_queryset(cls, connection, iterable, info, args, filtering_args, filterset_class):
+        qs = super().resolve_queryset(connection, iterable, info, args, filtering_args, filterset_class)
+        order = args.get("orderBy", None)
+        if order:
+            snake_order = to_snake_case(order) if isinstance(order, str) else [to_snake_case(o) for o in order]
+            qs = qs.order_by(*snake_order).distinct()
+        return qs
 
 
 class ApartmentFilter(django_filters.FilterSet):
@@ -27,7 +40,13 @@ class ApartmentFilter(django_filters.FilterSet):
     @staticmethod
     def filter_range(queryset, name, value: str):
         if len(value.split(",")) == 2:
-            return queryset.filter(**{f"{name}__range": value.split(",")})
+            price_from, price_to = value.split(",")  # type: str, str
+            if price_from.isdigit() and price_to.isdigit():
+                return queryset.filter(**{f"{name}__range": [price_from, price_to]})
+            if price_from.isdigit() and price_to == "":
+                return queryset.filter(**{f"{name}__gte": price_from})
+            if price_to.isdigit() and price_from == "":
+                return queryset.filter(**{f"{name}__lte": price_to})
         elif value.isdigit():
             return queryset.filter(**{name: value})
         return queryset.none()

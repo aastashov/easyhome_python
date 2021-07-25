@@ -7,7 +7,7 @@ from django.utils.safestring import SafeString
 
 from hsearch.admin_inlines import AnswerInline, FeedbackInline, ImageInline
 from hsearch.forms import AdminAuthenticationForm
-from hsearch.models import Apartment, Answer, Chat, Feedback, Image, TgMessage
+from hsearch.models import Answer, Apartment, Chat, Feedback, Image, TgMessage
 
 
 def _yes_no_img(var):

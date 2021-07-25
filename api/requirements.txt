@@ -16,14 +16,15 @@ django-recaptcha==2.0.6
 django-unixtimestampfield==0.4.0
 graphene==2.1.8
 graphene-django==2.15.0
+graphene-django-pagination @ https://github.com/instruct-br/graphene-django-pagination/archive/master.zip
 graphql-core==2.3.2
 graphql-relay==2.0.1
 idna==2.10
 ipython==7.16.1
 ipython-genutils==0.2.0
-jedi==0.18.0
+jedi==0.17.2
 oauthlib==3.1.1
-parso==0.8.2
+parso==0.7.1
 pexpect==4.8.0
 pickleshare==0.7.5
 promise==2.3
