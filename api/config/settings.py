@@ -156,9 +156,11 @@ GRAPHENE = {
 
 # django-cors-headers
 # ----------------------------------------------------------------------------
+CORS_ADDITIONAL_SITES = env.list("CORS_ADDITIONAL_SITES", default=[])
 CORS_ORIGIN_REGEX_WHITELIST = [
     r'^http://(127.0.0.1|localhost):[0-9]00[0-9]',
-    r'https://my-house-api.xyz',
+    r'https://reloc.kg',
+    *CORS_ADDITIONAL_SITES
 ]
 
 CORS_ALLOW_CREDENTIALS = True
