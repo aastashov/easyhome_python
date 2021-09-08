@@ -36,8 +36,9 @@ func (c *Connector) WriteApartment(ctx context.Context, apartment *structs.Apart
 		body,
 		images_count,
 		lat,
-		lon
-		) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING id;`,
+		lon,
+		is_deleted
+		) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20) RETURNING id;`,
 		apartment.ExternalId,
 		time.Now().Unix(),
 		apartment.Site,
@@ -57,6 +58,7 @@ func (c *Connector) WriteApartment(ctx context.Context, apartment *structs.Apart
 		apartment.ImagesCount,
 		lat,
 		lon,
+		false,
 	).Scan(&apartment.Id)
 	if err != nil && !regexContain.MatchString(err.Error()) {
 		return err
@@ -245,8 +247,8 @@ func (c *Connector) ReadNextApartment(ctx context.Context, chat *structs.Chat) (
 		of.images_count
 	FROM hsearch_apartment of
 	LEFT JOIN hsearch_answer u on (of.id = u.apartment_id AND u.chat_id = $1)
-	LEFT JOIN hsearch_tgmessage sm on (of.id = sm.apartment_id AND sm.chat_id = $1)
-	WHERE of.created >= $2
+	LEFT JOIN hsearch_tgmessage sm on (of.id = sm.apartment_id AND sm.chat_id = $2)
+	WHERE of.created >= $3
 		AND (u.dislike is false OR u.dislike IS NULL)
 		AND sm.created IS NULL
 	`)
@@ -265,7 +267,8 @@ func (c *Connector) ReadNextApartment(ctx context.Context, chat *structs.Chat) (
 	err := c.Conn.QueryRow(
 		ctx,
 		query.String(),
-		chat.Id,
+		chat.ChatId,
+		chat.ChatId,
 		now.Add(-c.relevanceTime).Unix(),
 	).Scan(
 		&apartment.Id,
@@ -408,4 +411,37 @@ func (c *Connector) ReadApartmentImages(ctx context.Context, msgId int, chatId i
 	}
 
 	return apartmentId, images, nil
+}
+
+func (c *Connector) ReadAllApartments(ctx context.Context) ([]*structs.Apartment, error) {
+	apartments := make([]*structs.Apartment, 0)
+
+	rows, err := c.Conn.Query(
+		ctx,
+		"select id, url, is_deleted from hsearch_apartment where is_deleted = False order by id desc;",
+	)
+
+	if err != nil {
+		return apartments, err
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		apartment := new(structs.Apartment)
+		err := rows.Scan(&apartment.Id, &apartment.Url, &apartment.IsDeleted)
+		if err != nil {
+			log.Println("[ReadAllApartments.Scan] error:", err)
+			continue
+		}
+
+		apartments = append(apartments, apartment)
+	}
+
+	return apartments, nil
+}
+
+func (c *Connector) DeleteApartment(ctx context.Context, apartment *structs.Apartment) error {
+	_, err := c.Conn.Exec(ctx, "UPDATE hsearch_apartment SET is_deleted = TRUE WHERE id = $1;", apartment.Id)
+	return err
 }

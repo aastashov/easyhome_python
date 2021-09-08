@@ -17,6 +17,9 @@ type (
 		ReadNextApartment(ctx context.Context, chat *structs.Chat) (*structs.Apartment, error)
 		CleanFromExistApartments(ctx context.Context, apartments map[uint64]string, siteName string) error
 
+		ReadAllApartments(ctx context.Context) ([]*structs.Apartment, error)
+		DeleteApartment(ctx context.Context, apartment *structs.Apartment) error
+
 		UpdateSettings(ctx context.Context, chat *structs.Chat) error
 	}
 
@@ -63,7 +66,12 @@ func (m *Manager) StartGrabber() {
 	m.grabber()
 }
 
-// StartGrabber - starts the search process for chats
+// StartMatcher - starts the search process for chats
 func (m *Manager) StartMatcher() {
 	m.matcher()
+}
+
+// StartGarbageCollector - runs garbage collection in the form of old records that no longer make sense
+func (m *Manager) StartGarbageCollector() {
+	m.garbage()
 }

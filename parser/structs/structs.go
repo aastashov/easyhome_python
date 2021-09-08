@@ -72,6 +72,7 @@ type (
 		ImagesList  []string
 		Lat         float64
 		Lon         float64
+		IsDeleted   bool
 	}
 
 	// Answer - is a ManyToMany to store the user's reaction to the apartment.
@@ -80,6 +81,7 @@ type (
 		Chat      uint64
 		Apartment uint64
 		Dislike   bool
+		IsDeleted   bool
 	}
 
 	// Feedback - a feedback structure hoping to get bug reports and not

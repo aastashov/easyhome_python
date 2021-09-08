@@ -24,7 +24,7 @@ type Config struct {
 	FrequencyTime time.Duration
 	RelevanceTime time.Duration
 
-	ExpireDays   int
+	GarbageTime  time.Duration
 	PgConnString string
 }
 
@@ -36,7 +36,7 @@ func GetConf() (*Config, error) {
 		PgPassword:      "hsearch",
 		PgHost:          "localhost",
 		PgPort:          5432,
-		ExpireDays:      7,
+		GarbageTime:     time.Duration(60 * 60),  // every hour
 	}
 
 	err := env.Parse(cfg)

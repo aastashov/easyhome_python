@@ -13,6 +13,10 @@ class ApartmentNode(DjangoObjectType):
         interfaces = (relay.Node,)
         connection_class = ExtendedConnection
 
+    @classmethod
+    def get_queryset(cls, queryset, info):
+        return queryset.filter(is_deleted=False)
+
 
 class ImageNode(DjangoObjectType):
     class Meta:

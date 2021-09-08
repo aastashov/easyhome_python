@@ -36,6 +36,7 @@ func main() {
 	telegramBot := bot.NewTelegramBot(cnf, db)
 
 	bgm := background.NewManager(cnf, db, telegramBot)
+	go bgm.StartGarbageCollector()
 	go bgm.StartGrabber()
 	go bgm.StartMatcher()
 

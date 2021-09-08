@@ -80,9 +80,12 @@ class Apartment(models.Model):
     site = models.CharField(max_length=20, default="", choices=SITE_CHOICES)
     floor = models.IntegerField(default=0, blank=True)
     max_floor = models.IntegerField(default=0, blank=True)
-    district = models.CharField(max_length=100, default="", blank=True)
+    district = models.CharField(max_length=255, default="", blank=True)
     lat = models.FloatField(default=0.0, blank=True)
     lon = models.FloatField(default=0.0, blank=True)
+
+    is_deleted = models.BooleanField(default=False)
+
     created = UnixTimeStampField()
 
     def __str__(self):
