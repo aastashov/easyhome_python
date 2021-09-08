@@ -29,6 +29,7 @@ variables:
   - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   - ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST "docker pull $CI_REGISTRY_IMAGE:v.$CI_PIPELINE_IID"
   - ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST "docker pull $CI_REGISTRY_IMAGE_API:v.$CI_PIPELINE_IID"
+  - ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST "docker run --rm -it --log-driver=syslog --log-opt tag=docker/$CONTAINER_NAME_API $PARAMS_API $CI_REGISTRY_IMAGE_API:v.$CI_PIPELINE_IID python manage.py migrate" || true
   - ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST "docker rm -f $CONTAINER_NAME_BOT || true && docker run -d --name=$CONTAINER_NAME_BOT --restart=always --log-driver=syslog --log-opt tag=docker/$CONTAINER_NAME_BOT $PARAMS_BOT $CI_REGISTRY_IMAGE:v.$CI_PIPELINE_IID"
   - ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST "docker rm -f $CONTAINER_NAME_API || true && docker run -d --name=$CONTAINER_NAME_API --restart=always --log-driver=syslog --log-opt tag=docker/$CONTAINER_NAME_API $PARAMS_API $CI_REGISTRY_IMAGE_API:v.$CI_PIPELINE_IID"
 

@@ -36,7 +36,7 @@ func GetConf() (*Config, error) {
 		PgPassword:      "hsearch",
 		PgHost:          "localhost",
 		PgPort:          5432,
-		GarbageTime:     time.Duration(60 * 60),  // every hour
+		GarbageTime:     time.Hour,  // every hour
 	}
 
 	err := env.Parse(cfg)

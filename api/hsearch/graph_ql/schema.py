@@ -1,3 +1,4 @@
+from django.db.models import Count
 from graphene import relay
 from graphene_django import DjangoObjectType
 
@@ -15,7 +16,12 @@ class ApartmentNode(DjangoObjectType):
 
     @classmethod
     def get_queryset(cls, queryset, info):
-        return queryset.filter(is_deleted=False)
+        return (
+            queryset.filter()
+            .annotate(images_in_db=Count("images"))
+            .filter(images_in_db__gt=0, is_deleted=False)
+            .prefetch_related("images")
+        )
 
 
 class ImageNode(DjangoObjectType):

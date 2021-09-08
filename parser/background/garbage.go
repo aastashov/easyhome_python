@@ -2,12 +2,13 @@ package background
 
 import (
 	"context"
-	"github.com/comov/hsearch/structs"
 	"log"
 	"net/http"
 	"time"
 
 	"github.com/getsentry/sentry-go"
+
+	"github.com/comov/hsearch/structs"
 )
 
 func (m *Manager) garbage() {
@@ -33,35 +34,21 @@ func (m *Manager) garbage() {
 }
 
 func (m *Manager) checkApartmentAndDelete(ctx context.Context, apartments []*structs.Apartment) {
-	apartmentChan := make(chan *structs.Apartment, len(apartments))
-
 	for index := range apartments {
 		apartment := apartments[index]
-		go m.checkApartment(apartmentChan, apartment)
-	}
+		res, err := http.Get(apartment.Url)
+		if err != nil {
+			log.Println("[garbage.checkApartment.Get] error:", err)
+			continue
+		}
 
-	for {
-		select {
-		case apartment := <-apartmentChan:
-			if apartment.IsDeleted {
-				err := m.st.DeleteApartment(ctx, apartment)
-				if err != nil {
-					log.Println("[checkApartmentAndDelete.DeleteApartment] error:", err)
-				}
+		if res.StatusCode == 404 {
+			err := m.st.DeleteApartment(ctx, apartment)
+			if err != nil {
+				log.Println("[garbage.checkApartmentAndDelete.DeleteApartment] error:", err)
+				continue
 			}
-		case <-ctx.Done():
-			return
+			log.Println("[garbage.checkApartmentAndDelete] deleted", apartment.Id)
 		}
 	}
-}
-
-func (m *Manager) checkApartment(apartmentChan chan *structs.Apartment, apartment *structs.Apartment) {
-	res, err := http.Get(apartment.Url)
-	if err != nil {
-		log.Println("[GetDocumentByUrl.Get] error:", err)
-		return
-	}
-
-	apartment.IsDeleted = res.StatusCode == 404
-	apartmentChan <- apartment
 }
