@@ -120,6 +120,15 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = env("TG_TOKEN", default="")
+SOCIAL_AUTH_STRATEGY = "hsearch.strategy.SSOStrategy"
+USER_FIELDS = [
+    "username",
+    "uid",
+    "first_name",
+    "last_name",
+    "fullname",
+]
+
 LOGIN_REDIRECT_URL = "/"
 
 SESSION_COOKIE_DOMAIN = ".reloc.kg" if DEBUG is False else "localhost"
