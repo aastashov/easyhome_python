@@ -1,7 +1,6 @@
 from pathlib import Path
 
 import environ
-
 # BASE
 # ----------------------------------------------------------------------------
 import sentry_sdk
@@ -98,7 +97,6 @@ DATABASES = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
-
 # AUTHENTICATION
 # ----------------------------------------------------------------------------
 AUTH_PASSWORD_VALIDATORS = [
@@ -123,6 +121,8 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = env("TG_TOKEN", default="")
 LOGIN_REDIRECT_URL = "/"
+
+SESSION_COOKIE_DOMAIN = ".reloc.kg" if DEBUG is False else "localhost"
 
 # LOCALIZATION
 # ----------------------------------------------------------------------------
