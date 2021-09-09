@@ -267,8 +267,8 @@ func (c *Connector) ReadNextApartment(ctx context.Context, chat *structs.Chat) (
 	err := c.Conn.QueryRow(
 		ctx,
 		query.String(),
-		chat.ChatId,
-		chat.ChatId,
+		chat.Id,
+		chat.Id,
 		now.Add(-c.relevanceTime).Unix(),
 	).Scan(
 		&apartment.Id,
