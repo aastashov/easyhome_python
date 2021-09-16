@@ -12,7 +12,10 @@ class SSOStrategy(DjangoStrategy):
         user = self.storage.user.create_user(*args, **kwargs)  # type: User
         chat = user.chat
         if not chat.chat_id:
-            chat = Chat.objects.filter(chat_id=chat_id).first() or chat
+            exist_chat = Chat.objects.filter(chat_id=chat_id).first()
+            if exist_chat:
+                chat.delete()
+                chat = exist_chat
             chat.user = user
 
         chat.username = kwargs["username"]
