@@ -30,6 +30,7 @@ type (
 
 	Site interface {
 		Name() string
+		UseProxy() bool
 		FullHost() string
 		Url() string
 		Selector() string
@@ -54,9 +55,9 @@ func NewManager(cnf *configs.Config, st Storage, bot Bot) *Manager {
 		bot: bot,
 		cnf: cnf,
 		sitesForParse: []Site{
-			parser.DieselSite(),
-			parser.HouseSite(),
-			parser.LalafoSite(),
+			parser.DieselSite(cnf),
+			parser.HouseSite(cnf),
+			parser.LalafoSite(cnf),
 		},
 	}
 }

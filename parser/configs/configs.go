@@ -21,6 +21,14 @@ type Config struct {
 	PgHost          string `env:"GO_DB_HOST"`
 	PgPort          int32  `env:"GO_DB_PORT"`
 
+	ProxyHost  string `env:"PROXY_HOST"`
+	ProxyUser string `env:"PROXY_USER"`
+	ProxyPass string `env:"PROXY_PASSWORD"`
+
+	DieselUseProxy bool `env:"DIESEL_USE_PROXY"`
+	HouseUseProxy bool `env:"HOUSE_USE_PROXY"`
+	LalafolUseProxy bool `env:"LALAFO_USE_PROXY"`
+
 	FrequencyTime time.Duration
 	RelevanceTime time.Duration
 

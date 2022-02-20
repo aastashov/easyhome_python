@@ -12,6 +12,7 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 
+	"github.com/comov/hsearch/configs"
 	"github.com/comov/hsearch/structs"
 )
 
@@ -20,6 +21,7 @@ type (
 		FullHost() string
 		Url() string
 		Name() string
+		UseProxy() bool
 		Selector() string
 
 		GetApartmentsMap(doc *goquery.Document) ApartmentsMap
@@ -40,8 +42,8 @@ var (
 )
 
 // FindApartmentsLinksOnSite - load new apartments from the site and all find apartments
-func FindApartmentsLinksOnSite(site Site) (ApartmentsMap, error) {
-	doc, err := GetDocumentByUrl(site.Url())
+func FindApartmentsLinksOnSite(site Site, cfg *configs.Config) (ApartmentsMap, error) {
+	doc, err := GetDocumentByUrl(site.Url(), cfg, site.UseProxy())
 	if err != nil {
 		return nil, err
 	}
@@ -62,16 +64,17 @@ func FindApartmentsLinksOnSite(site Site) (ApartmentsMap, error) {
 }
 
 type loadApartments struct {
+	cfg        *configs.Config
 	apartments []*structs.Apartment
-	add    chan *structs.Apartment
-	wg     sync.WaitGroup
-	ctx    context.Context
+	add        chan *structs.Apartment
+	wg         sync.WaitGroup
+	ctx        context.Context
 }
 
 func (l *loadApartments) loadApartment(site Site, id uint64, href string) {
 	defer l.wg.Done()
 
-	doc, err := GetDocumentByUrl(href)
+	doc, err := GetDocumentByUrl(href, l.cfg, site.UseProxy())
 	if err != nil {
 		log.Printf("Can't load apartment %s with an error %s\f", href, err)
 		return
@@ -95,11 +98,12 @@ func (l *loadApartments) addApartment() {
 }
 
 // LoadApartmentsDetail - выгружает и парсит apartments по href
-func LoadApartmentsDetail(apartmentsList map[uint64]string, site Site) []*structs.Apartment {
+func LoadApartmentsDetail(apartmentsList map[uint64]string, site Site, cfg *configs.Config) []*structs.Apartment {
 	// fixme: это ёбаный костыль!
 	lo := loadApartments{
+		cfg:        cfg,
 		apartments: make([]*structs.Apartment, 0),
-		add:    make(chan *structs.Apartment, len(apartmentsList)),
+		add:        make(chan *structs.Apartment, len(apartmentsList)),
 	}
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -119,12 +123,29 @@ func LoadApartmentsDetail(apartmentsList map[uint64]string, site Site) []*struct
 	return lo.apartments
 }
 
-// GetDocumentByUrl - получает страницу по http, читает и возвращет объект
-// goquery.Document для парсинга
-func GetDocumentByUrl(url string) (*goquery.Document, error) {
-	res, err := http.Get(url)
+// GetDocumentByUrl - получает страницу по http, читает и возвращает объект goquery.Document
+func GetDocumentByUrl(targetUrl string, cfg *configs.Config, useProxy bool) (*goquery.Document, error) {
+	request, err := http.NewRequest("GET", targetUrl, nil)
 	if err != nil {
-		log.Println("[GetDocumentByUrl.Get] error:", err)
+		log.Println("[GetDocumentByUrl.NewRequest] error:", err)
+		return nil, err
+	}
+
+	request.Close = true
+
+	var proxy func(*http.Request) (*url.URL, error) = nil
+	if useProxy {
+		proxy = http.ProxyURL(&url.URL{
+			Scheme: "http",
+			User:   url.UserPassword(cfg.ProxyUser, cfg.ProxyPass),
+			Host:   cfg.ProxyHost,
+		})
+	}
+
+	client := &http.Client{Transport: &http.Transport{Proxy: proxy}}
+	res, err := client.Do(request)
+	if err != nil {
+		log.Println("[GetDocumentByUrl.Do] error:", err)
 		return nil, err
 	}
 

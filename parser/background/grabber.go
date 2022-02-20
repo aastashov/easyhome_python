@@ -12,7 +12,7 @@ import (
 
 // todo: refactor this
 // grabber - парсит удаленные ресурсы, находит предложения и пишет в хранилище,
-// после чего трегерит broker
+// после чего вызывать broker
 func (m *Manager) grabber() {
 	// при первом запуске менеджера, он начнет первый парсинг через 2 секунды,
 	// а после изменится на время из настроек (sleep = m.cnf.ManagerDelay)
@@ -34,7 +34,7 @@ func (m *Manager) grabber() {
 
 func (m *Manager) grabbedApartments(ctx context.Context, site Site) {
 	log.Printf("[grabber] StartGrabber parse `%s`\n", site.Name())
-	apartmentsLinks, err := parser.FindApartmentsLinksOnSite(site)
+	apartmentsLinks, err := parser.FindApartmentsLinksOnSite(site, m.cnf)
 	if err != nil {
 		sentry.CaptureException(err)
 		log.Printf("[grabber.FindApartmentsLinksOnSite] Error: %s\n", err)
@@ -55,7 +55,7 @@ func (m *Manager) grabbedApartments(ctx context.Context, site Site) {
 
 	log.Printf("[grabber] Find %d apartment for site `%s`\n", len(apartmentsLinks), site.Name())
 
-	apartments := parser.LoadApartmentsDetail(apartmentsLinks, site)
+	apartments := parser.LoadApartmentsDetail(apartmentsLinks, site, m.cnf)
 	log.Printf("[grabber] Find %d new apartments for site `%s`\n", len(apartments), site.Name())
 
 	_, err = m.st.WriteApartments(ctx, apartments)

@@ -10,6 +10,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/getsentry/sentry-go"
 
+	"github.com/comov/hsearch/configs"
 	"github.com/comov/hsearch/structs"
 )
 
@@ -18,6 +19,8 @@ type Lalafo struct {
 	Host         string
 	Target       string
 	MainSelector string
+
+	cfg *configs.Config
 }
 
 type MainPageResponse struct {
@@ -35,17 +38,22 @@ type MainPageResponse struct {
 	} `json:"props"`
 }
 
-func LalafoSite() *Lalafo {
+func LalafoSite(cfg *configs.Config) *Lalafo {
 	return &Lalafo{
 		Site:         structs.SiteLalafo,
 		Host:         "https://lalafo.kg",
 		Target:       "https://lalafo.kg/kyrgyzstan/kvartiry/arenda-kvartir/dolgosrochnaya-arenda-kvartir",
 		MainSelector: "#__NEXT_DATA__",
+		cfg:          cfg,
 	}
 }
 
 func (s *Lalafo) Name() string {
 	return s.Site
+}
+
+func (s *Lalafo) UseProxy() bool {
+	return s.cfg.LalafolUseProxy
 }
 
 func (s *Lalafo) FullHost() string {

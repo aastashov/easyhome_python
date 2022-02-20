@@ -9,6 +9,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/getsentry/sentry-go"
 
+	"github.com/comov/hsearch/configs"
 	"github.com/comov/hsearch/structs"
 )
 
@@ -17,19 +18,26 @@ type House struct {
 	Host         string
 	Target       string
 	MainSelector string
+
+	cfg *configs.Config
 }
 
-func HouseSite() *House {
+func HouseSite(cfg *configs.Config) *House {
 	return &House{
 		Site:         structs.SiteHouse,
 		Host:         "https://www.house.kg",
 		Target:       "https://www.house.kg/snyat-kvartiru?region=1&town=2&rental_term=3&sort_by=upped_at+desc&page=%d",
 		MainSelector: "p.title > a",
+		cfg:          cfg,
 	}
 }
 
 func (s *House) Name() string {
 	return s.Site
+}
+
+func (s *House) UseProxy() bool {
+	return s.cfg.HouseUseProxy
 }
 
 func (s *House) FullHost() string {
@@ -66,7 +74,7 @@ func (s *House) GetApartmentsMap(doc *goquery.Document) ApartmentsMap {
 	}
 
 	for i := 2; i <= lastPage; i++ {
-		doc, err := GetDocumentByUrl(fmt.Sprintf(s.Target, i))
+		doc, err := GetDocumentByUrl(fmt.Sprintf(s.Target, i), s.cfg, s.UseProxy())
 		if err != nil {
 			sentry.CaptureException(err)
 			continue

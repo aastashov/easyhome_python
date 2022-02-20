@@ -10,6 +10,7 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 
+	"github.com/comov/hsearch/configs"
 	"github.com/comov/hsearch/structs"
 )
 
@@ -18,19 +19,26 @@ type Diesel struct {
 	Host         string
 	Target       string
 	MainSelector string
+
+	cfg *configs.Config
 }
 
-func DieselSite() *Diesel {
+func DieselSite(cfg *configs.Config) *Diesel {
 	return &Diesel{
 		Site:         structs.SiteDiesel,
 		Host:         "http://diesel.elcat.kg",
 		Target:       "http://diesel.elcat.kg/index.php?showforum=305",
 		MainSelector: ".topic_title",
+		cfg:          cfg,
 	}
 }
 
 func (s *Diesel) Name() string {
 	return s.Site
+}
+
+func (s *Diesel) UseProxy() bool {
+	return s.cfg.DieselUseProxy
 }
 
 func (s *Diesel) FullHost() string {
