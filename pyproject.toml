@@ -1,0 +1,99 @@
+[tool.poetry]
+name = "hsearch"
+version = "0.1.0"
+description = ""
+authors = ["Alexander Astashov <alexander.astashov.vl@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11.2"
+django-stubs = "^1.15.0"
+django-environ = "^0.9.0"
+sentry-sdk = "^1.15.0"
+django-recaptcha = "^3.0.0"
+social-auth-app-django = "^5.0.0"
+psycopg2-binary = "^2.9.5"
+bs4 = "^0.0.1"
+aiohttp = "^3.8.4"
+django-ninja = "^0.22.2"
+pytest-django = "^4.5.2"
+pytest-cov = "^4.1.0"
+django-coverage-plugin = "^3.1.0"
+aiohttp-retry = "^2.8.3"
+django-celery-results = "^2.5.1"
+django-unixtimestampfield = "^0.5.0"
+celery = {extras = ["redis"], version = "^5.3.1"}
+flower = "^2.0.0"
+
+[tool.poetry.group.qa.dependencies]
+basedmypy = "^1.6.1"
+pytest = "^7.2.1"
+coverage = "7.0.1"
+pycln = "^2.1.5"
+isort = "^5.12.0"
+black = "^23.7.0"
+add-trailing-comma = "^3.0.0"
+types-beautifulsoup4 = "^4.12.0.5"
+types-requests = "^2.31.0.1"
+
+[tool.poetry.group.local.dependencies]
+ipython = "^8.10.0"
+django-debug-toolbar = "^4.1.0"
+django-extensions = "^3.2.3"
+
+[tool.poetry.group.prod.dependencies]
+gunicorn = "^20.1.0"
+
+[tool.coverage.run]
+branch = true
+plugins = [
+    "django_coverage_plugin",
+]
+omit = [
+    "*/migrations/*",
+    "*/tests/*",
+    "*/config/*",
+    "*/typing.py",
+    "*/management/*",
+    "*/router.py",
+    "*/duplicates/*",
+]
+
+[tool.coverage.report]
+skip_empty = true
+skip_covered = true
+exclude_lines = [
+    "raise NotImplementedError",
+    "if TYPE_CHECKING",
+    "pragma: no cover",
+]
+
+[tool.black]
+line-length = 120
+exclude = '(\.git|\.cache|\.mypy_cache|\.pytest_cache|\.idea|__pycache__|migrations|static|htmlcov)'
+
+[tool.isort]
+# https://pycqa.github.io/isort/docs/configuration/config_files.html
+profile = "black"
+line_length = 120
+skip = [".git", ".cache", ".mypy_cache", ".pytest_cache", ".idea", "**/__pycache__/**", "htmlcov", "static", "**/migrations/**", "**/templates/**"]
+skip_glob = ["**/migrations/**", "**/templates/**"]
+
+[tool.mypy]
+baseline_file = "./baselines/mypy.json"
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "config.settings"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+addopts = "--cov-fail-under=51"
+filterwarnings = [
+    "error",
+#    "ignore:distutils Version classes are deprecated. Use packaging.version instead.:DeprecationWarning",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

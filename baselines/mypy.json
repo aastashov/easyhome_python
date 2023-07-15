@@ -1,0 +1,1292 @@
+{
+  "files": {
+    "config/celery.py": [
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"celery\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 3,
+        "src": "from celery import Celery",
+        "target": "config.celery"
+      },
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"celery.schedules\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 1,
+        "src": "from celery.schedules import crontab",
+        "target": "config.celery"
+      },
+      {
+        "code": "import",
+        "column": 0,
+        "message": "See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports",
+        "offset": 0,
+        "src": "from celery.schedules import crontab",
+        "target": "config.celery"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 6,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 4,
+        "src": "app = Celery(\"proj\")",
+        "target": "config.celery"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 0,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "app.config_from_object(\"django.conf:settings\", namespace=\"CELERY\")",
+        "target": "config.celery"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 0,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 2,
+        "src": "app.autodiscover_tasks()",
+        "target": "config.celery"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 0,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "app.conf.beat_schedule = {",
+        "target": "config.celery"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 25,
+        "message": "Expression type contains \"Any\" (has type \"dict[Any (from unimported type), Any (from unimported type)]\")",
+        "offset": 0,
+        "src": "app.conf.beat_schedule = {",
+        "target": "config.celery"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 4,
+        "message": "Expression type contains \"Any\" (has type \"(str, dict[Any (from unimported type), Any (from unimported type)])\")",
+        "offset": 2,
+        "src": "\"parser:lalafo\": {",
+        "target": "config.celery"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 21,
+        "message": "Expression type contains \"Any\" (has type \"dict[Any (from unimported type), Any (from unimported type)]\")",
+        "offset": 0,
+        "src": "\"parser:lalafo\": {",
+        "target": "config.celery"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 8,
+        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
+        "offset": 2,
+        "src": "\"schedule\": crontab(),",
+        "target": "config.celery"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 20,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "\"schedule\": crontab(),",
+        "target": "config.celery"
+      }
+    ],
+    "config/settings.py": [
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"environ\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 4,
+        "src": "import environ",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 6,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 13,
+        "src": "env = environ.Env(",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 0,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 3,
+        "src": "environ.Env.read_env(str(BASE_DIR.joinpath(\".env\")))",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 8,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 2,
+        "src": "DEBUG = env.bool(\"DJANGO_DEBUG\", default=False)",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 13,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 4,
+        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"123\") if DEBUG else env(\"DJANGO_SECRET_KEY\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 56,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"123\") if DEBUG else env(\"DJANGO_SECRET_KEY\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 67,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"123\") if DEBUG else env(\"DJANGO_SECRET_KEY\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression type contains \"Any\" (has type \"list[str] | Any (from unimported type)\")",
+        "offset": 1,
+        "src": "ALLOWED_HOSTS = [\"*\"] if DEBUG else env.list(\"DJANGO_ALLOWED_HOSTS\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 25,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "ALLOWED_HOSTS = [\"*\"] if DEBUG else env.list(\"DJANGO_ALLOWED_HOSTS\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 36,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "ALLOWED_HOSTS = [\"*\"] if DEBUG else env.list(\"DJANGO_ALLOWED_HOSTS\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 12,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, dict[str, str | Any (from unimported type)]]\")",
+        "offset": 61,
+        "src": "DATABASES = {",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 15,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, str | Any (from unimported type)]\")",
+        "offset": 1,
+        "src": "\"default\": {",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 8,
+        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
+        "offset": 2,
+        "src": "\"NAME\": env(\"DJANGO_DB_NAME\", default=\"hsearch\"),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "\"NAME\": env(\"DJANGO_DB_NAME\", default=\"hsearch\"),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 8,
+        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
+        "offset": 1,
+        "src": "\"USER\": env(\"DJANGO_DB_USER\", default=\"hsearch_srv\"),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "\"USER\": env(\"DJANGO_DB_USER\", default=\"hsearch_srv\"),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 8,
+        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
+        "offset": 1,
+        "src": "\"PASSWORD\": env(\"DJANGO_DB_PASSWORD\", default=\"pass1234\"),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 20,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "\"PASSWORD\": env(\"DJANGO_DB_PASSWORD\", default=\"pass1234\"),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 8,
+        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
+        "offset": 1,
+        "src": "\"HOST\": env(\"DJANGO_DB_HOST\", default=\"127.0.0.1\"),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "\"HOST\": env(\"DJANGO_DB_HOST\", default=\"127.0.0.1\"),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 8,
+        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
+        "offset": 1,
+        "src": "\"PORT\": env.int(\"DJANGO_DB_PORT\", default=25432),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "\"PORT\": env.int(\"DJANGO_DB_PORT\", default=25432),",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 33,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 28,
+        "src": "SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = env(\"TG_TOKEN\", default=\"\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 39,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 12,
+        "src": "SESSION_COOKIE_DOMAIN = \"127.0.0.1\" if DEBUG else \".reloc.kg\"",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 23,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 16,
+        "src": "RECAPTCHA_PUBLIC_KEY = env(\"RECAPTCHA_PUBLIC_KEY\", default=\"\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 24,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "RECAPTCHA_PRIVATE_KEY = env(\"RECAPTCHA_PRIVATE_KEY\", default=\"\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 10,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 4,
+        "src": "TG_NAME = env(\"TG_NAME\", default=\"hsearch_dev_bot\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 13,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "TG_CHAT_ID = env.int(\"TG_CHAT_ID\", default=-1001248414108)",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 13,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 5,
+        "src": "SENTRY_DSN = env(\"DJANGO_SENTRY_DSN\", default=\"\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 3,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 2,
+        "src": "if SENTRY_DSN:",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 12,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 2,
+        "src": "dsn=SENTRY_DSN,",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 20,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 12,
+        "src": "CELERY_BROKER_URL = env.str(\"CELERY_BROKER_URL\", default=\"redis://localhost:26379/0\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 24,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "CELERY_RESULT_BACKEND = env.str(\"CELERY_RESULT_BACKEND\", default=\"redis://localhost:26379/1\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 24,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 4,
+        "src": "AIOHTTP_REQUEST_LIMIT = env.int(\"AIOHTTP_REQUEST_LIMIT\", default=15)",
+        "target": "config.settings"
+      }
+    ],
+    "config/urls.py": [],
+    "hsearch/api/router.py": [],
+    "hsearch/api/v1/handlers/apartment.py": [],
+    "hsearch/api/v1/schemas.py": [],
+    "hsearch/common/admin.py": [],
+    "hsearch/common/utils.py": [
+      {
+        "code": "no-any-expr",
+        "column": 13,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
+        "offset": 3,
+        "src": "it = cls.__dict__.get(\"__it__\", None)",
+        "target": "hsearch.common.utils.Singleton.__new__"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 13,
+        "message": "Expression has type \"Any\"",
+        "offset": 0,
+        "src": "it = cls.__dict__.get(\"__it__\", None)",
+        "target": "hsearch.common.utils.Singleton.__new__"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 11,
+        "message": "Expression has type \"Any\"",
+        "offset": 1,
+        "src": "if it is not None:",
+        "target": "hsearch.common.utils.Singleton.__new__"
+      },
+      {
+        "code": "no-any-return",
+        "column": 12,
+        "message": "Returning Any from function declared to return \"Singleton\"",
+        "offset": 1,
+        "src": "return it",
+        "target": "hsearch.common.utils.Singleton.__new__"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 19,
+        "message": "Expression has type \"Any\"",
+        "offset": 0,
+        "src": "return it",
+        "target": "hsearch.common.utils.Singleton.__new__"
+      }
+    ],
+    "hsearch/hsearch/admin.py": [],
+    "hsearch/hsearch/admin_inlines.py": [],
+    "hsearch/hsearch/migrations/0001_initial.py": [
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"unixtimestampfield.fields\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 6,
+        "src": "import unixtimestampfield.fields",
+        "target": "hsearch.hsearch.migrations.0001_initial"
+      },
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"unixtimestampfield\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 0,
+        "src": "import unixtimestampfield.fields",
+        "target": "hsearch.hsearch.migrations.0001_initial"
+      }
+    ],
+    "hsearch/hsearch/migrations/0002_auto_20210908_1449.py": [],
+    "hsearch/hsearch/migrations/0003_alter_apartment_currency_alter_apartment_site.py": [],
+    "hsearch/hsearch/migrations/0004_apartment_deleted_at_apartment_viewed_at.py": [],
+    "hsearch/hsearch/models.py": [
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"unixtimestampfield.fields\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 7,
+        "src": "from unixtimestampfield.fields import UnixTimeStampField",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 58,
+        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
+        "offset": 10,
+        "src": "user = models.OneToOneField(to=\"auth.User\", on_delete=models.CASCADE, null=True, related_name=\"chat\")",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 14,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 5,
+        "src": "created = UnixTimeStampField()",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 65,
+        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
+        "offset": 15,
+        "src": "apartment = models.ForeignKey(\"hsearch.Apartment\", on_delete=models.CASCADE, related_name=\"images\")",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 14,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 2,
+        "src": "created = UnixTimeStampField()",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "type-arg",
+        "column": 35,
+        "message": "Missing type parameters for generic type \"list\"",
+        "offset": 11,
+        "src": "def to_dict(self, fields_list: list) -> dict:",
+        "target": "hsearch.hsearch.models.Image.to_dict"
+      },
+      {
+        "code": "type-arg",
+        "column": 44,
+        "message": "Missing type parameters for generic type \"dict\"",
+        "offset": 0,
+        "src": "def to_dict(self, fields_list: list) -> dict:",
+        "target": "hsearch.hsearch.models.Image.to_dict"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 15,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 1,
+        "src": "return {field: getattr(self, field, None) for field in fields_list}",
+        "target": "hsearch.hsearch.models.Image.to_dict"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 15,
+        "message": "Expression type contains \"Any\" (has type \"dict[Any (from omitted generics), Any (from omitted generics)]\")",
+        "offset": 0,
+        "src": "return {field: getattr(self, field, None) for field in fields_list}",
+        "target": "hsearch.hsearch.models.Image.to_dict"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "return {field: getattr(self, field, None) for field in fields_list}",
+        "target": "hsearch.hsearch.models.Image.to_dict"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 23,
+        "message": "Expression type contains \"Any\" (has type \"Any | None\")",
+        "offset": 0,
+        "src": "return {field: getattr(self, field, None) for field in fields_list}",
+        "target": "hsearch.hsearch.models.Image.to_dict"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 37,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "return {field: getattr(self, field, None) for field in fields_list}",
+        "target": "hsearch.hsearch.models.Image.to_dict"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 63,
+        "message": "Expression type contains \"Any\" (has type \"list[Untyped]\")",
+        "offset": 0,
+        "src": "return {field: getattr(self, field, None) for field in fields_list}",
+        "target": "hsearch.hsearch.models.Image.to_dict"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 14,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 38,
+        "src": "created = UnixTimeStampField()",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 19,
+        "src": "def save(self, force_insert=False, force_update=False, using=None, update_fields=None) -> None:",
+        "target": "hsearch.hsearch.models.Apartment.save"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 49,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 2,
+        "src": "super().save(force_insert, force_update, using, update_fields)",
+        "target": "hsearch.hsearch.models.Apartment.save"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 56,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "super().save(force_insert, force_update, using, update_fields)",
+        "target": "hsearch.hsearch.models.Apartment.save"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 55,
+        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
+        "offset": 4,
+        "src": "chat = models.ForeignKey(\"hsearch.Chat\", on_delete=models.CASCADE, related_name=\"answers\")",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 65,
+        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
+        "offset": 1,
+        "src": "apartment = models.ForeignKey(\"hsearch.Apartment\", on_delete=models.CASCADE, related_name=\"answers\")",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 14,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 2,
+        "src": "created = UnixTimeStampField()",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 55,
+        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
+        "offset": 8,
+        "src": "chat = models.ForeignKey(\"hsearch.Chat\", on_delete=models.CASCADE, related_name=\"feedbacks\")",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 14,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 2,
+        "src": "created = UnixTimeStampField()",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "return-value",
+        "column": 15,
+        "message": "Incompatible return value type (got \"str | Chat\", expected \"str\")",
+        "offset": 3,
+        "src": "return self.username if self.username else self.chat",
+        "target": "hsearch.hsearch.models.Feedback.__str__"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 14,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 12,
+        "src": "created = UnixTimeStampField()",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 65,
+        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
+        "offset": 2,
+        "src": "apartment = models.ForeignKey(\"hsearch.Apartment\", on_delete=models.CASCADE, related_name=\"messages\")",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 55,
+        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
+        "offset": 1,
+        "src": "chat = models.ForeignKey(\"hsearch.Chat\", on_delete=models.CASCADE, related_name=\"messages\")",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-untyped-call",
+        "column": 1,
+        "message": "Call to incomplete function \"receiver\" in typed context",
+        "offset": 4,
+        "src": "@receiver(post_save, sender=User)",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-untyped-call",
+        "column": 1,
+        "message": "Type is \"def (signal: list[django.dispatch.dispatcher.Signal] | django.dispatch.dispatcher.Signal, **kwargs: Any) -> def (*Untyped, **Untyped) -> Untyped\"",
+        "offset": 0,
+        "src": "@receiver(post_save, sender=User)",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 1,
+        "message": "Expression type contains \"Any\" (has type \"(...) -> Untyped\")",
+        "offset": 0,
+        "src": "@receiver(post_save, sender=User)",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 1,
+        "message": "Expression type contains \"Any\" (has type \"(Untyped, User, bool, KwArg(Any)) -> None\")",
+        "offset": 0,
+        "src": "@receiver(post_save, sender=User)",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 28,
+        "message": "Expression type contains \"Any\" (has type \"type[User]\")",
+        "offset": 0,
+        "src": "@receiver(post_save, sender=User)",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 1,
+        "src": "def create_chat(sender, instance: User, created: bool, **kwargs: Any) -> None:",
+        "target": "hsearch.hsearch.models.create_chat"
+      },
+      {
+        "code": "no-any-explicit",
+        "column": 0,
+        "message": "Explicit \"Any\" is not allowed",
+        "offset": 0,
+        "src": "def create_chat(sender, instance: User, created: bool, **kwargs: Any) -> None:",
+        "target": "hsearch.hsearch.models.create_chat"
+      },
+      {
+        "code": "no-any-decorated",
+        "column": 0,
+        "message": "Function is untyped after decorator transformation",
+        "offset": 0,
+        "src": "def create_chat(sender, instance: User, created: bool, **kwargs: Any) -> None:",
+        "target": "hsearch.hsearch.models"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 4,
+        "message": "Expression type contains \"Any\" (has type \"type[Chat]\")",
+        "offset": 3,
+        "src": "Chat.objects.create(user=instance)",
+        "target": "hsearch.hsearch.models.create_chat"
+      }
+    ],
+    "hsearch/parser/http_client.py": [],
+    "hsearch/parser/services.py": [
+      {
+        "code": "no-any-expr",
+        "column": 50,
+        "message": "Expression type contains \"Any\" (has type \"type[Apartment]\")",
+        "offset": 37,
+        "src": "apartment_queryset: QuerySet[Apartment] = Apartment.objects.filter(",
+        "target": "hsearch.parser.services.ParseSiteService.filter_non_existing_announcement"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 8,
+        "message": "Expression type contains \"Any\" (has type \"type[Apartment]\")",
+        "offset": 22,
+        "src": "Apartment.objects.bulk_create(apartments_to_create)",
+        "target": "hsearch.parser.services.ParseSiteService.create_announcement"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 50,
+        "message": "Expression type contains \"Any\" (has type \"type[Apartment]\")",
+        "offset": 3,
+        "src": "apartment_queryset: QuerySet[Apartment] = Apartment.objects.filter(",
+        "target": "hsearch.parser.services.ParseSiteService.update_viewed_at"
+      }
+    ],
+    "hsearch/parser/sites/lalafo.py": [
+      {
+        "code": "var-annotated",
+        "column": 30,
+        "message": "Need type annotation for \"_default_next_data_json\"",
+        "offset": 22,
+        "src": "_default_next_data_json = {\"props\": {\"initialState\": {\"listing\": {\"listingFeed\": {\"items\": []}}}}}",
+        "target": "hsearch.parser.sites.lalafo"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 20,
+        "message": "Expression has type \"Any\"",
+        "offset": 5,
+        "src": "elem_json = json.loads(next_script_elem.getText())",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.get_announcement_pages_map"
+      },
+      {
+        "code": "union-attr",
+        "column": 31,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"getText\"",
+        "offset": 0,
+        "src": "elem_json = json.loads(next_script_elem.getText())",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.get_announcement_pages_map"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression has type \"Any\"",
+        "offset": 1,
+        "src": "props = elem_json.get(\"props\", self._default_next_data_json)",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.get_announcement_pages_map"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 31,
+        "message": "Expression has type \"Any\"",
+        "offset": 1,
+        "src": "items: list[ItemDef] = props[\"initialState\"][\"listing\"][\"listingFeed\"][\"items\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.get_announcement_pages_map"
+      },
+      {
+        "code": "no-any-explicit",
+        "column": 8,
+        "message": "Explicit \"Any\" is not allowed",
+        "offset": 10,
+        "src": "elem_json: dict[str, Any] = json.loads(apartment_script_elem.getText())",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "union-attr",
+        "column": 47,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"getText\"",
+        "offset": 0,
+        "src": "elem_json: dict[str, Any] = json.loads(apartment_script_elem.getText())",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-explicit",
+        "column": 8,
+        "message": "Explicit \"Any\" is not allowed",
+        "offset": 2,
+        "src": "initial_state: dict[str, Any] = elem_json.get(\"props\", {\"initialState\": {}})[\"initialState\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 40,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
+        "offset": 0,
+        "src": "initial_state: dict[str, Any] = elem_json.get(\"props\", {\"initialState\": {}})[\"initialState\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 40,
+        "message": "Expression has type \"Any\"",
+        "offset": 0,
+        "src": "initial_state: dict[str, Any] = elem_json.get(\"props\", {\"initialState\": {}})[\"initialState\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 63,
+        "message": "Expression type contains \"Any\" (has type \"dict[Any, Any]\")",
+        "offset": 0,
+        "src": "initial_state: dict[str, Any] = elem_json.get(\"props\", {\"initialState\": {}})[\"initialState\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 64,
+        "message": "Expression type contains \"Any\" (has type \"(str, dict[Any, Any])\")",
+        "offset": 0,
+        "src": "initial_state: dict[str, Any] = elem_json.get(\"props\", {\"initialState\": {}})[\"initialState\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 80,
+        "message": "Expression type contains \"Any\" (has type \"dict[Any, Any]\")",
+        "offset": 0,
+        "src": "initial_state: dict[str, Any] = elem_json.get(\"props\", {\"initialState\": {}})[\"initialState\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 28,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
+        "offset": 2,
+        "src": "_external_id: int = initial_state[\"feed\"][\"adDetails\"][\"currentAdId\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 28,
+        "message": "Expression has type \"Any\"",
+        "offset": 0,
+        "src": "_external_id: int = initial_state[\"feed\"][\"adDetails\"][\"currentAdId\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-explicit",
+        "column": 8,
+        "message": "Explicit \"Any\" is not allowed",
+        "offset": 1,
+        "src": "apartment_dict: dict[str, Any] = initial_state[\"feed\"][\"adDetails\"][str(_external_id)][\"item\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 41,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
+        "offset": 0,
+        "src": "apartment_dict: dict[str, Any] = initial_state[\"feed\"][\"adDetails\"][str(_external_id)][\"item\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 41,
+        "message": "Expression has type \"Any\"",
+        "offset": 0,
+        "src": "apartment_dict: dict[str, Any] = initial_state[\"feed\"][\"adDetails\"][str(_external_id)][\"item\"]",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 45,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
+        "offset": 4,
+        "src": "external_url=urljoin(self._host, apartment_dict[\"url\"]),",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": null,
+        "column": 45,
+        "message": "(Skipping most remaining errors due to unresolved imports or missing stubs; fix these first)",
+        "offset": 0,
+        "src": "external_url=urljoin(self._host, apartment_dict[\"url\"]),",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 18,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
+        "offset": 1,
+        "src": "title=apartment_dict[\"title\"],",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 18,
+        "message": "Expression has type \"Any\"",
+        "offset": 0,
+        "src": "title=apartment_dict[\"title\"],",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      }
+    ],
+    "hsearch/parser/tasks.py": [
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"celery\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 1,
+        "src": "from celery import shared_task",
+        "target": "hsearch.parser.tasks"
+      },
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"hsearch.parser.usecase\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 4,
+        "src": "from hsearch.parser.usecase import ParseSiteUseCase",
+        "target": "hsearch.parser.tasks"
+      }
+    ],
+    "hsearch/sso/admin.py": [],
+    "hsearch/sso/forms.py": [
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"captcha.fields\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 1,
+        "src": "from captcha.fields import ReCaptchaField",
+        "target": "hsearch.sso.forms"
+      }
+    ],
+    "hsearch/sso/strategy.py": [
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"social_django.strategy\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 2,
+        "src": "from social_django.strategy import DjangoStrategy",
+        "target": "hsearch.sso.strategy"
+      },
+      {
+        "code": "no-subclass-any",
+        "column": 18,
+        "message": "Class cannot subclass \"DjangoStrategy\" (has type \"Any\")",
+        "offset": 5,
+        "src": "class SSOStrategy(DjangoStrategy):",
+        "target": "hsearch.sso.strategy"
+      },
+      {
+        "code": "no-any-unimported",
+        "column": 18,
+        "message": "Base type DjangoStrategy becomes \"Any (from unimported type)\" due to an unfollowed import",
+        "offset": 0,
+        "src": "class SSOStrategy(DjangoStrategy):",
+        "target": "hsearch.sso.strategy"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 1,
+        "src": "def create_user(self, *args, **kwargs) -> User:",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-untyped-usage",
+        "column": 8,
+        "message": "Usage of untyped name \"chat_id\" in typed context",
+        "offset": 1,
+        "src": "chat_id = kwargs.pop(\"uid\", \"\")",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 18,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Untyped]\")",
+        "offset": 0,
+        "src": "chat_id = kwargs.pop(\"uid\", \"\")",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 18,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "chat_id = kwargs.pop(\"uid\", \"\")",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-untyped-usage",
+        "column": 8,
+        "message": "Usage of untyped name \"title\" in typed context",
+        "offset": 1,
+        "src": "title = kwargs.pop(\"fullname\", \"\")",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Untyped]\")",
+        "offset": 0,
+        "src": "title = kwargs.pop(\"fullname\", \"\")",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "title = kwargs.pop(\"fullname\", \"\")",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 21,
+        "message": "Expression has type \"Any\"",
+        "offset": 2,
+        "src": "user: User = self.storage.user.create_user(*args, **kwargs)",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 52,
+        "message": "Expression type contains \"Any\" (has type \"tuple[Untyped, ...]\")",
+        "offset": 0,
+        "src": "user: User = self.storage.user.create_user(*args, **kwargs)",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 60,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Untyped]\")",
+        "offset": 0,
+        "src": "user: User = self.storage.user.create_user(*args, **kwargs)",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 25,
+        "message": "Expression type contains \"Any\" (has type \"type[Chat]\")",
+        "offset": 3,
+        "src": "exist_chat = Chat.objects.filter(chat_id=chat_id).first()",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 53,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "exist_chat = Chat.objects.filter(chat_id=chat_id).first()",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 24,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Untyped]\")",
+        "offset": 6,
+        "src": "chat.username = kwargs[\"username\"]",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-untyped-usage",
+        "column": 23,
+        "message": "Usage of untyped name \"chat_id\" in typed context",
+        "offset": 1,
+        "src": "chat.chat_id = chat_id",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      },
+      {
+        "code": "no-untyped-usage",
+        "column": 21,
+        "message": "Usage of untyped name \"title\" in typed context",
+        "offset": 1,
+        "src": "chat.title = title",
+        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
+      }
+    ],
+    "hsearch/sso/views.py": [
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "Function is missing a type annotation",
+        "offset": 6,
+        "src": "def index_page(request):",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 14,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any (from unimported type) | str]\")",
+        "offset": 1,
+        "src": "context = {",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 8,
+        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
+        "offset": 1,
+        "src": "\"bot_name\": settings.TG_NAME,",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 20,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "\"bot_name\": settings.TG_NAME,",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 20,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 1,
+        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 23,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 42,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 18,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 2,
+        "src": "return render(request, \"index.html\", context=context)",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 49,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any (from unimported type) | str]\")",
+        "offset": 0,
+        "src": "return render(request, \"index.html\", context=context)",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "Function is missing a type annotation",
+        "offset": 3,
+        "src": "def login_page(request):",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 7,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 1,
+        "src": "if request.user.is_authenticated:",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 17,
+        "message": "Expression type contains \"Any\" (has type \"dict[Any, Any]\")",
+        "offset": 2,
+        "src": "data={",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression type contains \"Any\" (has type \"(str, Untyped)\")",
+        "offset": 1,
+        "src": "\"id\": request.user.id,",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 22,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "\"id\": request.user.id,",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 16,
+        "message": "Expression type contains \"Any\" (has type \"(str, Untyped)\")",
+        "offset": 1,
+        "src": "\"username\": request.user.username,",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 28,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "\"username\": request.user.username,",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 13,
+        "message": "Expression type contains \"Any\" (has type \"dict[Any, Any]\")",
+        "offset": 4,
+        "src": "data={",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 12,
+        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
+        "offset": 1,
+        "src": "\"bot_name\": settings.TG_NAME,",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 24,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "\"bot_name\": settings.TG_NAME,",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 24,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 1,
+        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 27,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
+        "target": "hsearch.sso.views.login_page"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 46,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
+        "target": "hsearch.sso.views.login_page"
+      }
+    ],
+    "manage.py": [],
+    "tests/conftest.py": []
+  },
+  "format": "1.7",
+  "targets": [
+    "file:."
+  ]
+}
