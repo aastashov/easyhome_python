@@ -1,48 +1,36 @@
 version: '3.3'
 
 services:
-  app:
-    image: comov/hsearch:v2.1.0
-    container_name: hsearch
-    restart: always
-    env_file:
-      - .env
-    networks:
-      - hsearch
-    logging:
-      driver: syslog
-      options:
-        tag: docker/hsearch
-
   admin:
     image: comov/hsearch:admin-v2.1.0
+    build: .
     container_name: hsearch_admin
     restart: always
-    env_file:
-      - .env
+#    env_file:
+#      - .env
     networks:
       - hsearch
     ports:
-      - 80:8080
+      - "80:8080"
     logging:
       driver: syslog
       options:
         tag: docker/hsearch
 
-  postgres:
-    image: postgres:13-alpine
-    container_name: hsearch_db
-    restart: always
-    env_file:
-      - .env
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - hsearch
-    logging:
-      driver: syslog
-      options:
-        tag: docker/hsearch_db
+#  postgres:
+#    image: postgres:13-alpine
+#    container_name: hsearch_db
+#    restart: always
+#    env_file:
+#      - .env
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+#    networks:
+#      - hsearch
+#    logging:
+#      driver: syslog
+#      options:
+#        tag: docker/hsearch_db
 
 volumes:
   pgdata:
