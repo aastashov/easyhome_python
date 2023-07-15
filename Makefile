@@ -1,34 +1,47 @@
 #!make
-include .env
-export $(shell sed 's/=.*//' .env)
+UNAME_S := $(shell uname -s)
+PYTHON_FILES := $(find {tests,config,hsearch} -name '*.py' -not -path '*/migrations/*')
+ifeq ($(UNAME_S),Darwin)
+	PYTHON_FILES = $$(find {tests,config,hsearch} -name '*.py' -not -path '*/migrations/*')
+endif
 
-.PHONY: mod run
+install:
+	poetry install --only main,local,qa --no-root
 
-mod:
-	GO111MODULE=on go mod tidy
-	GO111MODULE=on go mod vendor
+install-ci:
+	poetry config virtualenvs.create false
+	poetry install --only main,qa --no-root
 
-update:
-	go get -u ./...
+	# Dirty hack to prevent mypy overwriting basedmypy executable
+	pip uninstall -y basedmypy
+	poetry install -vv
 
-run:
-	docker-compose -f local.yml up -d postgres
-	go run cmd/hsearch/*.go
+install-deploy:
+	poetry config virtualenvs.create false
+	poetry install --only main --no-root --no-cache
 
-dump:
-	pg_dump -U hsearch -W -x -F t hsearch -p ${DJANGO_DB_PORT} -h ${DJANGO_DB_HOST} > backup.tar
+test:
+	pytest tests -vv --cov=hsearch
 
-restore:
-	pg_restore --no-owner --if-exists -c -d hsearch -F t -W -h localhost -p 65432 -U hsearch backup.tar
+lint:
+	mypy .
+	pycln -c .
+	isort -c .
+	black --check --diff .
 
-dockerbuild:
-	RELEASE=development docker build -t comov/hsearch:latest .
+# Development
+# ----------------------------------------------------------------------------
+format:
+	pycln -a .
+	isort .
+	black .
+	add-trailing-comma ${PYTHON_FILES}
 
-dockerrun: dockerbuild
-	docker run -d comov/hsearch:latest
+ignore:
+	mypy --write-baseline .
 
-build_api:
-	docker-compose -f local.yml build api
+run-flower:
+	@celery --app config flower --port=5566
 
-push_api:
-	docker-compose -f local.yml push api
+run-celery:
+	@celery -A config worker --beat --loglevel=info --max-tasks-per-child=100 -n worker@%h

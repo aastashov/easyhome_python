@@ -2,29 +2,24 @@ version: '3.3'
 
 services:
   postgres:
-    image: postgres:13-alpine
-    container_name: hsearch_db
+    image: postgres:14.2-alpine
+    container_name: hsearch_postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: hsearch
+      POSTGRES_PASSWORD: pass1234
       POSTGRES_DB: hsearch
-      POSTGRES_USER: hsearch
+      POSTGRES_USER: hsearch_srv
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - 65432:5432
+      - "25432:5432"
 
-  api:
-    build:
-      context: api/
-    image: "registry.gitlab.com/my_house/my_house_api:latest"
-    container_name: myhouse_api
-    environment:
-      DJANGO_DEBUG: 'true'
-      DJANGO_DB_HOST: hsearch_db
-      DJANGO_DB_PORT: 65432
+  redis:
+    image: redis:7.0-alpine
+    restart: always
+    container_name: hsearch_redis
     ports:
-      - 8080:8080
+      - "26379:6379"
 
 volumes:
   pgdata:

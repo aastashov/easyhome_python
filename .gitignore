@@ -1,6 +1,8 @@
-.idea
-.env
+.*
+!.env.example
+!.gitignore
+!.github
+_old_appication_parser/vendor
 *.pyc
 __pycache__
-backup.tar
-.DS_Store
+celerybeat-schedule
