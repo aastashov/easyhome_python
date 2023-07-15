@@ -1,6 +1,8 @@
 # hsearch
 
-[![Docker Image CI](https://github.com/comov/hsearch/actions/workflows/docker-image.yml/badge.svg?branch=master)](https://github.com/comov/hsearch/actions/workflows/docker-image.yml)
+[![.github/workflows/test-and-lint.yml](https://github.com/comov/hsearch/actions/workflows/test-and-lint.yml/badge.svg)](https://github.com/comov/hsearch/actions/workflows/test-and-lint.yml)
+[![Build Docker image](https://github.com/comov/hsearch/actions/workflows/build-image.yml/badge.svg)](https://github.com/comov/hsearch/actions/workflows/build-image.yml)
+
 По сути парсер ресурсов для создания объявлений о сдаче квартир в аренду. Ресурсы для парсинга:
 
 - [diesel.elcat.kg](http://diesel.elcat.kg/)
