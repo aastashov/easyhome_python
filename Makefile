@@ -20,8 +20,8 @@ install-deploy:
 	poetry config virtualenvs.create false
 	poetry install --only main --no-root --no-cache
 
-test:
-	pytest tests -vv --cov=hsearch
+test-ci:
+	pytest tests -vv --doctest-modules --junitxml=junit/test-results.xml --cov=hsearch --cov-report=xml --cov-report=html
 
 lint:
 	mypy .
@@ -31,6 +31,9 @@ lint:
 
 # Development
 # ----------------------------------------------------------------------------
+test:
+	pytest tests -vv --cov=hsearch
+
 format:
 	pycln -a .
 	isort .
