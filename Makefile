@@ -18,7 +18,7 @@ install-ci:
 
 install-deploy:
 	poetry config virtualenvs.create false
-	poetry install --only main --no-root --no-cache
+	poetry install --only main,prod --no-root --no-cache
 
 test-ci:
 	pytest tests -vv --doctest-modules --junitxml=junit/test-results.xml --cov=hsearch --cov-report=xml --cov-report=html

@@ -15,9 +15,10 @@ class ApartmentResponse(Schema):
 
     created_at: int
     modified_at: int
-    deleted_at: int | None
+    # deleted_at: int | None
 
-    @validator("created_at", "modified_at", "deleted_at", pre=True)
+    # @validator("created_at", "modified_at", "deleted_at", pre=True)
+    @validator("created_at", "modified_at", pre=True)
     def convert_datetime_to_timestamp(cls, value: datetime | int | None) -> int:
         """
         Convert a datetime object or integer timestamp to a Unix timestamp.

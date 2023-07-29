@@ -89,18 +89,18 @@ class Apartment(models.Model):
     created = UnixTimeStampField()
 
     # Inner information
-    deleted_at = models.DateTimeField(
-        verbose_name="Дата удаления на сайте.",
-        null=True,
-        blank=True,
-        help_text="Если парсер получил 404 ошибку, то мы помечаем объявление как удаленное.",
-    )
-    viewed_at = models.DateTimeField(
-        verbose_name="Дата последнего просмотра.",
-        null=True,
-        blank=True,
-        help_text="Дата, когда парсер в последний раз видел это объявление на сайте.",
-    )
+    # deleted_at = models.DateTimeField(
+    #     verbose_name="Дата удаления на сайте.",
+    #     null=True,
+    #     blank=True,
+    #     help_text="Если парсер получил 404 ошибку, то мы помечаем объявление как удаленное.",
+    # )
+    # viewed_at = models.DateTimeField(
+    #     verbose_name="Дата последнего просмотра.",
+    #     null=True,
+    #     blank=True,
+    #     help_text="Дата, когда парсер в последний раз видел это объявление на сайте.",
+    # )
 
     def __str__(self) -> str:
         return f"{self.topic} {self.get_site_display()!r} (#{self.pk})"

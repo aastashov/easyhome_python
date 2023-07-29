@@ -31,7 +31,7 @@ class ParseSiteService:
         announcement_map = self.http_client.fetch_announcement_pages(non_existing_announcement)
 
         self.create_announcement(announcement_map)
-        self.update_viewed_at(set(announcement_pages_map.keys()) - set(non_existing_announcement.keys()))
+        # self.update_viewed_at(set(announcement_pages_map.keys()) - set(non_existing_announcement.keys()))
 
     def filter_non_existing_announcement(self, pages_map: dict[int, str]) -> dict[int, str]:
         apartment_queryset: QuerySet[Apartment] = Apartment.objects.filter(
@@ -52,7 +52,7 @@ class ParseSiteService:
                     topic=parsed_apartment.title,
                     url=parsed_apartment.external_url,
                     site=self.site.name,
-                    viewed_at=timezone.now(),
+                    # viewed_at=timezone.now(),
                 ),
             )
 

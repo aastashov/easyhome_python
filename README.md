@@ -81,8 +81,21 @@ if $programname == 'docker' then \
 $FileCreateMode 0640
 ```
 
+## Postgres backup
+```shell
+
+pg_dump -h 157.245.16.242 --dbname hsearch -U hsearch --port 45432 -W --no-acl --format=t > backup.tar
+pg_restore --no-owner --if-exists -c -d hsearch -F t -W -h 127.0.0.1 --port 25432 -U hsearch_srv backup.tar
+```
+
+## Infra
+```shell
+docker network create hsearch
+mkdir -p /opt/docker/nginx/config/{certs,conf.d,html,vhost.d}
+```
+
 ## Новые возможности:
- - [ ] "Агенство" более 2-х объявлений (beta) + кнопка "сообшить об ошибки"
+ - [ ] "Агенство" более 2-х объявлений (beta) + кнопка "сообщить об ошибки"
  - [ ] Фильтр по этажам
  - [ ] Фильтр по количеству комнат
  - [ ] Не удаляются старые сообщения при клике "Точно нет"
