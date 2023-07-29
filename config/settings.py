@@ -181,3 +181,4 @@ CELERY_RESULT_BACKEND = env.str("CELERY_RESULT_BACKEND", default="redis://localh
 # Parser
 # ----------------------------------------------------------------------------
 AIOHTTP_REQUEST_LIMIT = env.int("AIOHTTP_REQUEST_LIMIT", default=15)
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None

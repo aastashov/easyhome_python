@@ -2,7 +2,7 @@ import json
 from typing import Any, TypedDict
 from urllib.parse import urljoin
 
-from bs4 import BeautifulSoup, Tag
+from bs4 import BeautifulSoup
 
 from hsearch.hsearch.models import Site
 from hsearch.parser.entity import ApartmentEntity

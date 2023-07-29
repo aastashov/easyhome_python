@@ -1,0 +1,45 @@
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: 'A version of docker image'
+        required: true
+        type: string
+
+env:
+  IMAGE_NAME: hsearch
+
+jobs:
+
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to registry
+        # This is where you will update the personal access token to GITHUB_TOKEN
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+
+      - name: Build image
+        run: |
+          docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
+
+      - name: Push docker image
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+
+          docker tag $IMAGE_NAME $IMAGE_ID:${{ inputs.version }}
+          docker push $IMAGE_ID:${{ inputs.version }}
+
+      - name: Push latest image
+        if: github.ref_name == 'main'
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+
+          docker tag $IMAGE_NAME $IMAGE_ID:latest
+          docker push $IMAGE_ID:latest

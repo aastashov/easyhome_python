@@ -370,6 +370,14 @@
         "offset": 4,
         "src": "AIOHTTP_REQUEST_LIMIT = env.int(\"AIOHTTP_REQUEST_LIMIT\", default=15)",
         "target": "config.settings"
+      },
+      {
+        "code": "var-annotated",
+        "column": 0,
+        "message": "Need type annotation for \"SECURE_CROSS_ORIGIN_OPENER_POLICY\" (hint: \"SECURE_CROSS_ORIGIN_OPENER_POLICY: <type> | None = ...\")",
+        "offset": 1,
+        "src": "SECURE_CROSS_ORIGIN_OPENER_POLICY = None",
+        "target": "config.settings"
       }
     ],
     "config/urls.py": [],
@@ -897,18 +905,10 @@
         "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
       },
       {
-        "code": "no-any-expr",
-        "column": 45,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
-        "offset": 4,
-        "src": "external_url=urljoin(self._host, apartment_dict[\"url\"]),",
-        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
-      },
-      {
         "code": null,
         "column": 45,
         "message": "(Skipping most remaining errors due to unresolved imports or missing stubs; fix these first)",
-        "offset": 0,
+        "offset": 4,
         "src": "external_url=urljoin(self._host, apartment_dict[\"url\"]),",
         "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
       },

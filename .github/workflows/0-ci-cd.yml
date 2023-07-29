@@ -1,0 +1,23 @@
+name: CI/CD
+
+on: push
+
+jobs:
+
+  test:
+    name: Tests and Linters
+    uses: ./.github/workflows/1-test-and-lint.yml
+
+  build:
+    name: Build
+    needs: [ test ]
+    uses: ./.github/workflows/2-build-image.yml
+    with:
+      version: ${{ github.run_number }}
+
+#  deploy:
+#    name: Deploy
+#    needs: [ build ]
+#    uses: ./.github/workflows/3-deploy-prod.yml
+#    with:
+#      version: ${{ github.run_number }}
