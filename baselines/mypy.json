@@ -288,7 +288,7 @@
         "column": 39,
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 12,
-        "src": "SESSION_COOKIE_DOMAIN = \"127.0.0.1\" if DEBUG else \".reloc.kg\"",
+        "src": "SESSION_COOKIE_DOMAIN = \"127.0.0.1\" if DEBUG else \".ik.kg\"",
         "target": "config.settings"
       },
       {
@@ -313,6 +313,14 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 4,
         "src": "TG_NAME = env(\"TG_NAME\", default=\"hsearch_dev_bot\")",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 11,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "TG_TOKEN = env(\"TG_TOKEN\", default=\"\")",
         "target": "config.settings"
       },
       {
@@ -383,6 +391,16 @@
     "config/urls.py": [],
     "hsearch/api/router.py": [],
     "hsearch/api/v1/handlers/apartment.py": [],
+    "hsearch/api/v1/handlers/profile.py": [
+      {
+        "code": "import",
+        "column": 0,
+        "message": "Skipping analyzing \"social_core.exceptions\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "offset": 10,
+        "src": "from social_core.exceptions import AuthFailed, AuthMissingParameter",
+        "target": "hsearch.api.v1.handlers.profile"
+      }
+    ],
     "hsearch/api/v1/schemas.py": [],
     "hsearch/common/admin.py": [],
     "hsearch/common/utils.py": [
@@ -448,8 +466,6 @@
       }
     ],
     "hsearch/hsearch/migrations/0002_auto_20210908_1449.py": [],
-    "hsearch/hsearch/migrations/0003_alter_apartment_currency_alter_apartment_site.py": [],
-    "hsearch/hsearch/migrations/0004_apartment_deleted_at_apartment_viewed_at.py": [],
     "hsearch/hsearch/models.py": [
       {
         "code": "import",
@@ -906,25 +922,9 @@
       },
       {
         "code": null,
-        "column": 45,
+        "column": 18,
         "message": "(Skipping most remaining errors due to unresolved imports or missing stubs; fix these first)",
-        "offset": 4,
-        "src": "external_url=urljoin(self._host, apartment_dict[\"url\"]),",
-        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 18,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
-        "offset": 1,
-        "src": "title=apartment_dict[\"title\"],",
-        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 18,
-        "message": "Expression has type \"Any\"",
-        "offset": 0,
+        "offset": 5,
         "src": "title=apartment_dict[\"title\"],",
         "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
       }

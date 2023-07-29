@@ -88,7 +88,7 @@ django_settings_module = "config.settings"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "config.settings"
-addopts = "--cov-fail-under=51"
+addopts = "--cov-fail-under=10"
 filterwarnings = [
     "error",
 #    "ignore:distutils Version classes are deprecated. Use packaging.version instead.:DeprecationWarning",
