@@ -2,7 +2,6 @@ version: '3.3'
 
 services:
   app:
-    #    image: comov/hsearch:v2.3.0
     image: comov/hsearch:latest
     container_name: hsearch
     command: hsearch withmigrate -dir=/srv/migrations
@@ -38,7 +37,7 @@ services:
     logging:
       driver: syslog
       options:
-        tag: docker/hsearch_admin
+        tag: docker/hsearch_api
 
   postgres:
     image: postgres:13-alpine
@@ -52,7 +51,7 @@ services:
       - my_house
       - hsearch
     ports:
-      - 45432:5432
+      - "45432:5432"
     logging:
       driver: syslog
       options:

@@ -2,8 +2,6 @@ from pathlib import Path
 
 import django_stubs_ext
 import environ
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
 
 django_stubs_ext.monkeypatch()
 
@@ -20,20 +18,12 @@ env = environ.Env(
 environ.Env.read_env(str(BASE_DIR.joinpath(".env")))
 
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
+REVISION = env.str("REVISION", default="latest")
 
 # SECURITY
 # ----------------------------------------------------------------------------
-SECRET_KEY = env("DJANGO_SECRET_KEY", default="123") if DEBUG else env("DJANGO_SECRET_KEY")
-ALLOWED_HOSTS = ["*"] if DEBUG else env.list("DJANGO_ALLOWED_HOSTS")
-
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=False)
-SESSION_COOKIE_SECURE = SECURE_SSL_REDIRECT
-CSRF_COOKIE_SECURE = SECURE_SSL_REDIRECT
-SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
-SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
-SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+SECRET_KEY = env("DJANGO_SECRET_KEY", default="123")
+ALLOWED_HOSTS = ["*"]
 
 # APPLICATIONS
 # ----------------------------------------------------------------------------
@@ -121,12 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-]
-
 LOGIN_REDIRECT_URL = "/"
-SESSION_COOKIE_DOMAIN = env.str("SESSION_COOKIE_DOMAIN", default="127.0.0.1")
+SESSION_COOKIE_DOMAIN = "127.0.0.1"
 
 # LOCALIZATION
 # ----------------------------------------------------------------------------
@@ -151,18 +137,6 @@ TG_NAME = env("TG_NAME", default="hsearch_dev_bot")
 TG_TOKEN = env("TG_TOKEN", default="")
 TG_CHAT_ID = env.int("TG_CHAT_ID", default=-1001248414108)
 TG_LOGIN_REDIRECT_URL = "/auth/complete/telegram/"
-
-# Sentry
-# ----------------------------------------------------------------------------
-SENTRY_DSN = env("DJANGO_SENTRY_DSN", default="")
-
-if SENTRY_DSN:
-    sentry_sdk.init(
-        dsn=SENTRY_DSN,
-        integrations=[DjangoIntegration()],
-        traces_sample_rate=1.0,
-        send_default_pii=True,
-    )
 
 # Celery
 # ----------------------------------------------------------------------------

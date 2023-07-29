@@ -13,7 +13,7 @@ jobs:
     needs: [ test ]
     uses: ./.github/workflows/2-build-image.yml
     with:
-      version: ${{ github.run_number }}
+      version: v.${{ github.run_number }}
 
 #  deploy:
 #    name: Deploy

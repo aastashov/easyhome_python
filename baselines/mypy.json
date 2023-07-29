@@ -18,14 +18,6 @@
         "target": "config.celery"
       },
       {
-        "code": "import",
-        "column": 0,
-        "message": "See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports",
-        "offset": 0,
-        "src": "from celery.schedules import crontab",
-        "target": "config.celery"
-      },
-      {
         "code": "no-any-expr",
         "column": 6,
         "message": "Expression has type \"Any (from unimported type)\"",
@@ -98,22 +90,30 @@
         "target": "config.celery"
       }
     ],
-    "config/settings.py": [
+    "config/settings/base.py": [
       {
         "code": "import",
         "column": 0,
         "message": "Skipping analyzing \"environ\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
         "offset": 4,
         "src": "import environ",
-        "target": "config.settings"
+        "target": "config.settings.base"
+      },
+      {
+        "code": "import",
+        "column": 0,
+        "message": "See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports",
+        "offset": 0,
+        "src": "import environ",
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
         "column": 6,
         "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 13,
+        "offset": 11,
         "src": "env = environ.Env(",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -121,7 +121,7 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 3,
         "src": "environ.Env.read_env(str(BASE_DIR.joinpath(\".env\")))",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -129,119 +129,31 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 2,
         "src": "DEBUG = env.bool(\"DJANGO_DEBUG\", default=False)",
-        "target": "config.settings"
+        "target": "config.settings.base"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 11,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "REVISION = env.str(\"REVISION\", default=\"latest\")",
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
         "column": 13,
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 4,
-        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"123\") if DEBUG else env(\"DJANGO_SECRET_KEY\")",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 56,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"123\") if DEBUG else env(\"DJANGO_SECRET_KEY\")",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 67,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"123\") if DEBUG else env(\"DJANGO_SECRET_KEY\")",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression type contains \"Any\" (has type \"list[str] | Any (from unimported type)\")",
-        "offset": 1,
-        "src": "ALLOWED_HOSTS = [\"*\"] if DEBUG else env.list(\"DJANGO_ALLOWED_HOSTS\")",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 25,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "ALLOWED_HOSTS = [\"*\"] if DEBUG else env.list(\"DJANGO_ALLOWED_HOSTS\")",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 36,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "ALLOWED_HOSTS = [\"*\"] if DEBUG else env.list(\"DJANGO_ALLOWED_HOSTS\")",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 22,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 3,
-        "src": "SECURE_SSL_REDIRECT = env.bool(\"DJANGO_SECURE_SSL_REDIRECT\", default=False)",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "SESSION_COOKIE_SECURE = SECURE_SSL_REDIRECT",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 21,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "CSRF_COOKIE_SECURE = SECURE_SSL_REDIRECT",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 33,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(\"DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS\", default=True)",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 22,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "SECURE_HSTS_PRELOAD = env.bool(\"DJANGO_SECURE_HSTS_PRELOAD\", default=True)",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 30,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "SECURE_CONTENT_TYPE_NOSNIFF = env.bool(\"DJANGO_SECURE_CONTENT_TYPE_NOSNIFF\", default=True)",
-        "target": "config.settings"
-      },
-      {
-        "code": "var-annotated",
-        "column": 0,
-        "message": "Need type annotation for \"SECURE_CROSS_ORIGIN_OPENER_POLICY\" (hint: \"SECURE_CROSS_ORIGIN_OPENER_POLICY: <type> | None = ...\")",
-        "offset": 1,
-        "src": "SECURE_CROSS_ORIGIN_OPENER_POLICY = None",
-        "target": "config.settings"
+        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"123\")",
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
         "column": 12,
         "message": "Expression type contains \"Any\" (has type \"dict[str, dict[str, str | Any (from unimported type)]]\")",
-        "offset": 58,
+        "offset": 59,
         "src": "DATABASES = {",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -249,7 +161,7 @@
         "message": "Expression type contains \"Any\" (has type \"dict[str, str | Any (from unimported type)]\")",
         "offset": 1,
         "src": "\"default\": {",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -257,7 +169,7 @@
         "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
         "offset": 2,
         "src": "\"NAME\": env(\"DJANGO_DB_NAME\", default=\"hsearch\"),",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -265,7 +177,7 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 0,
         "src": "\"NAME\": env(\"DJANGO_DB_NAME\", default=\"hsearch\"),",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -273,7 +185,7 @@
         "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
         "offset": 1,
         "src": "\"USER\": env(\"DJANGO_DB_USER\", default=\"hsearch_srv\"),",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -281,7 +193,7 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 0,
         "src": "\"USER\": env(\"DJANGO_DB_USER\", default=\"hsearch_srv\"),",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -289,7 +201,7 @@
         "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
         "offset": 1,
         "src": "\"PASSWORD\": env(\"DJANGO_DB_PASSWORD\", default=\"pass1234\"),",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -297,7 +209,7 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 0,
         "src": "\"PASSWORD\": env(\"DJANGO_DB_PASSWORD\", default=\"pass1234\"),",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -305,7 +217,7 @@
         "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
         "offset": 1,
         "src": "\"HOST\": env(\"DJANGO_DB_HOST\", default=\"127.0.0.1\"),",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -313,7 +225,7 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 0,
         "src": "\"HOST\": env(\"DJANGO_DB_HOST\", default=\"127.0.0.1\"),",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -321,7 +233,7 @@
         "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
         "offset": 1,
         "src": "\"PORT\": env.int(\"DJANGO_DB_PORT\", default=25432),",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -329,23 +241,15 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 0,
         "src": "\"PORT\": env.int(\"DJANGO_DB_PORT\", default=25432),",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 28,
-        "src": "SESSION_COOKIE_DOMAIN = env.str(\"SESSION_COOKIE_DOMAIN\", default=\"127.0.0.1\")",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
         "column": 23,
         "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 16,
+        "offset": 40,
         "src": "RECAPTCHA_PUBLIC_KEY = env(\"RECAPTCHA_PUBLIC_KEY\", default=\"\")",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -353,7 +257,7 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 1,
         "src": "RECAPTCHA_PRIVATE_KEY = env(\"RECAPTCHA_PRIVATE_KEY\", default=\"\")",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -361,7 +265,7 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 4,
         "src": "TG_NAME = env(\"TG_NAME\", default=\"hsearch_dev_bot\")",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -369,7 +273,7 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 1,
         "src": "TG_TOKEN = env(\"TG_TOKEN\", default=\"\")",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -377,39 +281,15 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 1,
         "src": "TG_CHAT_ID = env.int(\"TG_CHAT_ID\", default=-1001248414108)",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 13,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 5,
-        "src": "SENTRY_DSN = env(\"DJANGO_SENTRY_DSN\", default=\"\")",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 3,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 2,
-        "src": "if SENTRY_DSN:",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 12,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 2,
-        "src": "dsn=SENTRY_DSN,",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
         "column": 20,
         "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 12,
+        "offset": 9,
         "src": "CELERY_BROKER_URL = env.str(\"CELERY_BROKER_URL\", default=\"redis://localhost:26379/0\")",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -417,7 +297,7 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 1,
         "src": "CELERY_RESULT_BACKEND = env.str(\"CELERY_RESULT_BACKEND\", default=\"redis://localhost:26379/1\")",
-        "target": "config.settings"
+        "target": "config.settings.base"
       },
       {
         "code": "no-any-expr",
@@ -425,15 +305,123 @@
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 4,
         "src": "AIOHTTP_REQUEST_LIMIT = env.int(\"AIOHTTP_REQUEST_LIMIT\", default=15)",
-        "target": "config.settings"
+        "target": "config.settings.base"
       }
     ],
+    "config/settings/local.py": [
+      {
+        "code": "no-any-expr",
+        "column": 13,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 6,
+        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"<local secret>\")",
+        "target": "config.settings.local"
+      },
+      {
+        "code": "index",
+        "column": 0,
+        "message": "Unsupported target for indexed assignment (\"str | list[Path] | bool | dict[str, list[str]]\")",
+        "offset": 5,
+        "src": "TEMPLATES[0][\"OPTIONS\"][\"debug\"] = DEBUG",
+        "target": "config.settings.local"
+      },
+      {
+        "code": "call-overload",
+        "column": 0,
+        "message": "No overload variant of \"__setitem__\" of \"list\" matches argument types \"str\", \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "TEMPLATES[0][\"OPTIONS\"][\"debug\"] = DEBUG",
+        "target": "config.settings.local"
+      },
+      {
+        "code": "call-overload",
+        "column": 0,
+        "message": "Possible overload variants:",
+        "offset": 0,
+        "src": "TEMPLATES[0][\"OPTIONS\"][\"debug\"] = DEBUG",
+        "target": "config.settings.local"
+      },
+      {
+        "code": "call-overload",
+        "column": 0,
+        "message": "    def __setitem__(self, SupportsIndex, Path, /) -> None",
+        "offset": 0,
+        "src": "TEMPLATES[0][\"OPTIONS\"][\"debug\"] = DEBUG",
+        "target": "config.settings.local"
+      },
+      {
+        "code": "call-overload",
+        "column": 0,
+        "message": "    def __setitem__(self, slice, Iterable[Path], /) -> None",
+        "offset": 0,
+        "src": "TEMPLATES[0][\"OPTIONS\"][\"debug\"] = DEBUG",
+        "target": "config.settings.local"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 35,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 0,
+        "src": "TEMPLATES[0][\"OPTIONS\"][\"debug\"] = DEBUG",
+        "target": "config.settings.local"
+      }
+    ],
+    "config/settings/production.py": [],
     "config/urls.py": [],
     "hsearch/api/router.py": [],
     "hsearch/api/v1/handlers/apartment.py": [],
     "hsearch/api/v1/handlers/profile.py": [],
     "hsearch/api/v1/schemas.py": [],
-    "hsearch/common/admin.py": [],
+    "hsearch/common/admin.py": [
+      {
+        "code": "type-arg",
+        "column": 19,
+        "message": "Missing type parameters for generic type \"TabularInline\"",
+        "offset": 4,
+        "src": "class BaseReadOnly(admin.TabularInline):",
+        "target": "hsearch.common.admin"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation",
+        "offset": 6,
+        "src": "def has_delete_permission(self, request, obj=None):",
+        "target": "hsearch.common.admin.BaseReadOnly.has_delete_permission"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation",
+        "offset": 3,
+        "src": "def has_add_permission(self, request, obj):",
+        "target": "hsearch.common.admin.BaseReadOnly.has_add_permission"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation",
+        "offset": 3,
+        "src": "def has_change_permission(self, request, obj=None):",
+        "target": "hsearch.common.admin.BaseReadOnly.has_change_permission"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "Function is missing a type annotation",
+        "offset": 4,
+        "src": "def yes_no_img(var):",
+        "target": "hsearch.common.admin.yes_no_img"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 29,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 1,
+        "src": "res = (\"yes\", \"True\") if var else (\"no\", \"False\")",
+        "target": "hsearch.common.admin.yes_no_img"
+      }
+    ],
     "hsearch/common/utils.py": [
       {
         "code": "no-any-expr",
@@ -519,12 +507,140 @@
         "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
       },
       {
-        "code": null,
+        "code": "override",
         "column": 4,
-        "message": "(Skipping most remaining errors due to unresolved imports or missing stubs; fix these first)",
+        "message": "         def has_add_permission(self, request: HttpRequest) -> bool",
         "offset": 0,
         "src": "def has_add_permission(self, request, obj) -> bool:",
         "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "     Subclass:",
+        "offset": 0,
+        "src": "def has_add_permission(self, request, obj) -> bool:",
+        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "         def has_add_permission(self, request: Untyped, obj: Untyped) -> bool",
+        "offset": 0,
+        "src": "def has_add_permission(self, request, obj) -> bool:",
+        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 3,
+        "src": "def has_change_permission(self, request, obj=None) -> bool:",
+        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_change_permission"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 5,
+        "src": "def render(self, name, value, attrs=None, renderer=None) -> SafeString:",
+        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
+      },
+      {
+        "code": "no-untyped-usage",
+        "column": 8,
+        "message": "Usage of untyped name \"display_name\" in typed context",
+        "offset": 1,
+        "src": "display_name = value.split(\"/\")[-1]",
+        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 23,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 0,
+        "src": "display_name = value.split(\"/\")[-1]",
+        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 14,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 1,
+        "src": "img = f'<img height=\"200px\" src=\"{value}\" alt=\"{display_name}\"/>'",
+        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 26,
+        "message": "Expression has type \"Untyped\"",
+        "offset": 1,
+        "src": "return SafeString(f'<a href=\"{value}\" target=\"_blank\">{img}</a>')",
+        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 12,
+        "message": "Expression type contains \"Any\" (has type \"type[Feedback]\")",
+        "offset": 4,
+        "src": "model = Feedback",
+        "target": "hsearch.hsearch.admin_inlines"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 12,
+        "message": "Expression type contains \"Any\" (has type \"type[Answer]\")",
+        "offset": 8,
+        "src": "model = Answer",
+        "target": "hsearch.hsearch.admin_inlines"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 12,
+        "message": "Expression type contains \"Any\" (has type \"type[Image]\")",
+        "offset": 9,
+        "src": "model = Image",
+        "target": "hsearch.hsearch.admin_inlines"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 26,
+        "message": "Expression type contains \"Any\" (has type \"dict[type[Field[Untyped, Untyped]], Mapping[str, Any]]\")",
+        "offset": 8,
+        "src": "formfield_overrides = {models.CharField: {\"widget\": AdminImageWidget}}",
+        "target": "hsearch.hsearch.admin_inlines"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 27,
+        "message": "Expression type contains \"Any\" (has type \"type[CharField[Any, Any]]\")",
+        "offset": 0,
+        "src": "formfield_overrides = {models.CharField: {\"widget\": AdminImageWidget}}",
+        "target": "hsearch.hsearch.admin_inlines"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 27,
+        "message": "Expression type contains \"Any\" (has type \"(type[CharField[Any, Any]], dict[str, Any])\")",
+        "offset": 0,
+        "src": "formfield_overrides = {models.CharField: {\"widget\": AdminImageWidget}}",
+        "target": "hsearch.hsearch.admin_inlines"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 45,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
+        "offset": 0,
+        "src": "formfield_overrides = {models.CharField: {\"widget\": AdminImageWidget}}",
+        "target": "hsearch.hsearch.admin_inlines"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 2,
+        "src": "def has_change_permission(self, request: HttpRequest, obj=None) -> bool:",
+        "target": "hsearch.hsearch.admin_inlines.ImageInline.has_change_permission"
       }
     ],
     "hsearch/hsearch/migrations/0001_initial.py": [
@@ -1073,17 +1189,9 @@
       },
       {
         "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Any (from unimported type) | str]\")",
-        "offset": 1,
-        "src": "context = {",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-any-expr",
         "column": 8,
         "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 1,
+        "offset": 2,
         "src": "\"bot_name\": settings.TG_NAME,",
         "target": "hsearch.sso.views.index_page"
       },
@@ -1100,6 +1208,14 @@
         "column": 20,
         "message": "Expression has type \"Untyped\"",
         "offset": 1,
+        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
+        "target": "hsearch.sso.views.index_page"
+      },
+      {
+        "code": null,
+        "column": 20,
+        "message": "(Skipping most remaining errors due to unresolved imports or missing stubs; fix these first)",
+        "offset": 0,
         "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
         "target": "hsearch.sso.views.index_page"
       },
@@ -1118,126 +1234,6 @@
         "offset": 0,
         "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
         "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 18,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 2,
-        "src": "return render(request, \"index.html\", context=context)",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 49,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Any (from unimported type) | str]\")",
-        "offset": 0,
-        "src": "return render(request, \"index.html\", context=context)",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-untyped-def",
-        "column": 0,
-        "message": "Function is missing a type annotation",
-        "offset": 3,
-        "src": "def login_page(request):",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 7,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 1,
-        "src": "if request.user.is_authenticated:",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 17,
-        "message": "Expression type contains \"Any\" (has type \"dict[Any, Any]\")",
-        "offset": 2,
-        "src": "data={",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression type contains \"Any\" (has type \"(str, Untyped)\")",
-        "offset": 1,
-        "src": "\"id\": request.user.id,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 22,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"id\": request.user.id,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression type contains \"Any\" (has type \"(str, Untyped)\")",
-        "offset": 1,
-        "src": "\"username\": request.user.username,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 28,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"username\": request.user.username,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 13,
-        "message": "Expression type contains \"Any\" (has type \"dict[Any, Any]\")",
-        "offset": 4,
-        "src": "data={",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 12,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 1,
-        "src": "\"bot_name\": settings.TG_NAME,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"bot_name\": settings.TG_NAME,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 1,
-        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 27,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 46,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
-        "target": "hsearch.sso.views.login_page"
       }
     ],
     "manage.py": [],
