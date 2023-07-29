@@ -26,6 +26,15 @@ DEBUG = env.bool("DJANGO_DEBUG", default=False)
 SECRET_KEY = env("DJANGO_SECRET_KEY", default="123") if DEBUG else env("DJANGO_SECRET_KEY")
 ALLOWED_HOSTS = ["*"] if DEBUG else env.list("DJANGO_ALLOWED_HOSTS")
 
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=False)
+SESSION_COOKIE_SECURE = SECURE_SSL_REDIRECT
+CSRF_COOKIE_SECURE = SECURE_SSL_REDIRECT
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
+SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
 # APPLICATIONS
 # ----------------------------------------------------------------------------
 INSTALLED_APPS = [
@@ -39,7 +48,6 @@ INSTALLED_APPS = [
     "hsearch.common",
     "hsearch.hsearch",
     "hsearch.parser",
-    "social_django",
 ]
 
 # MIDDLEWARE
@@ -72,8 +80,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "social_django.context_processors.backends",
-                "social_django.context_processors.login_redirect",
             ],
         },
     },
@@ -116,23 +122,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    "social_core.backends.telegram.TelegramAuth",
     "django.contrib.auth.backends.ModelBackend",
 ]
 
-SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = env("TG_TOKEN", default="")
-SOCIAL_AUTH_STRATEGY = "hsearch.sso.strategy.SSOStrategy"
-USER_FIELDS = [
-    "username",
-    "uid",
-    "first_name",
-    "last_name",
-    "fullname",
-]
-
 LOGIN_REDIRECT_URL = "/"
-
-SESSION_COOKIE_DOMAIN = "127.0.0.1" if DEBUG else ".ik.kg"
+SESSION_COOKIE_DOMAIN = env.str("SESSION_COOKIE_DOMAIN", default="127.0.0.1")
 
 # LOCALIZATION
 # ----------------------------------------------------------------------------
@@ -182,4 +176,3 @@ CELERY_RESULT_BACKEND = env.str("CELERY_RESULT_BACKEND", default="redis://localh
 # Parser
 # ----------------------------------------------------------------------------
 AIOHTTP_REQUEST_LIMIT = env.int("AIOHTTP_REQUEST_LIMIT", default=15)
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None

@@ -17,6 +17,7 @@ services:
       - /opt/docker/nginx/config/vhost.d:/etc/nginx/vhost.d
       - /opt/docker/nginx/config/html:/usr/share/nginx/html
       - /opt/docker/nginx/config/certs:/etc/nginx/certs:ro
+      - /opt/docker/hsearch/static/:/app/ik.kg/static/
     logging:
       driver: syslog
       options:

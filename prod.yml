@@ -22,6 +22,7 @@ services:
     image: ghcr.io/comov/hsearch:6
     container_name: hsearch_api
     restart: always
+    command: /src/bin/gunicorn.sh
     env_file:
       - .env
     environment:

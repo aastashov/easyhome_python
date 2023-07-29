@@ -7,12 +7,19 @@ from dataclasses import dataclass
 from django.conf import settings
 from django.http import HttpRequest
 from ninja import Router
-from social_core.exceptions import AuthFailed, AuthMissingParameter
 
 from hsearch.api.v1 import schemas
 from hsearch.hsearch.models import Chat
 
 router = Router(tags=["Profile"])
+
+
+class AuthMissingParameter(Exception):
+    ...
+
+
+class AuthFailed(Exception):
+    ...
 
 
 @dataclass

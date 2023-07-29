@@ -13,7 +13,6 @@ urlpatterns = [
     path("", index_page),
     path("login/", login_page),
     path("logout/", LogoutView.as_view()),
-    path("auth/", include("social_django.urls", namespace="social")),
     path("hsearch/", admin.site.urls),
     path("api/v1/", api_v1.urls),
     *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
