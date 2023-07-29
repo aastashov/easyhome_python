@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
-from django.urls import include, path
+from django.urls import path
 
 from hsearch.api.router import api_v1
 from hsearch.common.admin import admin

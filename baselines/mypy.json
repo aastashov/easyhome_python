@@ -181,9 +181,65 @@
       },
       {
         "code": "no-any-expr",
+        "column": 22,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 3,
+        "src": "SECURE_SSL_REDIRECT = env.bool(\"DJANGO_SECURE_SSL_REDIRECT\", default=False)",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 24,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "SESSION_COOKIE_SECURE = SECURE_SSL_REDIRECT",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 21,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "CSRF_COOKIE_SECURE = SECURE_SSL_REDIRECT",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 33,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(\"DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS\", default=True)",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 22,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "SECURE_HSTS_PRELOAD = env.bool(\"DJANGO_SECURE_HSTS_PRELOAD\", default=True)",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 30,
+        "message": "Expression has type \"Any (from unimported type)\"",
+        "offset": 1,
+        "src": "SECURE_CONTENT_TYPE_NOSNIFF = env.bool(\"DJANGO_SECURE_CONTENT_TYPE_NOSNIFF\", default=True)",
+        "target": "config.settings"
+      },
+      {
+        "code": "var-annotated",
+        "column": 0,
+        "message": "Need type annotation for \"SECURE_CROSS_ORIGIN_OPENER_POLICY\" (hint: \"SECURE_CROSS_ORIGIN_OPENER_POLICY: <type> | None = ...\")",
+        "offset": 1,
+        "src": "SECURE_CROSS_ORIGIN_OPENER_POLICY = None",
+        "target": "config.settings"
+      },
+      {
+        "code": "no-any-expr",
         "column": 12,
         "message": "Expression type contains \"Any\" (has type \"dict[str, dict[str, str | Any (from unimported type)]]\")",
-        "offset": 61,
+        "offset": 58,
         "src": "DATABASES = {",
         "target": "config.settings"
       },
@@ -277,18 +333,10 @@
       },
       {
         "code": "no-any-expr",
-        "column": 33,
+        "column": 24,
         "message": "Expression has type \"Any (from unimported type)\"",
         "offset": 28,
-        "src": "SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = env(\"TG_TOKEN\", default=\"\")",
-        "target": "config.settings"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 39,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 12,
-        "src": "SESSION_COOKIE_DOMAIN = \"127.0.0.1\" if DEBUG else \".ik.kg\"",
+        "src": "SESSION_COOKIE_DOMAIN = env.str(\"SESSION_COOKIE_DOMAIN\", default=\"127.0.0.1\")",
         "target": "config.settings"
       },
       {
@@ -378,29 +426,12 @@
         "offset": 4,
         "src": "AIOHTTP_REQUEST_LIMIT = env.int(\"AIOHTTP_REQUEST_LIMIT\", default=15)",
         "target": "config.settings"
-      },
-      {
-        "code": "var-annotated",
-        "column": 0,
-        "message": "Need type annotation for \"SECURE_CROSS_ORIGIN_OPENER_POLICY\" (hint: \"SECURE_CROSS_ORIGIN_OPENER_POLICY: <type> | None = ...\")",
-        "offset": 1,
-        "src": "SECURE_CROSS_ORIGIN_OPENER_POLICY = None",
-        "target": "config.settings"
       }
     ],
     "config/urls.py": [],
     "hsearch/api/router.py": [],
     "hsearch/api/v1/handlers/apartment.py": [],
-    "hsearch/api/v1/handlers/profile.py": [
-      {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"social_core.exceptions\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 10,
-        "src": "from social_core.exceptions import AuthFailed, AuthMissingParameter",
-        "target": "hsearch.api.v1.handlers.profile"
-      }
-    ],
+    "hsearch/api/v1/handlers/profile.py": [],
     "hsearch/api/v1/schemas.py": [],
     "hsearch/common/admin.py": [],
     "hsearch/common/utils.py": [
@@ -446,7 +477,56 @@
       }
     ],
     "hsearch/hsearch/admin.py": [],
-    "hsearch/hsearch/admin_inlines.py": [],
+    "hsearch/hsearch/admin_inlines.py": [
+      {
+        "code": "type-arg",
+        "column": 19,
+        "message": "Missing type parameters for generic type \"TabularInline\"",
+        "offset": 10,
+        "src": "class BaseReadOnly(admin.TabularInline):",
+        "target": "hsearch.hsearch.admin_inlines"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 6,
+        "src": "def has_delete_permission(self, request, obj=None) -> bool:",
+        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_delete_permission"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 3,
+        "src": "def has_add_permission(self, request, obj) -> bool:",
+        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "Signature of \"has_add_permission\" incompatible with supertype \"BaseModelAdmin\"",
+        "offset": 0,
+        "src": "def has_add_permission(self, request, obj) -> bool:",
+        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "     Superclass:",
+        "offset": 0,
+        "src": "def has_add_permission(self, request, obj) -> bool:",
+        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+      },
+      {
+        "code": null,
+        "column": 4,
+        "message": "(Skipping most remaining errors due to unresolved imports or missing stubs; fix these first)",
+        "offset": 0,
+        "src": "def has_add_permission(self, request, obj) -> bool:",
+        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+      }
+    ],
     "hsearch/hsearch/migrations/0001_initial.py": [
       {
         "code": "import",
@@ -921,10 +1001,34 @@
         "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
       },
       {
-        "code": null,
+        "code": "no-any-expr",
+        "column": 45,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
+        "offset": 4,
+        "src": "external_url=urljoin(self._host, apartment_dict[\"url\"]),",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 45,
+        "message": "Expression has type \"Any\"",
+        "offset": 0,
+        "src": "external_url=urljoin(self._host, apartment_dict[\"url\"]),",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
         "column": 18,
-        "message": "(Skipping most remaining errors due to unresolved imports or missing stubs; fix these first)",
-        "offset": 5,
+        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
+        "offset": 1,
+        "src": "title=apartment_dict[\"title\"],",
+        "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "no-any-expr",
+        "column": 18,
+        "message": "Expression has type \"Any\"",
+        "offset": 0,
         "src": "title=apartment_dict[\"title\"],",
         "target": "hsearch.parser.sites.lalafo.Lalafo.parse_apartment"
       }
@@ -956,152 +1060,6 @@
         "offset": 1,
         "src": "from captcha.fields import ReCaptchaField",
         "target": "hsearch.sso.forms"
-      }
-    ],
-    "hsearch/sso/strategy.py": [
-      {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"social_django.strategy\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 2,
-        "src": "from social_django.strategy import DjangoStrategy",
-        "target": "hsearch.sso.strategy"
-      },
-      {
-        "code": "no-subclass-any",
-        "column": 18,
-        "message": "Class cannot subclass \"DjangoStrategy\" (has type \"Any\")",
-        "offset": 5,
-        "src": "class SSOStrategy(DjangoStrategy):",
-        "target": "hsearch.sso.strategy"
-      },
-      {
-        "code": "no-any-unimported",
-        "column": 18,
-        "message": "Base type DjangoStrategy becomes \"Any (from unimported type)\" due to an unfollowed import",
-        "offset": 0,
-        "src": "class SSOStrategy(DjangoStrategy):",
-        "target": "hsearch.sso.strategy"
-      },
-      {
-        "code": "no-untyped-def",
-        "column": 4,
-        "message": "Function is missing a type annotation for one or more arguments",
-        "offset": 1,
-        "src": "def create_user(self, *args, **kwargs) -> User:",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-untyped-usage",
-        "column": 8,
-        "message": "Usage of untyped name \"chat_id\" in typed context",
-        "offset": 1,
-        "src": "chat_id = kwargs.pop(\"uid\", \"\")",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 18,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Untyped]\")",
-        "offset": 0,
-        "src": "chat_id = kwargs.pop(\"uid\", \"\")",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 18,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "chat_id = kwargs.pop(\"uid\", \"\")",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-untyped-usage",
-        "column": 8,
-        "message": "Usage of untyped name \"title\" in typed context",
-        "offset": 1,
-        "src": "title = kwargs.pop(\"fullname\", \"\")",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Untyped]\")",
-        "offset": 0,
-        "src": "title = kwargs.pop(\"fullname\", \"\")",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "title = kwargs.pop(\"fullname\", \"\")",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 21,
-        "message": "Expression has type \"Any\"",
-        "offset": 2,
-        "src": "user: User = self.storage.user.create_user(*args, **kwargs)",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 52,
-        "message": "Expression type contains \"Any\" (has type \"tuple[Untyped, ...]\")",
-        "offset": 0,
-        "src": "user: User = self.storage.user.create_user(*args, **kwargs)",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 60,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Untyped]\")",
-        "offset": 0,
-        "src": "user: User = self.storage.user.create_user(*args, **kwargs)",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 25,
-        "message": "Expression type contains \"Any\" (has type \"type[Chat]\")",
-        "offset": 3,
-        "src": "exist_chat = Chat.objects.filter(chat_id=chat_id).first()",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 53,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "exist_chat = Chat.objects.filter(chat_id=chat_id).first()",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Untyped]\")",
-        "offset": 6,
-        "src": "chat.username = kwargs[\"username\"]",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-untyped-usage",
-        "column": 23,
-        "message": "Usage of untyped name \"chat_id\" in typed context",
-        "offset": 1,
-        "src": "chat.chat_id = chat_id",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
-      },
-      {
-        "code": "no-untyped-usage",
-        "column": 21,
-        "message": "Usage of untyped name \"title\" in typed context",
-        "offset": 1,
-        "src": "chat.title = title",
-        "target": "hsearch.sso.strategy.SSOStrategy.create_user"
       }
     ],
     "hsearch/sso/views.py": [
