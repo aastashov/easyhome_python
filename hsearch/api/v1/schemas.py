@@ -6,6 +6,20 @@ from pydantic import validator
 from hsearch.hsearch.models import Currency
 
 
+class ProfileSettingsResponse(Schema):
+    chat_id: int
+    username: str
+    title: str
+    c_type: str
+    enable: bool
+    diesel: bool
+    lalafo: bool
+    house: bool
+    photo: bool
+    usd: str
+    kgs: str
+
+
 class ApartmentResponse(Schema):
     topic: str
     url: str
@@ -15,6 +29,7 @@ class ApartmentResponse(Schema):
 
     created_at: int
     modified_at: int
+
     # deleted_at: int | None
 
     # @validator("created_at", "modified_at", "deleted_at", pre=True)

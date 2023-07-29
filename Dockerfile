@@ -33,4 +33,4 @@ RUN groupadd -r --gid 2000 app-user && \
     chown -R app-user:app-user /src/ && \
     chmod -R 554 /src/
 
-CMD [ "./bin/gunicorn.sh" ]
+CMD [ "./bin/pre-start.sh", "./bin/gunicorn.sh" ]

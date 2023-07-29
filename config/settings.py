@@ -132,7 +132,7 @@ USER_FIELDS = [
 
 LOGIN_REDIRECT_URL = "/"
 
-SESSION_COOKIE_DOMAIN = "127.0.0.1" if DEBUG else ".reloc.kg"
+SESSION_COOKIE_DOMAIN = "127.0.0.1" if DEBUG else ".ik.kg"
 
 # LOCALIZATION
 # ----------------------------------------------------------------------------
@@ -154,6 +154,7 @@ RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY", default="")
 # Telegram
 # ----------------------------------------------------------------------------
 TG_NAME = env("TG_NAME", default="hsearch_dev_bot")
+TG_TOKEN = env("TG_TOKEN", default="")
 TG_CHAT_ID = env.int("TG_CHAT_ID", default=-1001248414108)
 TG_LOGIN_REDIRECT_URL = "/auth/complete/telegram/"
 

@@ -21,6 +21,7 @@ services:
   api:
     image: ghcr.io/comov/hsearch:6
     container_name: hsearch_api
+    restart: always
     env_file:
       - .env
     environment:
@@ -29,6 +30,8 @@ services:
       LETSENCRYPT_EMAIL: alexander.astashov.vl@gmail.com
     networks:
       - hsearch
+    volumes:
+      - ./static:/src/static
     expose:
       - "8080"
     logging:
