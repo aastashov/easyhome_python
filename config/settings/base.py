@@ -7,7 +7,7 @@ django_stubs_ext.monkeypatch()
 
 # BASE
 # ----------------------------------------------------------------------------
-BASE_DIR = Path(__file__).parents[1]  # hsearch/
+BASE_DIR = Path(__file__).parents[2]  # hsearch/
 APPS_DIR = BASE_DIR / "hsearch"  # hsearch/hsearch
 
 # ENVIRONMENT

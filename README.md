@@ -109,6 +109,8 @@ mkdir -p /opt/docker/nginx/config/{certs,conf.d,html,vhost.d}
  - [ ] Поправить документацию и описание
  - [ ] Переделать кнопки ответов и вшить в них apartmentId (description:123)
  - [ ] Максимально распараллелить все что можно
+ - [ ] Добавить дату и номер последнего релиза в Админку
+ - [ ] Статика не должна передаваться через host, починить
  
 ## Admin panel
  - [ ] Statistics by errors/send message/find apartments/subscribers/...
