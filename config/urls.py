@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
-from django.urls import path
+from django.urls import include, path
 
 from hsearch.api.router import api_v1
 from hsearch.common.admin import admin
@@ -17,3 +17,9 @@ urlpatterns = [
     path("api/v1/", api_v1.urls),
     *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
 ]
+
+if settings.DEBUG:
+    if "debug_toolbar" in settings.INSTALLED_APPS:
+        import debug_toolbar
+
+        urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns

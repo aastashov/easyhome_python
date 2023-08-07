@@ -1,9 +1,6 @@
-from typing import Any
+from __future__ import annotations
 
-from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from unixtimestampfield.fields import UnixTimeStampField
 
 
@@ -71,7 +68,6 @@ class Apartment(models.Model):
     phone = models.CharField(max_length=255, default="", blank=True)
     rooms = models.IntegerField(default=0, blank=True)
     body = models.TextField(default="", blank=True)
-    images_count = models.IntegerField(default=0)
     price = models.IntegerField(default=0, blank=True)
     currency = models.IntegerField(choices=Currency.choices, default=Currency.undefined)
     area = models.IntegerField(default=0, blank=True)
@@ -84,6 +80,7 @@ class Apartment(models.Model):
     lat = models.FloatField(default=0.0, blank=True)
     lon = models.FloatField(default=0.0, blank=True)
 
+    images_count = models.IntegerField(default=0)
     is_deleted = models.BooleanField(default=False)
 
     created = UnixTimeStampField()
@@ -104,10 +101,6 @@ class Apartment(models.Model):
 
     def __str__(self) -> str:
         return f"{self.topic} {self.get_site_display()!r} (#{self.pk})"
-
-    def save(self, force_insert=False, force_update=False, using=None, update_fields=None) -> None:
-        self.images_count = self.images.count()
-        super().save(force_insert, force_update, using, update_fields)
 
 
 class Answer(models.Model):
@@ -144,10 +137,3 @@ class TgMessage(models.Model):
     apartment = models.ForeignKey("hsearch.Apartment", on_delete=models.CASCADE, related_name="messages")
     chat = models.ForeignKey("hsearch.Chat", on_delete=models.CASCADE, related_name="messages")
     kind = models.CharField(max_length=50, choices=KIND_CHOICES, default=APARTMENT)
-
-
-@receiver(post_save, sender=User)
-def create_chat(sender, instance: User, created: bool, **kwargs: Any) -> None:
-    if not created:
-        return
-    Chat.objects.create(user=instance)

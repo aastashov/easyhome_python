@@ -2,6 +2,7 @@ from collections.abc import Callable
 
 from bs4 import BeautifulSoup
 
+from hsearch.hsearch.models import Currency, Site
 from hsearch.parser.entity import ApartmentEntity
 from hsearch.parser.sites.lalafo import Lalafo
 
@@ -65,6 +66,42 @@ def test_parse_apartment(parser_datasets: Callable[[str], BeautifulSoup]) -> Non
     apartment = lalafo_site.parse_apartment(parsed_apartment)
     assert apartment == ApartmentEntity(
         external_id=107495362,
+        site=Site.lalafo,
         external_url="https://lalafo.kg/bishkek/ads/1-komnata-s-mebelu-polnostu-id-107495362",
         title="1 комната, С мебелью полностью",
+        price=39990,
+        currency=Currency.kgs,
+        phone="+996708262262",
+        rooms=1,
+        floor=4,
+        max_floor=4,
+        district="8 мкр",
+        city="Бишкек",
+        body=(
+            "Сдаю квартиру с новой мебелью и техникой. В районе с "
+            "более свежим воздухом и отличной инфраструктурой. С "
+            "отличным видом из окна в даль на зелень, а не окна в "
+            "окна. Окна на запад.\n"
+            "\n"
+            "Новый удобный диван, отдельно кровать с подъемным "
+            "механизмом, большой холодильник, кондиционер, высокие "
+            "потолки, новая стенка, стеллаж и т.д. Микроволновая печь "
+            "есть, тв поставлю, если нужно (55 дюймов с гугл тв, "
+            "быстрым управлением и хорошей матрицей)\n"
+            "\n"
+            "Этаж 4, последний, на верху только мансарда.\n"
+            "Все тихие. Лифта нет, так как дом малоэтажный.\n"
+            "\n"
+            "Рядом кафе, большой гипермаркет Глобус 27/7, Ортосайский "
+            "рынок где много овощей и фруктов, хорошая столовая."
+        ),
+        images_list=[
+            "https://img5.lalafo.com/i/posters/original/24/05/3e/3b70b9180f70e17a99da3443e9.jpeg",
+            "https://img5.lalafo.com/i/posters/original/25/43/85/8678865025320c3b9d0803a23d.jpeg",
+            "https://img5.lalafo.com/i/posters/original/32/bc/b0/4eedcf8bc805ec2598d7cea714.jpeg",
+            "https://img5.lalafo.com/i/posters/original/45/10/81/71e4ef074d37622e2303d1a737.jpeg",
+            "https://img5.lalafo.com/i/posters/original/89/c1/27/cf17f8b5dfeb67020142a1d993.jpeg",
+        ],
+        lat=42.8746212,
+        lon=74.5697617,
     )

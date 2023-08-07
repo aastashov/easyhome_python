@@ -17,7 +17,7 @@ env = environ.Env(
 )
 environ.Env.read_env(str(BASE_DIR.joinpath(".env")))
 
-DEBUG = env.bool("DJANGO_DEBUG", default=False)
+DEBUG = env.bool("DJANGO_DEBUG", default=True)
 REVISION = env.str("REVISION", default="latest")
 
 # SECURITY
