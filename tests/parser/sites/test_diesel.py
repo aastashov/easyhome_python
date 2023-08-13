@@ -56,7 +56,7 @@ def test_get_announcement_pages_map(parser_datasets: Callable[[str], BeautifulSo
 
 
 def test_parse_apartment(parser_datasets: Callable[[str], BeautifulSoup]) -> None:
-    parsed_apartment = parser_datasets("diesel_293167502.html")
+    parsed_apartment = parser_datasets("diesel_293168645.html")
 
     diesel_site = Diesel()
     apartment = diesel_site.parse_apartment(parsed_apartment)
