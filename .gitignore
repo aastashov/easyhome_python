@@ -2,8 +2,9 @@
 !.env.example
 !.gitignore
 !.github
-_old_appication_parser/vendor
+go_parser/vendor
 *.pyc
 __pycache__
 celerybeat-schedule
 *.tar
+terraform/

@@ -72,16 +72,20 @@ class ApartmentAdmin(admin.ModelAdmin):
     search_fields = [
         "topic",
         "body",
+        "phone",
+        "url",
     ]
 
     list_display = [
+        "id",
+        "phone",
+        "price",
+        "is_deleted",
         "url",
         "topic",
-        "phone",
         "rooms",
         "body",
         "images_count",
-        "price",
         "currency",
         "area",
         "city",
@@ -90,16 +94,13 @@ class ApartmentAdmin(admin.ModelAdmin):
         "floor",
         "max_floor",
         "district",
-        "lat",
-        "lon",
         "created",
     ]
 
     list_filter = [
         "site",
-        "rooms",
+        "city",
         "currency",
-        "floor",
     ]
 
     readonly_fields = [

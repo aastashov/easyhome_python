@@ -18,8 +18,7 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 # AUTHENTICATION
 # ----------------------------------------------------------------------------
-env.str("SESSION_COOKIE_DOMAIN", default="127.0.0.1")
-
+SESSION_COOKIE_DOMAIN = env.str("SESSION_COOKIE_DOMAIN", default="127.0.0.1")
 
 # SENTRY
 # ------------------------------------------------------------------------------

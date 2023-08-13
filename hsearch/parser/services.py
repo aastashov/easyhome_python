@@ -1,3 +1,4 @@
+import logging
 from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Protocol
@@ -8,6 +9,8 @@ from django.utils import timezone
 
 from hsearch.hsearch.models import Apartment
 from hsearch.parser.sites.base import AbstractSite
+
+logger = logging.getLogger(__name__)
 
 
 class HttpClientProtocol(Protocol):
@@ -44,14 +47,38 @@ class ParseSiteService:
     def create_announcement(self, new_announcement: dict[int, BeautifulSoup]) -> None:
         apartments_to_create: list[Apartment] = []
         for external_id, parsed_response in new_announcement.items():
-            parsed_apartment = self.site.parse_apartment(parsed_response)
+            try:
+                parsed_apartment = self.site.parse_apartment(parsed_response)
+            except Exception as e:
+                logger.exception(
+                    "Can't parse an apartment with id %s from site %s",
+                    external_id,
+                    self.site.name,
+                    exc_info=e,
+                )
+                continue
+
             apartments_to_create.append(
-                # TODO: Add more fields from ApartmentEntity
                 Apartment(
                     external_id=parsed_apartment.external_id,
-                    topic=parsed_apartment.title,
                     url=parsed_apartment.external_url,
-                    site=self.site.name,
+                    topic=parsed_apartment.title,
+                    phone=parsed_apartment.phone,
+                    rooms=parsed_apartment.rooms,
+                    body=parsed_apartment.body,
+                    price=parsed_apartment.price,
+                    currency=parsed_apartment.currency,
+                    area=parsed_apartment.area,
+                    city=parsed_apartment.city,
+                    room_type=parsed_apartment.room_type,
+                    site=parsed_apartment.site,
+                    floor=parsed_apartment.floor,
+                    max_floor=parsed_apartment.max_floor,
+                    district=parsed_apartment.district,
+                    lat=parsed_apartment.lat,
+                    lon=parsed_apartment.lon,
+                    images_count=len(parsed_apartment.images_list),
+                    # TODO: Need to implement
                     # viewed_at=timezone.now(),
                 ),
             )

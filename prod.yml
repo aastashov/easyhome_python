@@ -1,15 +1,12 @@
 version: '3.3'
 
 services:
-  app:
-    image: comov/hsearch:latest
-    container_name: hsearch
-    command: hsearch withmigrate -dir=/srv/migrations
+  bot:
+    image: ghcr.io/comov/hsearch_bot:latest
+    container_name: hsearch_bot
     restart: always
     env_file:
       - .env
-    volumes:
-      - /srv/hsearch/news.json:/news.json
     networks:
       - my_house
     logging:
@@ -17,9 +14,9 @@ services:
       options:
         tag: docker/hsearch
 
-  api:
-    image: ghcr.io/comov/hsearch:6
-    container_name: hsearch_api
+  app:
+    image: ghcr.io/comov/hsearch:latest
+    container_name: hsearch
     restart: always
     command: /src/bin/gunicorn.sh
     env_file:

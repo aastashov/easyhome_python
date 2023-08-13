@@ -1,6 +1,31 @@
 version: '3.3'
 
 services:
+  bot:
+    image: ghcr.io/comov/hsearch_bot:dev
+    container_name: hsearch_bot
+    build:
+      context: go_parser
+      dockerfile: Dockerfile
+    env_file:
+      .env
+    depends_on:
+      - postgres
+
+  app:
+    image: ghcr.io/comov/hsearch:dev
+    container_name: hsearch
+    command: /src/bin/gunicorn.sh
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      .env
+    ports:
+      - "8000:8080"
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres:14.2-alpine
     container_name: hsearch_postgres

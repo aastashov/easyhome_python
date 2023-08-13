@@ -17,7 +17,7 @@ env = environ.Env(
 )
 environ.Env.read_env(str(BASE_DIR.joinpath(".env")))
 
-DEBUG = env.bool("DJANGO_DEBUG", default=False)
+DEBUG = env.bool("DJANGO_DEBUG", default=True)
 REVISION = env.str("REVISION", default="latest")
 
 # SECURITY
@@ -84,11 +84,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DJANGO_DB_NAME", default="hsearch"),
-        "USER": env("DJANGO_DB_USER", default="hsearch_srv"),
-        "PASSWORD": env("DJANGO_DB_PASSWORD", default="pass1234"),
-        "HOST": env("DJANGO_DB_HOST", default="127.0.0.1"),
-        "PORT": env.int("DJANGO_DB_PORT", default=25432),
+        "NAME": env.str("DB_NAME", default="hsearch"),
+        "USER": env.str("DB_USER", default="hsearch_srv"),
+        "PASSWORD": env.str("DB_PASSWORD", default="pass1234"),
+        "HOST": env.str("DB_HOST", default="127.0.0.1"),
+        "PORT": env.int("DB_PORT", default=25432),
     },
 }
 
@@ -128,13 +128,13 @@ STATIC_ROOT = BASE_DIR / "static"
 
 # django-captcha-admin
 # ----------------------------------------------------------------------------
-RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY", default="")
-RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY", default="")
+RECAPTCHA_PUBLIC_KEY = env.str("RECAPTCHA_PUBLIC_KEY", default="")
+RECAPTCHA_PRIVATE_KEY = env.str("RECAPTCHA_PRIVATE_KEY", default="")
 
 # Telegram
 # ----------------------------------------------------------------------------
-TG_NAME = env("TG_NAME", default="hsearch_dev_bot")
-TG_TOKEN = env("TG_TOKEN", default="")
+TG_NAME = env.str("TG_NAME", default="hsearch_dev_bot")
+TG_TOKEN = env.str("TG_TOKEN", default="")
 TG_CHAT_ID = env.int("TG_CHAT_ID", default=-1001248414108)
 TG_LOGIN_REDIRECT_URL = "/auth/complete/telegram/"
 

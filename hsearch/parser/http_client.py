@@ -110,7 +110,8 @@ class HttpClient(Singleton):
         semaphore = asyncio.Semaphore(settings.AIOHTTP_REQUEST_LIMIT)
         async with semaphore:
             async with async_session.get(url, headers=self._get_headers()) as resp:
-                resp.raise_for_status()
+                if resp.status != 200:
+                    raise Exception(f"Response {resp.status}.")
                 return rid, await resp.text()
 
     async def _async_fetch_announcement_pages(self, pages_map: dict[int, str]) -> dict[int, str]:

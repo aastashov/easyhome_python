@@ -8,11 +8,12 @@ on:
 
 env:
   IMAGE_NAME: hsearch
+  IMAGE_NAME_BOT: hsearch_bot
 
 jobs:
 
-  build:
-    name: Build Docker Image
+  build-python:
+    name: Build Docker Image for Python
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -42,4 +43,37 @@ jobs:
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
 
           docker tag $IMAGE_NAME $IMAGE_ID:latest
+          docker push $IMAGE_ID:latest
+
+  build-go:
+    name: Build Docker Image for Go
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to registry
+        # This is where you will update the personal access token to GITHUB_TOKEN
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+
+      - name: Build image
+        run: |
+          docker build --build-arg REVISION=${{ inputs.version }} go_parser/ --file go_parser/Dockerfile --tag $IMAGE_NAME_BOT --label "runnumber=${GITHUB_RUN_ID}"
+
+      - name: Push docker image
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME_BOT
+
+          docker tag $IMAGE_NAME_BOT $IMAGE_ID:${{ inputs.version }}
+          docker push $IMAGE_ID:${{ inputs.version }}
+
+      - name: Push latest image
+        if: github.ref_name == 'main'
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME_BOT
+
+          docker tag $IMAGE_NAME_BOT $IMAGE_ID:latest
           docker push $IMAGE_ID:latest
