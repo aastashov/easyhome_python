@@ -99,10 +99,5 @@ func GetConf() (*Config, error) {
 		cfg.PgPort,
 	)
 
-	// Disable grabber if all sites are disabled
-	if cfg.DisabledParseDiesel == cfg.DisabledParseLalafo == cfg.DisabledParseHouse == true {
-		cfg.DisabledGrabber = true
-	}
-
 	return cfg, nil
 }
