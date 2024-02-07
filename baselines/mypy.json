@@ -1,361 +1,21 @@
 {
   "files": {
-    "config/celery.py": [
-      {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"celery\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 3,
-        "src": "from celery import Celery",
-        "target": "config.celery"
-      },
-      {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"celery.schedules\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 1,
-        "src": "from celery.schedules import crontab",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 6,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 4,
-        "src": "app = Celery(\"proj\")",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 0,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "app.config_from_object(\"django.conf:settings\", namespace=\"CELERY\")",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 0,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 2,
-        "src": "app.autodiscover_tasks()",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 0,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "app.conf.beat_schedule = {",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 25,
-        "message": "Expression type contains \"Any\" (has type \"dict[Any (from unimported type), Any (from unimported type)]\")",
-        "offset": 0,
-        "src": "app.conf.beat_schedule = {",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 4,
-        "message": "Expression type contains \"Any\" (has type \"(str, dict[Any (from unimported type), Any (from unimported type)])\")",
-        "offset": 1,
-        "src": "\"parser:lalafo\": {",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 21,
-        "message": "Expression type contains \"Any\" (has type \"dict[Any (from unimported type), Any (from unimported type)]\")",
-        "offset": 0,
-        "src": "\"parser:lalafo\": {",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 8,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 2,
-        "src": "\"schedule\": crontab(),",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 20,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"schedule\": crontab(),",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 4,
-        "message": "Expression type contains \"Any\" (has type \"(str, dict[Any (from unimported type), Any (from unimported type)])\")",
-        "offset": 2,
-        "src": "\"parser:diesel\": {",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 21,
-        "message": "Expression type contains \"Any\" (has type \"dict[Any (from unimported type), Any (from unimported type)]\")",
-        "offset": 0,
-        "src": "\"parser:diesel\": {",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 8,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 2,
-        "src": "\"schedule\": crontab(),",
-        "target": "config.celery"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 20,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"schedule\": crontab(),",
-        "target": "config.celery"
-      }
-    ],
-    "config/settings/base.py": [
-      {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"environ\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 4,
-        "src": "import environ",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "import",
-        "column": 0,
-        "message": "See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports",
-        "offset": 0,
-        "src": "import environ",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 6,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 11,
-        "src": "env = environ.Env(",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 0,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 3,
-        "src": "environ.Env.read_env(str(BASE_DIR.joinpath(\".env\")))",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 8,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 2,
-        "src": "DEBUG = env.bool(\"DJANGO_DEBUG\", default=True)",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 11,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "REVISION = env.str(\"REVISION\", default=\"latest\")",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 13,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 4,
-        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"123\")",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 12,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, dict[str, str | Any (from unimported type)]]\")",
-        "offset": 59,
-        "src": "DATABASES = {",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 15,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, str | Any (from unimported type)]\")",
-        "offset": 1,
-        "src": "\"default\": {",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 8,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 2,
-        "src": "\"NAME\": env.str(\"DB_NAME\", default=\"hsearch\"),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"NAME\": env.str(\"DB_NAME\", default=\"hsearch\"),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 8,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 1,
-        "src": "\"USER\": env.str(\"DB_USER\", default=\"hsearch_srv\"),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"USER\": env.str(\"DB_USER\", default=\"hsearch_srv\"),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 8,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 1,
-        "src": "\"PASSWORD\": env.str(\"DB_PASSWORD\", default=\"pass1234\"),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 20,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"PASSWORD\": env.str(\"DB_PASSWORD\", default=\"pass1234\"),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 8,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 1,
-        "src": "\"HOST\": env.str(\"DB_HOST\", default=\"127.0.0.1\"),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"HOST\": env.str(\"DB_HOST\", default=\"127.0.0.1\"),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 8,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 1,
-        "src": "\"PORT\": env.int(\"DB_PORT\", default=25432),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"PORT\": env.int(\"DB_PORT\", default=25432),",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 23,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 40,
-        "src": "RECAPTCHA_PUBLIC_KEY = env(\"RECAPTCHA_PUBLIC_KEY\", default=\"\")",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "RECAPTCHA_PRIVATE_KEY = env(\"RECAPTCHA_PRIVATE_KEY\", default=\"\")",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 10,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 4,
-        "src": "TG_NAME = env.str(\"TG_NAME\", default=\"hsearch_dev_bot\")",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 11,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "TG_TOKEN = env.str(\"TG_TOKEN\", default=\"\")",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 13,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "TG_CHAT_ID = env.int(\"TG_CHAT_ID\", default=-1001248414108)",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 20,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 9,
-        "src": "CELERY_BROKER_URL = env.str(\"CELERY_BROKER_URL\", default=\"redis://localhost:26379/0\")",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 1,
-        "src": "CELERY_RESULT_BACKEND = env.str(\"CELERY_RESULT_BACKEND\", default=\"redis://localhost:26379/1\")",
-        "target": "config.settings.base"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 4,
-        "src": "AIOHTTP_REQUEST_LIMIT = env.int(\"AIOHTTP_REQUEST_LIMIT\", default=15)",
-        "target": "config.settings.base"
-      }
-    ],
     "config/settings/local.py": [
       {
-        "code": "no-any-expr",
-        "column": 13,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 6,
-        "src": "SECRET_KEY = env(\"DJANGO_SECRET_KEY\", default=\"<local secret>\")",
+        "code": "index",
+        "column": 0,
+        "message": "Unsupported target for indexed assignment (\"str | list[Path] | bool | dict[str, list[str]]\")",
+        "offset": 11,
+        "src": "TEMPLATES[0][\"OPTIONS\"][\"debug\"] = DEBUG",
         "target": "config.settings.local"
       },
       {
         "code": "index",
         "column": 0,
-        "message": "Unsupported target for indexed assignment (\"str | list[Path] | bool | dict[str, list[str]]\")",
-        "offset": 5,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-index for more info",
+        "offset": 0,
         "src": "TEMPLATES[0][\"OPTIONS\"][\"debug\"] = DEBUG",
-        "target": "config.settings.local"
+        "target": null
       },
       {
         "code": "call-overload",
@@ -390,768 +50,1938 @@
         "target": "config.settings.local"
       },
       {
-        "code": "no-any-expr",
-        "column": 35,
-        "message": "Expression has type \"Any (from unimported type)\"",
+        "code": "call-overload",
+        "column": 0,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-call-overload for more info",
         "offset": 0,
         "src": "TEMPLATES[0][\"OPTIONS\"][\"debug\"] = DEBUG",
-        "target": "config.settings.local"
+        "target": null
       }
     ],
-    "config/settings/production.py": [],
+    "config/settings/production.py": [
+      {
+        "code": "var-annotated",
+        "column": 0,
+        "message": "Need type annotation for \"SECURE_CROSS_ORIGIN_OPENER_POLICY\" (hint: \"SECURE_CROSS_ORIGIN_OPENER_POLICY: <type> | None = ...\")",
+        "offset": 18,
+        "src": "SECURE_CROSS_ORIGIN_OPENER_POLICY = None",
+        "target": "config.settings.production"
+      }
+    ],
     "config/urls.py": [
       {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"debug_toolbar\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 23,
-        "src": "import debug_toolbar",
+        "code": "arg-type",
+        "column": 13,
+        "message": "Argument 2 to \"path\" has incompatible type \"(request: Untyped) -> None\"; expected \"(...) -> HttpResponseBase\"",
+        "offset": 16,
+        "src": "path(\"\", index_page),",
+        "target": "config.urls"
+      },
+      {
+        "code": "arg-type",
+        "column": 19,
+        "message": "Argument 2 to \"path\" has incompatible type \"(request: Untyped) -> None\"; expected \"(...) -> HttpResponseBase\"",
+        "offset": 1,
+        "src": "path(\"login/\", login_page),",
         "target": "config.urls"
       }
     ],
-    "hsearch/api/router.py": [],
-    "hsearch/api/v1/handlers/apartment.py": [],
-    "hsearch/api/v1/handlers/profile.py": [],
-    "hsearch/api/v1/schemas.py": [],
-    "hsearch/common/admin.py": [
+    "easyhome/api/v1/handlers/profile.py": [
       {
-        "code": "type-arg",
-        "column": 19,
-        "message": "Missing type parameters for generic type \"TabularInline\"",
-        "offset": 4,
-        "src": "class BaseReadOnly(admin.TabularInline):",
-        "target": "hsearch.common.admin"
+        "code": "redundant-expr",
+        "column": 7,
+        "message": "Left operand of \"or\" is always false",
+        "offset": 57,
+        "src": "if received_hash_string is None or auth_date is None:",
+        "target": "easyhome.api.v1.handlers.profile.auth_user"
       },
       {
-        "code": "no-untyped-def",
-        "column": 4,
-        "message": "Function is missing a type annotation",
-        "offset": 6,
-        "src": "def has_delete_permission(self, request, obj=None):",
-        "target": "hsearch.common.admin.BaseReadOnly.has_delete_permission"
+        "code": "redundant-expr",
+        "column": 7,
+        "message": "Condition is always false",
+        "offset": 0,
+        "src": "if received_hash_string is None or auth_date is None:",
+        "target": "easyhome.api.v1.handlers.profile.auth_user"
       },
       {
-        "code": "no-untyped-def",
-        "column": 4,
-        "message": "Function is missing a type annotation",
-        "offset": 3,
-        "src": "def has_add_permission(self, request, obj):",
-        "target": "hsearch.common.admin.BaseReadOnly.has_add_permission"
-      },
-      {
-        "code": "no-untyped-def",
-        "column": 4,
-        "message": "Function is missing a type annotation",
-        "offset": 3,
-        "src": "def has_change_permission(self, request, obj=None):",
-        "target": "hsearch.common.admin.BaseReadOnly.has_change_permission"
-      },
-      {
-        "code": "no-untyped-def",
-        "column": 0,
-        "message": "Function is missing a type annotation",
-        "offset": 4,
-        "src": "def yes_no_img(var):",
-        "target": "hsearch.common.admin.yes_no_img"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 29,
-        "message": "Expression has type \"Untyped\"",
+        "code": "unreachable",
+        "column": 8,
+        "message": "Statement is unreachable",
         "offset": 1,
-        "src": "res = (\"yes\", \"True\") if var else (\"no\", \"False\")",
-        "target": "hsearch.common.admin.yes_no_img"
+        "src": "msg = \"telegram\"",
+        "target": "easyhome.api.v1.handlers.profile.auth_user"
       }
     ],
-    "hsearch/common/utils.py": [
-      {
-        "code": "no-any-expr",
-        "column": 13,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
-        "offset": 3,
-        "src": "it = cls.__dict__.get(\"__it__\", None)",
-        "target": "hsearch.common.utils.Singleton.__new__"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 13,
-        "message": "Expression has type \"Any\"",
-        "offset": 0,
-        "src": "it = cls.__dict__.get(\"__it__\", None)",
-        "target": "hsearch.common.utils.Singleton.__new__"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 11,
-        "message": "Expression has type \"Any\"",
-        "offset": 1,
-        "src": "if it is not None:",
-        "target": "hsearch.common.utils.Singleton.__new__"
-      },
+    "easyhome/common/utils.py": [
       {
         "code": "no-any-return",
         "column": 12,
         "message": "Returning Any from function declared to return \"Singleton\"",
-        "offset": 1,
+        "offset": 8,
         "src": "return it",
-        "target": "hsearch.common.utils.Singleton.__new__"
+        "target": "easyhome.common.utils.Singleton.__new__"
       },
       {
-        "code": "no-any-expr",
-        "column": 19,
-        "message": "Expression has type \"Any\"",
+        "code": "no-any-return",
+        "column": 12,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-no-any-return for more info",
         "offset": 0,
         "src": "return it",
-        "target": "hsearch.common.utils.Singleton.__new__"
+        "target": null
       }
     ],
-    "hsearch/hsearch/admin.py": [
+    "easyhome/easyhome/admin.py": [
       {
         "code": "type-arg",
         "column": 16,
         "message": "Missing type parameters for generic type \"ModelAdmin\"",
-        "offset": 13,
-        "src": "class ChatAdmin(admin.ModelAdmin):",
-        "target": "hsearch.hsearch.admin"
+        "offset": 19,
+        "src": "class ChatAdmin(admin.ModelAdmin):  # noqa: D101",
+        "target": "easyhome.easyhome.admin"
       },
       {
         "code": "type-arg",
         "column": 21,
         "message": "Missing type parameters for generic type \"ModelAdmin\"",
         "offset": 58,
-        "src": "class ApartmentAdmin(admin.ModelAdmin):",
-        "target": "hsearch.hsearch.admin"
+        "src": "class ApartmentAdmin(admin.ModelAdmin):  # noqa: D101",
+        "target": "easyhome.easyhome.admin"
+      },
+      {
+        "code": "var-annotated",
+        "column": 4,
+        "message": "Need type annotation for \"phones_cache\" (hint: \"phones_cache: dict[<type>, <type>] = ...\")",
+        "offset": 48,
+        "src": "phones_cache = {}  # noqa: RUF012",
+        "target": "easyhome.easyhome.admin"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_queryset\" is not using @override but is overriding a method in class \"django.contrib.admin.options.BaseModelAdmin\"",
+        "offset": 2,
+        "src": "def get_queryset(self, request: HttpRequest) -> QuerySet[Apartment]:  # noqa: D102",
+        "target": "easyhome.easyhome.admin.ApartmentAdmin.get_queryset"
       },
       {
         "code": "type-arg",
         "column": 18,
         "message": "Missing type parameters for generic type \"ModelAdmin\"",
-        "offset": 70,
-        "src": "class AnswerAdmin(admin.ModelAdmin):",
-        "target": "hsearch.hsearch.admin"
+        "offset": 21,
+        "src": "class AnswerAdmin(admin.ModelAdmin):  # noqa: D101",
+        "target": "easyhome.easyhome.admin"
       },
       {
         "code": "type-arg",
         "column": 20,
         "message": "Missing type parameters for generic type \"ModelAdmin\"",
-        "offset": 23,
-        "src": "class FeedbackAdmin(admin.ModelAdmin):",
-        "target": "hsearch.hsearch.admin"
+        "offset": 25,
+        "src": "class FeedbackAdmin(admin.ModelAdmin):  # noqa: D101",
+        "target": "easyhome.easyhome.admin"
       },
       {
         "code": "type-arg",
         "column": 17,
         "message": "Missing type parameters for generic type \"ModelAdmin\"",
         "offset": 31,
-        "src": "class ImageAdmin(admin.ModelAdmin):",
-        "target": "hsearch.hsearch.admin"
+        "src": "class ImageAdmin(admin.ModelAdmin):  # noqa: D101",
+        "target": "easyhome.easyhome.admin"
       },
       {
-        "code": null,
+        "code": "type-arg",
         "column": 21,
-        "message": "(Skipping most remaining errors due to unresolved imports or missing stubs; fix these first)",
+        "message": "Missing type parameters for generic type \"ModelAdmin\"",
         "offset": 32,
-        "src": "class TgMessageAdmin(admin.ModelAdmin):",
-        "target": "hsearch.hsearch.admin"
+        "src": "class TgMessageAdmin(admin.ModelAdmin):  # noqa: D101",
+        "target": "easyhome.easyhome.admin"
       }
     ],
-    "hsearch/hsearch/admin_inlines.py": [
+    "easyhome/easyhome/admin_inlines.py": [
       {
         "code": "type-arg",
         "column": 19,
         "message": "Missing type parameters for generic type \"TabularInline\"",
-        "offset": 10,
-        "src": "class BaseReadOnly(admin.TabularInline):",
-        "target": "hsearch.hsearch.admin_inlines"
+        "offset": 16,
+        "src": "class BaseReadOnly(admin.TabularInline):  # noqa: D101",
+        "target": "easyhome.easyhome.admin_inlines"
       },
       {
         "code": "no-untyped-def",
         "column": 4,
         "message": "Function is missing a type annotation for one or more arguments",
         "offset": 6,
-        "src": "def has_delete_permission(self, request, obj=None) -> bool:",
-        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_delete_permission"
+        "src": "def has_delete_permission(self, request, obj=None) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_delete_permission"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"has_delete_permission\" is not using @override but is overriding a method in class \"django.contrib.admin.options.InlineModelAdmin\"",
+        "offset": 0,
+        "src": "def has_delete_permission(self, request, obj=None) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_delete_permission"
       },
       {
         "code": "no-untyped-def",
         "column": 4,
         "message": "Function is missing a type annotation for one or more arguments",
         "offset": 3,
-        "src": "def has_add_permission(self, request, obj) -> bool:",
-        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+        "src": "def has_add_permission(self, request, obj) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_add_permission"
       },
       {
         "code": "override",
         "column": 4,
         "message": "Signature of \"has_add_permission\" incompatible with supertype \"BaseModelAdmin\"",
         "offset": 0,
-        "src": "def has_add_permission(self, request, obj) -> bool:",
-        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+        "src": "def has_add_permission(self, request, obj) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_add_permission"
       },
       {
         "code": "override",
         "column": 4,
         "message": "     Superclass:",
         "offset": 0,
-        "src": "def has_add_permission(self, request, obj) -> bool:",
-        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+        "src": "def has_add_permission(self, request, obj) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_add_permission"
       },
       {
         "code": "override",
         "column": 4,
         "message": "         def has_add_permission(self, request: HttpRequest) -> bool",
         "offset": 0,
-        "src": "def has_add_permission(self, request, obj) -> bool:",
-        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+        "src": "def has_add_permission(self, request, obj) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_add_permission"
       },
       {
         "code": "override",
         "column": 4,
         "message": "     Subclass:",
         "offset": 0,
-        "src": "def has_add_permission(self, request, obj) -> bool:",
-        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+        "src": "def has_add_permission(self, request, obj) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_add_permission"
       },
       {
         "code": "override",
         "column": 4,
         "message": "         def has_add_permission(self, request: Untyped, obj: Untyped) -> bool",
         "offset": 0,
-        "src": "def has_add_permission(self, request, obj) -> bool:",
-        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_add_permission"
+        "src": "def has_add_permission(self, request, obj) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_add_permission"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"has_add_permission\" is not using @override but is overriding a method in class \"django.contrib.admin.options.InlineModelAdmin\"",
+        "offset": 0,
+        "src": "def has_add_permission(self, request, obj) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_add_permission"
       },
       {
         "code": "no-untyped-def",
         "column": 4,
         "message": "Function is missing a type annotation for one or more arguments",
         "offset": 3,
-        "src": "def has_change_permission(self, request, obj=None) -> bool:",
-        "target": "hsearch.hsearch.admin_inlines.BaseReadOnly.has_change_permission"
+        "src": "def has_change_permission(self, request, obj=None) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_change_permission"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"has_change_permission\" is not using @override but is overriding a method in class \"django.contrib.admin.options.InlineModelAdmin\"",
+        "offset": 0,
+        "src": "def has_change_permission(self, request, obj=None) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.BaseReadOnly.has_change_permission"
       },
       {
         "code": "no-untyped-def",
         "column": 4,
         "message": "Function is missing a type annotation for one or more arguments",
         "offset": 5,
-        "src": "def render(self, name, value, attrs=None, renderer=None) -> SafeString:",
-        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
+        "src": "def render(self, name, value, attrs=None, renderer=None) -> SafeString:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.AdminImageWidget.render"
       },
       {
-        "code": "no-untyped-usage",
-        "column": 8,
-        "message": "Usage of untyped name \"display_name\" in typed context",
-        "offset": 1,
-        "src": "display_name = value.split(\"/\")[-1]",
-        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 23,
-        "message": "Expression has type \"Untyped\"",
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"render\" is not using @override but is overriding a method in class \"django.forms.widgets.Widget\"",
         "offset": 0,
-        "src": "display_name = value.split(\"/\")[-1]",
-        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 1,
-        "src": "img = f'<img height=\"200px\" src=\"{value}\" alt=\"{display_name}\"/>'",
-        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 26,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 1,
-        "src": "return SafeString(f'<a href=\"{value}\" target=\"_blank\">{img}</a>')",
-        "target": "hsearch.hsearch.admin_inlines.AdminImageWidget.render"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 12,
-        "message": "Expression type contains \"Any\" (has type \"type[Feedback]\")",
-        "offset": 4,
-        "src": "model = Feedback",
-        "target": "hsearch.hsearch.admin_inlines"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 12,
-        "message": "Expression type contains \"Any\" (has type \"type[Answer]\")",
-        "offset": 8,
-        "src": "model = Answer",
-        "target": "hsearch.hsearch.admin_inlines"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 12,
-        "message": "Expression type contains \"Any\" (has type \"type[Image]\")",
-        "offset": 9,
-        "src": "model = Image",
-        "target": "hsearch.hsearch.admin_inlines"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 26,
-        "message": "Expression type contains \"Any\" (has type \"dict[type[Field[Untyped, Untyped]], Mapping[str, Any]]\")",
-        "offset": 8,
-        "src": "formfield_overrides = {models.CharField: {\"widget\": AdminImageWidget}}",
-        "target": "hsearch.hsearch.admin_inlines"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 27,
-        "message": "Expression type contains \"Any\" (has type \"type[CharField[Any, Any]]\")",
-        "offset": 0,
-        "src": "formfield_overrides = {models.CharField: {\"widget\": AdminImageWidget}}",
-        "target": "hsearch.hsearch.admin_inlines"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 27,
-        "message": "Expression type contains \"Any\" (has type \"(type[CharField[Any, Any]], dict[str, Any])\")",
-        "offset": 0,
-        "src": "formfield_overrides = {models.CharField: {\"widget\": AdminImageWidget}}",
-        "target": "hsearch.hsearch.admin_inlines"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 45,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Any]\")",
-        "offset": 0,
-        "src": "formfield_overrides = {models.CharField: {\"widget\": AdminImageWidget}}",
-        "target": "hsearch.hsearch.admin_inlines"
+        "src": "def render(self, name, value, attrs=None, renderer=None) -> SafeString:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.AdminImageWidget.render"
       },
       {
         "code": "no-untyped-def",
         "column": 4,
         "message": "Function is missing a type annotation for one or more arguments",
-        "offset": 2,
-        "src": "def has_change_permission(self, request: HttpRequest, obj=None) -> bool:",
-        "target": "hsearch.hsearch.admin_inlines.ImageInline.has_change_permission"
-      }
-    ],
-    "hsearch/hsearch/migrations/0001_initial.py": [
-      {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"unixtimestampfield.fields\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 6,
-        "src": "import unixtimestampfield.fields",
-        "target": "hsearch.hsearch.migrations.0001_initial"
+        "offset": 34,
+        "src": "def has_change_permission(self, request: HttpRequest, obj=None) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.ImageInline.has_change_permission"
       },
       {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"unixtimestampfield\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"has_change_permission\" is not using @override but is overriding a method in class \"easyhome.easyhome.admin_inlines.BaseReadOnly\"",
         "offset": 0,
-        "src": "import unixtimestampfield.fields",
-        "target": "hsearch.hsearch.migrations.0001_initial"
+        "src": "def has_change_permission(self, request: HttpRequest, obj=None) -> bool:  # noqa: ANN001, D102",
+        "target": "easyhome.easyhome.admin_inlines.ImageInline.has_change_permission"
       }
     ],
-    "hsearch/hsearch/migrations/0002_auto_20210908_1449.py": [],
-    "hsearch/hsearch/models.py": [
+    "easyhome/easyhome/apps.py": [
       {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"unixtimestampfield.fields\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 4,
-        "src": "from unixtimestampfield.fields import UnixTimeStampField",
-        "target": "hsearch.hsearch.models"
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"ready\" is not using @override but is overriding a method in class \"django.apps.config.AppConfig\"",
+        "offset": 20,
+        "src": "def ready(self) -> None:",
+        "target": "easyhome.easyhome.apps.EasyHomeConfig.ready"
+      }
+    ],
+    "easyhome/easyhome/models.py": [
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
+        "offset": 29,
+        "src": "def __str__(self) -> str:  # noqa: D105",
+        "target": "easyhome.easyhome.models.Chat.__str__"
       },
       {
-        "code": "no-any-expr",
-        "column": 58,
-        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
         "offset": 10,
-        "src": "user = models.OneToOneField(to=\"auth.User\", on_delete=models.CASCADE, null=True, related_name=\"chat\")",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 5,
-        "src": "created = UnixTimeStampField()",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 65,
-        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
-        "offset": 15,
-        "src": "apartment = models.ForeignKey(\"hsearch.Apartment\", on_delete=models.CASCADE, related_name=\"images\")",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 2,
-        "src": "created = UnixTimeStampField()",
-        "target": "hsearch.hsearch.models"
+        "src": "def __str__(self) -> str:  # noqa: D105",
+        "target": "easyhome.easyhome.models.Image.__str__"
       },
       {
         "code": "type-arg",
         "column": 35,
         "message": "Missing type parameters for generic type \"list\"",
-        "offset": 11,
-        "src": "def to_dict(self, fields_list: list) -> dict:",
-        "target": "hsearch.hsearch.models.Image.to_dict"
+        "offset": 9,
+        "src": "def to_dict(self, fields_list: list) -> dict:  # noqa: D102",
+        "target": "easyhome.easyhome.models.Image.to_dict"
       },
       {
         "code": "type-arg",
         "column": 44,
         "message": "Missing type parameters for generic type \"dict\"",
         "offset": 0,
-        "src": "def to_dict(self, fields_list: list) -> dict:",
-        "target": "hsearch.hsearch.models.Image.to_dict"
+        "src": "def to_dict(self, fields_list: list) -> dict:  # noqa: D102",
+        "target": "easyhome.easyhome.models.Image.to_dict"
       },
       {
-        "code": "no-any-expr",
-        "column": 15,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 1,
-        "src": "return {field: getattr(self, field, None) for field in fields_list}",
-        "target": "hsearch.hsearch.models.Image.to_dict"
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
+        "offset": 55,
+        "src": "def __str__(self) -> str:  # noqa: D105",
+        "target": "easyhome.easyhome.models.Apartment.__str__"
       },
       {
-        "code": "no-any-expr",
-        "column": 15,
-        "message": "Expression type contains \"Any\" (has type \"dict[Any (from omitted generics), Any (from omitted generics)]\")",
-        "offset": 0,
-        "src": "return {field: getattr(self, field, None) for field in fields_list}",
-        "target": "hsearch.hsearch.models.Image.to_dict"
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
+        "offset": 10,
+        "src": "def __str__(self) -> str:  # noqa: D105",
+        "target": "easyhome.easyhome.models.Answer.__str__"
       },
       {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "return {field: getattr(self, field, None) for field in fields_list}",
-        "target": "hsearch.hsearch.models.Image.to_dict"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 23,
-        "message": "Expression type contains \"Any\" (has type \"Any | None\")",
-        "offset": 0,
-        "src": "return {field: getattr(self, field, None) for field in fields_list}",
-        "target": "hsearch.hsearch.models.Image.to_dict"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 37,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "return {field: getattr(self, field, None) for field in fields_list}",
-        "target": "hsearch.hsearch.models.Image.to_dict"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 63,
-        "message": "Expression type contains \"Any\" (has type \"list[Untyped]\")",
-        "offset": 0,
-        "src": "return {field: getattr(self, field, None) for field in fields_list}",
-        "target": "hsearch.hsearch.models.Image.to_dict"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 38,
-        "src": "created = UnixTimeStampField()",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 55,
-        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
-        "offset": 21,
-        "src": "chat = models.ForeignKey(\"hsearch.Chat\", on_delete=models.CASCADE, related_name=\"answers\")",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 65,
-        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
-        "offset": 1,
-        "src": "apartment = models.ForeignKey(\"hsearch.Apartment\", on_delete=models.CASCADE, related_name=\"answers\")",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 2,
-        "src": "created = UnixTimeStampField()",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 55,
-        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
-        "offset": 8,
-        "src": "chat = models.ForeignKey(\"hsearch.Chat\", on_delete=models.CASCADE, related_name=\"feedbacks\")",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 2,
-        "src": "created = UnixTimeStampField()",
-        "target": "hsearch.hsearch.models"
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
+        "offset": 10,
+        "src": "def __str__(self) -> str:  # noqa: D105",
+        "target": "easyhome.easyhome.models.Feedback.__str__"
       },
       {
         "code": "return-value",
         "column": 15,
         "message": "Incompatible return value type (got \"str | Chat\", expected \"str\")",
-        "offset": 3,
+        "offset": 1,
         "src": "return self.username if self.username else self.chat",
-        "target": "hsearch.hsearch.models.Feedback.__str__"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 12,
-        "src": "created = UnixTimeStampField()",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 65,
-        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
-        "offset": 2,
-        "src": "apartment = models.ForeignKey(\"hsearch.Apartment\", on_delete=models.CASCADE, related_name=\"messages\")",
-        "target": "hsearch.hsearch.models"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 55,
-        "message": "Expression type contains \"Any\" (has type \"(Collector, Field[Any, Any], _QuerySet[Model, Model], str) -> None\")",
-        "offset": 1,
-        "src": "chat = models.ForeignKey(\"hsearch.Chat\", on_delete=models.CASCADE, related_name=\"messages\")",
-        "target": "hsearch.hsearch.models"
+        "target": "easyhome.easyhome.models.Feedback.__str__"
       }
     ],
-    "hsearch/parser/http_client.py": [],
-    "hsearch/parser/management/commands/parse.py": [],
-    "hsearch/parser/services.py": [],
-    "hsearch/parser/sites/diesel.py": [],
-    "hsearch/parser/sites/lalafo.py": [],
-    "hsearch/parser/tasks.py": [
+    "easyhome/parser/http_client.py": [
       {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"celery\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 1,
-        "src": "from celery import shared_task",
-        "target": "hsearch.parser.tasks"
-      }
-    ],
-    "hsearch/sso/admin.py": [],
-    "hsearch/sso/forms.py": [
-      {
-        "code": "import",
-        "column": 0,
-        "message": "Skipping analyzing \"captcha.fields\": module is installed, but missing library stubs or py.typed marker. To work around this error, see the 'ignore_missing_py_typed' option",
-        "offset": 1,
-        "src": "from captcha.fields import ReCaptchaField",
-        "target": "hsearch.sso.forms"
+        "code": "override",
+        "column": 4,
+        "message": "Signature of \"_init\" incompatible with supertype \"Singleton\"",
+        "offset": 97,
+        "src": "def _init(self, session: Session | None = None, *args: list[str], **kwargs: dict[str, str]) -> None:",
+        "target": "easyhome.parser.http_client.HttpClient._init"
       },
       {
-        "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression has type \"Any (from unimported type)\"",
+        "code": "override",
+        "column": 4,
+        "message": "     Superclass:",
+        "offset": 0,
+        "src": "def _init(self, session: Session | None = None, *args: list[str], **kwargs: dict[str, str]) -> None:",
+        "target": "easyhome.parser.http_client.HttpClient._init"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "         def _init(self, *args: list[str], **kwargs: dict[str, str]) -> None",
+        "offset": 0,
+        "src": "def _init(self, session: Session | None = None, *args: list[str], **kwargs: dict[str, str]) -> None:",
+        "target": "easyhome.parser.http_client.HttpClient._init"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "     Subclass:",
+        "offset": 0,
+        "src": "def _init(self, session: Session | None = None, *args: list[str], **kwargs: dict[str, str]) -> None:",
+        "target": "easyhome.parser.http_client.HttpClient._init"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "         def _init(self, session: Session | None = ..., *args: list[str], **kwargs: dict[str, str]) -> None",
+        "offset": 0,
+        "src": "def _init(self, session: Session | None = None, *args: list[str], **kwargs: dict[str, str]) -> None:",
+        "target": "easyhome.parser.http_client.HttpClient._init"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"_init\" is not using @override but is overriding a method in class \"easyhome.common.utils.Singleton\"",
+        "offset": 0,
+        "src": "def _init(self, session: Session | None = None, *args: list[str], **kwargs: dict[str, str]) -> None:",
+        "target": "easyhome.parser.http_client.HttpClient._init"
+      }
+    ],
+    "easyhome/parser/management/commands/parse.py": [
+      {
+        "code": "attr-defined",
+        "column": 0,
+        "message": "Module \"django.core.management\" has no attribute \"CommandParser\"",
         "offset": 5,
-        "src": "captcha = ReCaptchaField()",
-        "target": "hsearch.sso.forms"
-      }
-    ],
-    "hsearch/sso/views.py": [
-      {
-        "code": "no-untyped-def",
-        "column": 0,
-        "message": "Function is missing a type annotation",
-        "offset": 6,
-        "src": "def index_page(request):",
-        "target": "hsearch.sso.views.index_page"
+        "src": "from django.core.management import BaseCommand, CommandParser",
+        "target": "easyhome.parser.management.commands.parse"
       },
       {
-        "code": "no-any-expr",
-        "column": 14,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Any (from unimported type) | str]\")",
-        "offset": 1,
-        "src": "context = {",
-        "target": "hsearch.sso.views.index_page"
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"add_arguments\" is not using @override but is overriding a method in class \"django.core.management.base.BaseCommand\"",
+        "offset": 17,
+        "src": "def add_arguments(self, parser: CommandParser) -> None:  # noqa: D102",
+        "target": "easyhome.parser.management.commands.parse.Command.add_arguments"
       },
       {
-        "code": "no-any-expr",
-        "column": 8,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 1,
-        "src": "\"bot_name\": settings.TG_NAME,",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 20,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"bot_name\": settings.TG_NAME,",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 20,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 1,
-        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 23,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 42,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 18,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 2,
-        "src": "return render(request, \"index.html\", context=context)",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 49,
-        "message": "Expression type contains \"Any\" (has type \"dict[str, Any (from unimported type) | str]\")",
-        "offset": 0,
-        "src": "return render(request, \"index.html\", context=context)",
-        "target": "hsearch.sso.views.index_page"
-      },
-      {
-        "code": "no-untyped-def",
-        "column": 0,
-        "message": "Function is missing a type annotation",
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"handle\" is not using @override but is overriding a method in class \"django.core.management.base.BaseCommand\"",
         "offset": 3,
-        "src": "def login_page(request):",
-        "target": "hsearch.sso.views.login_page"
+        "src": "def handle(self, *args: Any, **options: Any) -> str | None:  # noqa: ANN401, D102",
+        "target": "easyhome.parser.management.commands.parse.Command.handle"
       },
       {
-        "code": "no-any-expr",
-        "column": 7,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 1,
-        "src": "if request.user.is_authenticated:",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 17,
-        "message": "Expression type contains \"Any\" (has type \"dict[Any, Any]\")",
-        "offset": 2,
-        "src": "data={",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression type contains \"Any\" (has type \"(str, Untyped)\")",
-        "offset": 1,
-        "src": "\"id\": request.user.id,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 22,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"id\": request.user.id,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 16,
-        "message": "Expression type contains \"Any\" (has type \"(str, Untyped)\")",
-        "offset": 1,
-        "src": "\"username\": request.user.username,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 28,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"username\": request.user.username,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 13,
-        "message": "Expression type contains \"Any\" (has type \"dict[Any, Any]\")",
-        "offset": 4,
-        "src": "data={",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
+        "code": "return-value",
         "column": 12,
-        "message": "Expression type contains \"Any\" (has type \"(str, Any (from unimported type))\")",
-        "offset": 1,
-        "src": "\"bot_name\": settings.TG_NAME,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression has type \"Any (from unimported type)\"",
-        "offset": 0,
-        "src": "\"bot_name\": settings.TG_NAME,",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 24,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 1,
-        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 27,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
-        "target": "hsearch.sso.views.login_page"
-      },
-      {
-        "code": "no-any-expr",
-        "column": 46,
-        "message": "Expression has type \"Untyped\"",
-        "offset": 0,
-        "src": "\"auth_url\": f\"{request.scheme}://{request.get_host()}{settings.TG_LOGIN_REDIRECT_URL}\",",
-        "target": "hsearch.sso.views.login_page"
+        "message": "Return value expected",
+        "offset": 5,
+        "src": "return",
+        "target": "easyhome.parser.management.commands.parse.Command.handle"
       }
     ],
-    "manage.py": [],
-    "tests/conftest.py": []
+    "easyhome/parser/sites/diesel.py": [
+      {
+        "code": "override",
+        "column": 4,
+        "message": "Return type \"dict[str, str]\" of \"get_announcement_pages_map\" incompatible with return type \"dict[int, str]\" in supertype \"AbstractSite\"",
+        "offset": 34,
+        "src": "def get_announcement_pages_map(self, page: BeautifulSoup) -> dict[str, str]:",
+        "target": "easyhome.parser.sites.diesel.Diesel.get_announcement_pages_map"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_announcement_pages_map\" is not using @override but is overriding a method in class \"easyhome.parser.sites.base.AbstractSite\"",
+        "offset": 0,
+        "src": "def get_announcement_pages_map(self, page: BeautifulSoup) -> dict[str, str]:",
+        "target": "easyhome.parser.sites.diesel.Diesel.get_announcement_pages_map"
+      },
+      {
+        "code": "arg-type",
+        "column": 63,
+        "message": "Argument 1 to \"_parse_ulr_and_external_id\" of \"Diesel\" has incompatible type \"str | Any | None\"; expected \"str\"",
+        "offset": 4,
+        "src": "url, external_id = self._parse_ulr_and_external_id(item.attrs.get(\"href\"))",
+        "target": "easyhome.parser.sites.diesel.Diesel.get_announcement_pages_map"
+      },
+      {
+        "code": "union-attr",
+        "column": 15,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"select_one\"",
+        "offset": 12,
+        "src": "return elem.parent.select_one(\".field-value\").get_text(strip=True)",
+        "target": "easyhome.parser.sites.diesel.Diesel._get_span_contains_str"
+      },
+      {
+        "code": "union-attr",
+        "column": 15,
+        "message": "Item \"None\" of \"Tag | None | Any (from error)\" has no attribute \"get_text\"",
+        "offset": 0,
+        "src": "return elem.parent.select_one(\".field-value\").get_text(strip=True)",
+        "target": "easyhome.parser.sites.diesel.Diesel._get_span_contains_str"
+      },
+      {
+        "code": "union-attr",
+        "column": 15,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"get_text\"",
+        "offset": 15,
+        "src": "body = body.get_text().strip()",
+        "target": "easyhome.parser.sites.diesel.Diesel._parse_body"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"parse_apartment\" is not using @override but is overriding a method in class \"easyhome.parser.sites.base.AbstractSite\"",
+        "offset": 6,
+        "src": "def parse_apartment(self, parsed_response: BeautifulSoup) -> ApartmentEntity:",
+        "target": "easyhome.parser.sites.diesel.Diesel.parse_apartment"
+      },
+      {
+        "code": "union-attr",
+        "column": 15,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"attrs\"",
+        "offset": 2,
+        "src": "href = parsed_response.select_one(\"meta[name='identifier-url']\").attrs[\"content\"]",
+        "target": "easyhome.parser.sites.diesel.Diesel.parse_apartment"
+      },
+      {
+        "code": "union-attr",
+        "column": 21,
+        "message": "Item \"str\" of \"Tag | str\" has no attribute \"get_text\"",
+        "offset": 5,
+        "src": "_title = _title.get_text(strip=True).replace(\"\u00a0\", \"\")",
+        "target": "easyhome.parser.sites.diesel.Diesel.parse_apartment"
+      },
+      {
+        "code": "union-attr",
+        "column": 28,
+        "message": "Item \"str\" of \"Tag | str\" has no attribute \"get_text\"",
+        "offset": 6,
+        "src": "_phone = f\"+996{_phone.get_text(strip=True)[-9:]}\"",
+        "target": "easyhome.parser.sites.diesel.Diesel.parse_apartment"
+      },
+      {
+        "code": "arg-type",
+        "column": 18,
+        "message": "Argument \"title\" to \"ApartmentEntity\" has incompatible type \"Tag | str\"; expected \"str\"",
+        "offset": 17,
+        "src": "title=_title,",
+        "target": "easyhome.parser.sites.diesel.Diesel.parse_apartment"
+      },
+      {
+        "code": "arg-type",
+        "column": 18,
+        "message": "Argument \"phone\" to \"ApartmentEntity\" has incompatible type \"Tag | str\"; expected \"str\"",
+        "offset": 3,
+        "src": "phone=_phone,",
+        "target": "easyhome.parser.sites.diesel.Diesel.parse_apartment"
+      }
+    ],
+    "easyhome/parser/sites/house.py": [
+      {
+        "code": "override",
+        "column": 4,
+        "message": "Return type \"dict[str, str]\" of \"get_announcement_pages_map\" incompatible with return type \"dict[int, str]\" in supertype \"AbstractSite\"",
+        "offset": 32,
+        "src": "def get_announcement_pages_map(self, page: BeautifulSoup) -> dict[str, str]:",
+        "target": "easyhome.parser.sites.house.House.get_announcement_pages_map"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_announcement_pages_map\" is not using @override but is overriding a method in class \"easyhome.parser.sites.base.AbstractSite\"",
+        "offset": 0,
+        "src": "def get_announcement_pages_map(self, page: BeautifulSoup) -> dict[str, str]:",
+        "target": "easyhome.parser.sites.house.House.get_announcement_pages_map"
+      },
+      {
+        "code": "union-attr",
+        "column": 20,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"get_text\"",
+        "offset": 19,
+        "src": "price_str = price_elem.get_text(strip=True).replace(\" \", \"\")",
+        "target": "easyhome.parser.sites.house.House._parse_price_and_currency"
+      },
+      {
+        "code": "union-attr",
+        "column": 20,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"select_one\"",
+        "offset": 10,
+        "src": "info_elem = label_elem.parent.select_one(\".info\")",
+        "target": "easyhome.parser.sites.house.House._fund_text_contain"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"parse_apartment\" is not using @override but is overriding a method in class \"easyhome.parser.sites.base.AbstractSite\"",
+        "offset": 23,
+        "src": "def parse_apartment(self, parsed_response: BeautifulSoup) -> ApartmentEntity:",
+        "target": "easyhome.parser.sites.house.House.parse_apartment"
+      },
+      {
+        "code": "union-attr",
+        "column": 25,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"attrs\"",
+        "offset": 2,
+        "src": "_canonical_url = parsed_response.select_one(\"link[rel='canonical']\").attrs[\"href\"]",
+        "target": "easyhome.parser.sites.house.House.parse_apartment"
+      },
+      {
+        "code": "union-attr",
+        "column": 17,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"get_text\"",
+        "offset": 3,
+        "src": "_title = parsed_response.select_one(\"h1\").get_text(strip=True)",
+        "target": "easyhome.parser.sites.house.House.parse_apartment"
+      },
+      {
+        "code": "union-attr",
+        "column": 19,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"get_text\"",
+        "offset": 12,
+        "src": "_address = parsed_response.select_one(\".address\").get_text(strip=True)",
+        "target": "easyhome.parser.sites.house.House.parse_apartment"
+      },
+      {
+        "code": "union-attr",
+        "column": 23,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"get_text\"",
+        "offset": 3,
+        "src": "_description = parsed_response.select_one(\".description > p\").get_text(strip=True)",
+        "target": "easyhome.parser.sites.house.House.parse_apartment"
+      },
+      {
+        "code": "assignment",
+        "column": 19,
+        "message": "Incompatible types in assignment (expression has type \"float\", variable has type \"int\")",
+        "offset": 12,
+        "src": "_lat = float(_coordinates_elem.attrs[\"data-lat\"])",
+        "target": "easyhome.parser.sites.house.House.parse_apartment"
+      },
+      {
+        "code": "assignment",
+        "column": 19,
+        "message": "Incompatible types in assignment (expression has type \"float\", variable has type \"int\")",
+        "offset": 1,
+        "src": "_lon = float(_coordinates_elem.attrs[\"data-lon\"])",
+        "target": "easyhome.parser.sites.house.House.parse_apartment"
+      }
+    ],
+    "easyhome/parser/sites/lalafo.py": [
+      {
+        "code": "type-arg",
+        "column": 48,
+        "message": "Missing type parameters for generic type \"dict\"",
+        "offset": 52,
+        "src": "_default_next_data_json: ClassVar[dict[str, dict]] = {",
+        "target": "easyhome.parser.sites.lalafo"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "Return type \"dict[str, str]\" of \"get_announcement_pages_map\" incompatible with return type \"dict[int, str]\" in supertype \"AbstractSite\"",
+        "offset": 21,
+        "src": "def get_announcement_pages_map(self, page: BeautifulSoup) -> dict[str, str]:",
+        "target": "easyhome.parser.sites.lalafo.Lalafo.get_announcement_pages_map"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_announcement_pages_map\" is not using @override but is overriding a method in class \"easyhome.parser.sites.base.AbstractSite\"",
+        "offset": 0,
+        "src": "def get_announcement_pages_map(self, page: BeautifulSoup) -> dict[str, str]:",
+        "target": "easyhome.parser.sites.lalafo.Lalafo.get_announcement_pages_map"
+      },
+      {
+        "code": "union-attr",
+        "column": 31,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"getText\"",
+        "offset": 4,
+        "src": "elem_json = json.loads(next_script_elem.getText())",
+        "target": "easyhome.parser.sites.lalafo.Lalafo.get_announcement_pages_map"
+      },
+      {
+        "code": "union-attr",
+        "column": 31,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-union-attr for more info",
+        "offset": 0,
+        "src": "elem_json = json.loads(next_script_elem.getText())",
+        "target": null
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"parse_apartment\" is not using @override but is overriding a method in class \"easyhome.parser.sites.base.AbstractSite\"",
+        "offset": 10,
+        "src": "def parse_apartment(self, parsed_response: BeautifulSoup) -> ApartmentEntity:",
+        "target": "easyhome.parser.sites.lalafo.Lalafo.parse_apartment"
+      },
+      {
+        "code": "union-attr",
+        "column": 47,
+        "message": "Item \"None\" of \"Tag | None\" has no attribute \"getText\"",
+        "offset": 3,
+        "src": "elem_json: dict[str, Any] = json.loads(apartment_script_elem.getText())",
+        "target": "easyhome.parser.sites.lalafo.Lalafo.parse_apartment"
+      }
+    ],
+    "easyhome/sso/admin.py": [
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 18,
+        "src": "return default_site._registry  # noqa: SLF001",
+        "target": "easyhome.sso.admin.AdminSite._registry_getter"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 2,
+        "src": "def _registry_setter(self, value) -> None:  # noqa: ANN001",
+        "target": "easyhome.sso.admin.AdminSite._registry_setter"
+      },
+      {
+        "code": "assignment",
+        "column": 16,
+        "message": "Incompatible types in assignment (expression has type \"property\", base class \"AdminSite\" defined the type as \"dict[type[Model], ModelAdmin[Untyped]]\")",
+        "offset": 3,
+        "src": "_registry = property(_registry_getter, _registry_setter)",
+        "target": "easyhome.sso.admin"
+      }
+    ],
+    "easyhome/sso/views.py": [
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 8,
+        "src": "def index_page(request):  # noqa: ANN001, ANN201, D103",
+        "target": "easyhome.sso.views.index_page"
+      },
+      {
+        "code": "return-value",
+        "column": 4,
+        "message": "No return value expected",
+        "offset": 5,
+        "src": "return render(request, \"index.html\", context=context)",
+        "target": "easyhome.sso.views.index_page"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 3,
+        "src": "def login_page(request):  # noqa: ANN001, ANN201, D103",
+        "target": "easyhome.sso.views.login_page"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 2,
+        "src": "return JsonResponse(",
+        "target": "easyhome.sso.views.login_page"
+      },
+      {
+        "code": "return-value",
+        "column": 4,
+        "message": "No return value expected",
+        "offset": 6,
+        "src": "return JsonResponse(",
+        "target": "easyhome.sso.views.login_page"
+      }
+    ],
+    "unixtimestampfield/fields.py": [
+      {
+        "code": "import-untyped",
+        "column": 0,
+        "message": "Library stubs not installed for \"six\"",
+        "offset": 5,
+        "src": "import six",
+        "target": "unixtimestampfield.fields"
+      },
+      {
+        "code": "import-untyped",
+        "column": 0,
+        "message": "Hint: \"python3 -m pip install types-six\"",
+        "offset": 0,
+        "src": "import six",
+        "target": "unixtimestampfield.fields"
+      },
+      {
+        "code": "import-untyped",
+        "column": 0,
+        "message": "(or run \"mypy --install-types\" to install all missing stub packages)",
+        "offset": 0,
+        "src": "import six",
+        "target": "unixtimestampfield.fields"
+      },
+      {
+        "code": "import-untyped",
+        "column": 0,
+        "message": "See https://kotlinisland.github.io/basedmypy/running_mypy.html#missing-imports",
+        "offset": 0,
+        "src": "import six",
+        "target": "unixtimestampfield.fields"
+      },
+      {
+        "code": "import-untyped",
+        "column": 0,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-import-untyped for more info",
+        "offset": 0,
+        "src": "import six",
+        "target": null
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 15,
+        "src": "def _datetime_to_timestamp(self, v):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin._datetime_to_timestamp"
+      },
+      {
+        "code": "no-any-return",
+        "column": 12,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 4,
+        "src": "return (v - timezone.datetime(1970, 1, 1, tzinfo=utc)).total_seconds()",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin._datetime_to_timestamp"
+      },
+      {
+        "code": "attr-defined",
+        "column": 24,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 0,
+        "src": "return (v - timezone.datetime(1970, 1, 1, tzinfo=utc)).total_seconds()",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin._datetime_to_timestamp"
+      },
+      {
+        "code": "no-any-return",
+        "column": 12,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 2,
+        "src": "return (v - timezone.datetime(1970, 1, 1)).total_seconds()",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin._datetime_to_timestamp"
+      },
+      {
+        "code": "attr-defined",
+        "column": 24,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 0,
+        "src": "return (v - timezone.datetime(1970, 1, 1)).total_seconds()",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin._datetime_to_timestamp"
+      },
+      {
+        "code": "attr-defined",
+        "column": 16,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 4,
+        "src": "value = timezone.datetime.utcnow()",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.get_datetimenow"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 6,
+        "src": "return value",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.get_datetimenow"
+      },
+      {
+        "code": "attr-defined",
+        "column": 43,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 4,
+        "src": "return self._datetime_to_timestamp(timezone.datetime.utcnow())",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.get_timestampnow"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 2,
+        "src": "def to_timestamp(self, value):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_timestamp"
+      },
+      {
+        "code": "redundant-expr",
+        "column": 11,
+        "message": "Condition is always true",
+        "offset": 2,
+        "src": "if isinstance(value, (six.integer_types, float, six.string_types)):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_timestamp"
+      },
+      {
+        "code": "redundant-expr",
+        "column": 11,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-redundant-expr for more info",
+        "offset": 0,
+        "src": "if isinstance(value, (six.integer_types, float, six.string_types)):",
+        "target": null
+      },
+      {
+        "code": "return-value",
+        "column": 16,
+        "message": "No return value expected",
+        "offset": 2,
+        "src": "return float(value)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_timestamp"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 24,
+        "message": "\"datetime_str_to_datetime\" of \"TimestampPatchMixin\" does not return a value (it only ever returns None)",
+        "offset": 2,
+        "src": "value = self.datetime_str_to_datetime(value)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_timestamp"
+      },
+      {
+        "code": "return-value",
+        "column": 16,
+        "message": "No return value expected",
+        "offset": 7,
+        "src": "return float(self.default)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_timestamp"
+      },
+      {
+        "code": "attr-defined",
+        "column": 29,
+        "message": "\"TimestampPatchMixin\" has no attribute \"default\"",
+        "offset": 0,
+        "src": "return float(self.default)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_timestamp"
+      },
+      {
+        "code": "return-value",
+        "column": 16,
+        "message": "No return value expected",
+        "offset": 2,
+        "src": "return 0.0",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_timestamp"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 7,
+        "src": "def to_naive_datetime(self, value):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_naive_datetime"
+      },
+      {
+        "code": "redundant-expr",
+        "column": 11,
+        "message": "Condition is always true",
+        "offset": 2,
+        "src": "if isinstance(value, (six.integer_types, float, six.string_types)):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_naive_datetime"
+      },
+      {
+        "code": "unreachable",
+        "column": 8,
+        "message": "Statement is unreachable",
+        "offset": 6,
+        "src": "if isinstance(value, datetime.datetime):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_naive_datetime"
+      },
+      {
+        "code": "unreachable",
+        "column": 8,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-unreachable for more info",
+        "offset": 0,
+        "src": "if isinstance(value, datetime.datetime):",
+        "target": null
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 14,
+        "src": "def to_utc_datetime(self, value):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 16,
+        "message": "\"to_naive_datetime\" of \"TimestampPatchMixin\" does not return a value (it only ever returns None)",
+        "offset": 2,
+        "src": "value = self.to_naive_datetime(value)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 1,
+        "src": "return timezone.make_aware(value, utc) if timezone.is_naive(value) else timezone.localtime(value, utc)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "arg-type",
+        "column": 35,
+        "message": "Argument 1 to \"make_aware\" has incompatible type \"None\"; expected \"datetime\"",
+        "offset": 0,
+        "src": "return timezone.make_aware(value, utc) if timezone.is_naive(value) else timezone.localtime(value, utc)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "call-overload",
+        "column": 50,
+        "message": "No overload variant of \"is_naive\" matches argument type \"None\"",
+        "offset": 0,
+        "src": "return timezone.make_aware(value, utc) if timezone.is_naive(value) else timezone.localtime(value, utc)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "call-overload",
+        "column": 50,
+        "message": "Possible overload variants:",
+        "offset": 0,
+        "src": "return timezone.make_aware(value, utc) if timezone.is_naive(value) else timezone.localtime(value, utc)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "call-overload",
+        "column": 50,
+        "message": "    def is_naive(value: time) -> True",
+        "offset": 0,
+        "src": "return timezone.make_aware(value, utc) if timezone.is_naive(value) else timezone.localtime(value, utc)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "call-overload",
+        "column": 50,
+        "message": "    def is_naive(value: datetime) -> bool",
+        "offset": 0,
+        "src": "return timezone.make_aware(value, utc) if timezone.is_naive(value) else timezone.localtime(value, utc)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 2,
+        "src": "def to_default_timezone_datetime(self, value):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_default_timezone_datetime"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 2,
+        "src": "return timezone.localtime(self.to_utc_datetime(value), timezone.get_default_timezone())",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_default_timezone_datetime"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 34,
+        "message": "\"to_utc_datetime\" of \"TimestampPatchMixin\" does not return a value (it only ever returns None)",
+        "offset": 0,
+        "src": "return timezone.localtime(self.to_utc_datetime(value), timezone.get_default_timezone())",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_default_timezone_datetime"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 2,
+        "src": "def to_datetime(self, value):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.to_datetime"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 10,
+        "src": "def datetime_str_to_datetime(self, value):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.datetime_str_to_datetime"
+      },
+      {
+        "code": "return-value",
+        "column": 16,
+        "message": "No return value expected",
+        "offset": 3,
+        "src": "return timezone.datetime.strptime(value, \"%Y-%m-%d %H:%M:%S.%f\")",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.datetime_str_to_datetime"
+      },
+      {
+        "code": "attr-defined",
+        "column": 23,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 0,
+        "src": "return timezone.datetime.strptime(value, \"%Y-%m-%d %H:%M:%S.%f\")",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.datetime_str_to_datetime"
+      },
+      {
+        "code": "return-value",
+        "column": 16,
+        "message": "No return value expected",
+        "offset": 2,
+        "src": "return timezone.datetime.strptime(value, \"%Y-%m-%d %H:%M:%S\")",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.datetime_str_to_datetime"
+      },
+      {
+        "code": "attr-defined",
+        "column": 23,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 0,
+        "src": "return timezone.datetime.strptime(value, \"%Y-%m-%d %H:%M:%S\")",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.datetime_str_to_datetime"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 8,
+        "src": "def from_number(self, value):",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.from_number"
+      },
+      {
+        "code": "no-any-return",
+        "column": 8,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 12,
+        "src": "return timezone.datetime(1970, 1, 1, 0, 0) + timezone.timedelta(seconds=value)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.from_number"
+      },
+      {
+        "code": "attr-defined",
+        "column": 15,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 0,
+        "src": "return timezone.datetime(1970, 1, 1, 0, 0) + timezone.timedelta(seconds=value)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.from_number"
+      },
+      {
+        "code": "attr-defined",
+        "column": 53,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"timedelta\"",
+        "offset": 0,
+        "src": "return timezone.datetime(1970, 1, 1, 0, 0) + timezone.timedelta(seconds=value)",
+        "target": "unixtimestampfield.fields.TimestampPatchMixin.from_number"
+      },
+      {
+        "code": "type-arg",
+        "column": 46,
+        "message": "Missing type parameters for generic type \"Field\"",
+        "offset": 3,
+        "src": "class UnixTimeStampField(TimestampPatchMixin, Field):",
+        "target": "unixtimestampfield.fields"
+      },
+      {
+        "code": "type-arg",
+        "column": 46,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-type-arg for more info",
+        "offset": 0,
+        "src": "class UnixTimeStampField(TimestampPatchMixin, Field):",
+        "target": null
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 10,
+        "src": "def __init__(self, verbose_name=None, name=None, auto_now=False,",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.__init__"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "Return type \"None\" of \"deconstruct\" incompatible with return type \"(str, str, Sequence[Any], dict[str, Any])\" in supertype \"Field\"",
+        "offset": 9,
+        "src": "def deconstruct(self):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.deconstruct"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"deconstruct\" is not using @override but is overriding a method in class \"django.db.models.fields.Field\"",
+        "offset": 0,
+        "src": "def deconstruct(self):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.deconstruct"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-explicit-override for more info",
+        "offset": 0,
+        "src": "def deconstruct(self):",
+        "target": null
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 9,
+        "src": "return name, path, args, kwargs",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.deconstruct"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_internal_type\" is not using @override but is overriding a method in class \"django.db.models.fields.Field\"",
+        "offset": 2,
+        "src": "def get_internal_type(self) -> str:",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.get_internal_type"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 3,
+        "src": "def pre_save(self, model_instance, add):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.pre_save"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"pre_save\" is not using @override but is overriding a method in class \"django.db.models.fields.Field\"",
+        "offset": 0,
+        "src": "def pre_save(self, model_instance, add):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.pre_save"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 20,
+        "message": "\"get_datetimenow\" of \"TimestampPatchMixin\" does not return a value (it only ever returns None)",
+        "offset": 2,
+        "src": "value = self.get_datetimenow()",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.pre_save"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 46,
+        "message": "\"field_value_middleware\" does not return a value (it only ever returns None)",
+        "offset": 4,
+        "src": "setattr(model_instance, self.attname, field_value_middleware(self, value))",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.pre_save"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 1,
+        "src": "return value",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.pre_save"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 2,
+        "src": "def to_python(self, value):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_python"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"to_python\" is not using @override but is overriding a method in class \"django.db.models.fields.Field\"",
+        "offset": 0,
+        "src": "def to_python(self, value):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_python"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_default\" is not using @override but is overriding a method in class \"django.db.models.fields.Field\"",
+        "offset": 3,
+        "src": "def get_default(self):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.get_default"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 12,
+        "message": "\"get_datetimenow\" of \"TimestampPatchMixin\" does not return a value (it only ever returns None)",
+        "offset": 1,
+        "src": "v = self.get_datetimenow() if self.auto_now or self.auto_now_add else 0.0",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.get_default"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 8,
+        "src": "def value_to_string(self, obj):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.value_to_string"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "Return type \"None\" of \"value_to_string\" incompatible with return type \"str\" in supertype \"Field\"",
+        "offset": 0,
+        "src": "def value_to_string(self, obj):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.value_to_string"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"value_to_string\" is not using @override but is overriding a method in class \"django.db.models.fields.Field\"",
+        "offset": 0,
+        "src": "def value_to_string(self, obj):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.value_to_string"
+      },
+      {
+        "code": "attr-defined",
+        "column": 14,
+        "message": "\"UnixTimeStampField\" has no attribute \"_get_val_from_obj\"",
+        "offset": 1,
+        "src": "val = self._get_val_from_obj(obj)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.value_to_string"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 1,
+        "src": "return \"\" if val is None else val",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.value_to_string"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 2,
+        "src": "def get_prep_value(self, value):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.get_prep_value"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_prep_value\" is not using @override but is overriding a method in class \"django.db.models.fields.Field\"",
+        "offset": 0,
+        "src": "def get_prep_value(self, value):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.get_prep_value"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 4,
+        "src": "def get_db_prep_value(self, value, connection, prepared=False):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.get_db_prep_value"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_db_prep_value\" is not using @override but is overriding a method in class \"django.db.models.fields.Field\"",
+        "offset": 0,
+        "src": "def get_db_prep_value(self, value, connection, prepared=False):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.get_db_prep_value"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 20,
+        "message": "\"get_prep_value\" of \"UnixTimeStampField\" does not return a value (it only ever returns None)",
+        "offset": 2,
+        "src": "value = self.get_prep_value(value)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.get_db_prep_value"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 3,
+        "src": "def from_db_value(self, value, expression, connection):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.from_db_value"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 3,
+        "src": "def to_timestamp(self, value):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_timestamp"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"to_timestamp\" is not using @override but is overriding a method in class \"unixtimestampfield.fields.TimestampPatchMixin\"",
+        "offset": 0,
+        "src": "def to_timestamp(self, value):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_timestamp"
+      },
+      {
+        "code": "no-any-return",
+        "column": 8,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 1,
+        "src": "return round(super().to_timestamp(value), self.round_to)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_timestamp"
+      },
+      {
+        "code": "call-overload",
+        "column": 15,
+        "message": "No overload variant of \"round\" matches argument types \"None\", \"int\"",
+        "offset": 0,
+        "src": "return round(super().to_timestamp(value), self.round_to)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_timestamp"
+      },
+      {
+        "code": "call-overload",
+        "column": 15,
+        "message": "Possible overload variants:",
+        "offset": 0,
+        "src": "return round(super().to_timestamp(value), self.round_to)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_timestamp"
+      },
+      {
+        "code": "call-overload",
+        "column": 15,
+        "message": "    def [_T] round(number: _SupportsRound1[_T@round], ndigits: None = ...) -> _T@round",
+        "offset": 0,
+        "src": "return round(super().to_timestamp(value), self.round_to)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_timestamp"
+      },
+      {
+        "code": "call-overload",
+        "column": 15,
+        "message": "    def [_T] round(number: _SupportsRound2[_T@round], ndigits: SupportsIndex) -> _T@round",
+        "offset": 0,
+        "src": "return round(super().to_timestamp(value), self.round_to)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_timestamp"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 21,
+        "message": "\"to_timestamp\" of \"TimestampPatchMixin\" does not return a value (it only ever returns None)",
+        "offset": 0,
+        "src": "return round(super().to_timestamp(value), self.round_to)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.to_timestamp"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 2,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "Signature of \"formfield\" incompatible with supertype \"Field\"",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "     Superclass:",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "         def formfield(self, form_class: type[Field] | None = ..., choices_form_class: type[ChoiceField] | None = ..., **kwargs: Any) -> Field",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "     Subclass:",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "         def formfield(self, **kwargs: Untyped) -> None",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.formfield"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"formfield\" is not using @override but is overriding a method in class \"django.db.models.fields.Field\"",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.formfield"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 3,
+        "src": "return super().formfield(**defaults)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.formfield"
+      },
+      {
+        "code": "arg-type",
+        "column": 35,
+        "message": "Argument 1 to \"formfield\" of \"Field\" has incompatible type \"**dict[str, type[CharField]]\"; expected \"type[ChoiceField] | None\"",
+        "offset": 0,
+        "src": "return super().formfield(**defaults)",
+        "target": "unixtimestampfield.fields.UnixTimeStampField.formfield"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 6,
+        "src": "def _datetime_to_timestamp(self, v):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin._datetime_to_timestamp"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"_datetime_to_timestamp\" is not using @override but is overriding a method in class \"unixtimestampfield.fields.TimestampPatchMixin\"",
+        "offset": 0,
+        "src": "def _datetime_to_timestamp(self, v):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin._datetime_to_timestamp"
+      },
+      {
+        "code": "no-any-return",
+        "column": 8,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 2,
+        "src": "return v.toordinal()",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin._datetime_to_timestamp"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_datetimenow\" is not using @override but is overriding a method in class \"unixtimestampfield.fields.TimestampPatchMixin\"",
+        "offset": 2,
+        "src": "def get_datetimenow(self):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.get_datetimenow"
+      },
+      {
+        "code": "attr-defined",
+        "column": 16,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 2,
+        "src": "value = timezone.datetime.fromordinal(timezone.datetime.utcnow().toordinal())",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.get_datetimenow"
+      },
+      {
+        "code": "attr-defined",
+        "column": 46,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 0,
+        "src": "value = timezone.datetime.fromordinal(timezone.datetime.utcnow().toordinal())",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.get_datetimenow"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 6,
+        "src": "return value",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.get_datetimenow"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 2,
+        "src": "def to_timestamp(self, value):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_timestamp"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"to_timestamp\" is not using @override but is overriding a method in class \"unixtimestampfield.fields.TimestampPatchMixin\"",
+        "offset": 0,
+        "src": "def to_timestamp(self, value):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_timestamp"
+      },
+      {
+        "code": "redundant-expr",
+        "column": 11,
+        "message": "Condition is always true",
+        "offset": 2,
+        "src": "if isinstance(value, (six.integer_types, float, six.string_types)):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_timestamp"
+      },
+      {
+        "code": "return-value",
+        "column": 16,
+        "message": "No return value expected",
+        "offset": 2,
+        "src": "return int(value)",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_timestamp"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 24,
+        "message": "\"datetime_str_to_datetime\" of \"TimestampPatchMixin\" does not return a value (it only ever returns None)",
+        "offset": 2,
+        "src": "value = self.datetime_str_to_datetime(value)",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_timestamp"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 12,
+        "src": "def to_naive_datetime(self, value):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_naive_datetime"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"to_naive_datetime\" is not using @override but is overriding a method in class \"unixtimestampfield.fields.TimestampPatchMixin\"",
+        "offset": 0,
+        "src": "def to_naive_datetime(self, value):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_naive_datetime"
+      },
+      {
+        "code": "redundant-expr",
+        "column": 11,
+        "message": "Condition is always true",
+        "offset": 2,
+        "src": "if isinstance(value, (six.integer_types, float, six.string_types)):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_naive_datetime"
+      },
+      {
+        "code": "unreachable",
+        "column": 8,
+        "message": "Statement is unreachable",
+        "offset": 6,
+        "src": "if isinstance(value, datetime.datetime):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_naive_datetime"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 8,
+        "src": "def to_utc_datetime(self, value):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"to_utc_datetime\" is not using @override but is overriding a method in class \"unixtimestampfield.fields.TimestampPatchMixin\"",
+        "offset": 0,
+        "src": "def to_utc_datetime(self, value):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "redundant-expr",
+        "column": 11,
+        "message": "Condition is always true",
+        "offset": 2,
+        "src": "if isinstance(value, (six.integer_types, float, six.string_types)):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 20,
+        "message": "\"to_naive_datetime\" of \"OrdinalPatchMixin\" does not return a value (it only ever returns None)",
+        "offset": 1,
+        "src": "value = self.to_naive_datetime(value)",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "return-value",
+        "column": 12,
+        "message": "No return value expected",
+        "offset": 3,
+        "src": "return timezone.make_aware(value, utc) if timezone.is_naive(value) else timezone.localtime(value, utc)",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.to_utc_datetime"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 7,
+        "src": "def from_number(self, value):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.from_number"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"from_number\" is not using @override but is overriding a method in class \"unixtimestampfield.fields.TimestampPatchMixin\"",
+        "offset": 0,
+        "src": "def from_number(self, value):",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.from_number"
+      },
+      {
+        "code": "no-any-return",
+        "column": 8,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 7,
+        "src": "return timezone.datetime(1, 1, 1, 0, 0) + timezone.timedelta(days=(value - 1))",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.from_number"
+      },
+      {
+        "code": "attr-defined",
+        "column": 15,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 0,
+        "src": "return timezone.datetime(1, 1, 1, 0, 0) + timezone.timedelta(days=(value - 1))",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.from_number"
+      },
+      {
+        "code": "attr-defined",
+        "column": 50,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"timedelta\"",
+        "offset": 0,
+        "src": "return timezone.datetime(1, 1, 1, 0, 0) + timezone.timedelta(days=(value - 1))",
+        "target": "unixtimestampfield.fields.OrdinalPatchMixin.from_number"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 13,
+        "src": "def __init__(self, verbose_name=None, name=None, auto_now=False,",
+        "target": "unixtimestampfield.fields.OrdinalField.__init__"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"get_internal_type\" is not using @override but is overriding a method in class \"unixtimestampfield.fields.UnixTimeStampField\"",
+        "offset": 8,
+        "src": "def get_internal_type(self) -> str:",
+        "target": "unixtimestampfield.fields.OrdinalField.get_internal_type"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 4,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 3,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.OrdinalField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "Signature of \"formfield\" incompatible with supertype \"Field\"",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.OrdinalField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "     Superclass:",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.OrdinalField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "         def formfield(self, form_class: type[Field] | None = ..., choices_form_class: type[ChoiceField] | None = ..., **kwargs: Any) -> Field",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.OrdinalField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "     Subclass:",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.OrdinalField.formfield"
+      },
+      {
+        "code": "override",
+        "column": 4,
+        "message": "         def formfield(self, **kwargs: Untyped) -> None",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.OrdinalField.formfield"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"formfield\" is not using @override but is overriding a method in class \"unixtimestampfield.fields.UnixTimeStampField\"",
+        "offset": 0,
+        "src": "def formfield(self, **kwargs):",
+        "target": "unixtimestampfield.fields.OrdinalField.formfield"
+      }
+    ],
+    "unixtimestampfield/submiddleware.py": [
+      {
+        "code": "return-value",
+        "column": 4,
+        "message": "No return value expected",
+        "offset": 49,
+        "src": "return usf_format",
+        "target": "unixtimestampfield.submiddleware.get_format"
+      },
+      {
+        "code": "var-annotated",
+        "column": 0,
+        "message": "Need type annotation for \"USF_FORMAT\" (hint: \"USF_FORMAT: <type> | None = ...\")",
+        "offset": 3,
+        "src": "USF_FORMAT = get_format()",
+        "target": "unixtimestampfield.submiddleware"
+      },
+      {
+        "code": "var-annotated",
+        "column": 0,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-var-annotated for more info",
+        "offset": 0,
+        "src": "USF_FORMAT = get_format()",
+        "target": null
+      },
+      {
+        "code": "func-returns-value",
+        "column": 13,
+        "message": "\"get_format\" does not return a value (it only ever returns None)",
+        "offset": 0,
+        "src": "USF_FORMAT = get_format()",
+        "target": "unixtimestampfield.submiddleware"
+      },
+      {
+        "code": "func-returns-value",
+        "column": 13,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-func-returns-value for more info",
+        "offset": 0,
+        "src": "USF_FORMAT = get_format()",
+        "target": null
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 3,
+        "src": "def field_value_middleware(field, value, usf_format=None):",
+        "target": "unixtimestampfield.submiddleware.field_value_middleware"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "See https://kotlinisland.github.io/basedmypy/_refs.html#code-no-untyped-def for more info",
+        "offset": 0,
+        "src": "def field_value_middleware(field, value, usf_format=None):",
+        "target": null
+      },
+      {
+        "code": "func-returns-value",
+        "column": 21,
+        "message": "\"get_format\" does not return a value (it only ever returns None)",
+        "offset": 3,
+        "src": "usf_format = get_format()",
+        "target": "unixtimestampfield.submiddleware.field_value_middleware"
+      },
+      {
+        "code": "no-any-return",
+        "column": 8,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 3,
+        "src": "return field.to_timestamp(value) if field.use_numeric else field.to_datetime(value)",
+        "target": "unixtimestampfield.submiddleware.field_value_middleware"
+      },
+      {
+        "code": "no-any-return",
+        "column": 8,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 3,
+        "src": "return field.to_datetime(value)",
+        "target": "unixtimestampfield.submiddleware.field_value_middleware"
+      },
+      {
+        "code": "no-any-return",
+        "column": 8,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 3,
+        "src": "return field.to_timestamp(value)",
+        "target": "unixtimestampfield.submiddleware.field_value_middleware"
+      }
+    ],
+    "unixtimestampfield/templatetags/unixtimestampfield.py": [
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 41,
+        "src": "def to_datetime(field):",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_datetime"
+      },
+      {
+        "code": "attr-defined",
+        "column": 20,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 3,
+        "src": "field = timezone.datetime.fromtimestamp(field, utc)",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_datetime"
+      },
+      {
+        "code": "no-any-return",
+        "column": 8,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 3,
+        "src": "return field",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_datetime"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 2,
+        "src": "return \"\"",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_datetime"
+      },
+      {
+        "code": "no-untyped-def",
+        "column": 0,
+        "message": "Function is missing a type annotation for one or more arguments",
+        "offset": 4,
+        "src": "def to_timestamp(field):",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_timestamp"
+      },
+      {
+        "code": "attr-defined",
+        "column": 26,
+        "message": "Module \"django.utils.timezone\" does not explicitly export attribute \"datetime\"",
+        "offset": 2,
+        "src": "if type(field) == timezone.datetime:",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_timestamp"
+      },
+      {
+        "code": "return-value",
+        "column": 16,
+        "message": "No return value expected",
+        "offset": 5,
+        "src": "return field.timestamp()",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_timestamp"
+      },
+      {
+        "code": "return-value",
+        "column": 12,
+        "message": "No return value expected",
+        "offset": 1,
+        "src": "return time.mktime(field.timetuple()) + field.microsecond * 0.00001",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_timestamp"
+      },
+      {
+        "code": "no-any-return",
+        "column": 8,
+        "message": "Returning Any from function declared to return \"None\"",
+        "offset": 2,
+        "src": "return field",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_timestamp"
+      },
+      {
+        "code": "return-value",
+        "column": 8,
+        "message": "No return value expected",
+        "offset": 2,
+        "src": "return \"\"",
+        "target": "unixtimestampfield.templatetags.unixtimestampfield.to_timestamp"
+      }
+    ]
   },
   "format": "1.7",
   "targets": [

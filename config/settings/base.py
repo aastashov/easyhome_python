@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pathlib import Path
 
 import django_stubs_ext
@@ -7,8 +9,8 @@ django_stubs_ext.monkeypatch()
 
 # BASE
 # ----------------------------------------------------------------------------
-BASE_DIR = Path(__file__).parents[2]  # hsearch/
-APPS_DIR = BASE_DIR / "hsearch"  # hsearch/hsearch
+BASE_DIR = Path(__file__).parents[2]  # easyhome/
+APPS_DIR = BASE_DIR / "easyhome"  # easyhome/easyhome
 
 # ENVIRONMENT
 # ----------------------------------------------------------------------------
@@ -18,7 +20,7 @@ env = environ.Env(
 environ.Env.read_env(str(BASE_DIR.joinpath(".env")))
 
 DEBUG = env.bool("DJANGO_DEBUG", default=True)
-REVISION = env.str("REVISION", default="latest")
+RELEASE = env.str("RELEASE", default="latest")
 
 # SECURITY
 # ----------------------------------------------------------------------------
@@ -34,10 +36,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_celery_results",
-    "hsearch.common",
-    "hsearch.hsearch",
-    "hsearch.parser",
+
+    "easyhome.common",
+    "easyhome.easyhome",
+    "easyhome.parser",
+
+    "elasticapm.contrib.django",
 ]
 
 # MIDDLEWARE
@@ -84,8 +88,8 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": env.str("DB_NAME", default="hsearch"),
-        "USER": env.str("DB_USER", default="hsearch_srv"),
+        "NAME": env.str("DB_NAME", default="easyhome"),
+        "USER": env.str("DB_USER", default="easyhome_srv"),
         "PASSWORD": env.str("DB_PASSWORD", default="pass1234"),
         "HOST": env.str("DB_HOST", default="127.0.0.1"),
         "PORT": env.int("DB_PORT", default=25432),
@@ -114,6 +118,90 @@ AUTH_PASSWORD_VALIDATORS = [
 LOGIN_REDIRECT_URL = "/"
 SESSION_COOKIE_DOMAIN = "127.0.0.1"
 
+# ELASTIC
+# ----------------------------------------------------------------------------
+PROJECT_NAME = env.str("PROJECT_NAME", default="EasyHome")
+
+APM_SERVER_URL = env.str("ELASTIC_APM_SERVER_URL", default="")
+ENABLE_APM = bool(APM_SERVER_URL)
+
+ELASTIC_APM = {
+    "DISABLE_SEND": not ENABLE_APM,
+    "ENABLED": ENABLE_APM,
+    "SERVICE_NAME": PROJECT_NAME.replace(" ", "_").lower(),
+    "SECRET_TOKEN": env.str("ELASTIC_APM_SECRET_TOKEN", default=""),
+    "SERVER_URL": APM_SERVER_URL,
+    "TRANSACTION_SAMPLE_RATE": env.float("ELASTIC_APM_TRANSACTION_SAMPLE_RATE", default=1.0),
+}
+
+# LOGGING
+# ----------------------------------------------------------------------------
+LOG_LEVEL = env.str("DJANGO_LOG_LEVEL", default="INFO")
+LOGGING = {
+    "version": 1,
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {filename}::{funcName}() {message}",
+            "style": "{",
+        },
+        "filebeat": {"()": "ecs_logging.StdlibFormatter"},
+    },
+    "handlers": {
+        "null": {
+            "class": "logging.NullHandler",
+        },
+        "sentry": {
+            "level": "ERROR",
+            "class": "logging.StreamHandler",
+        },
+        "console": {
+            "level": LOG_LEVEL,
+            "class": "logging.StreamHandler",
+            "formatter": "verbose" if DEBUG else "filebeat",
+        },
+        # "elasticapm": {
+        #     "level": "WARNING",
+        #     "class": "elasticapm.contrib.django.handlers.LoggingHandler",
+        # },
+    },
+    "loggers": {
+        "": {
+            "handlers": ["console"],
+            "level": "INFO",
+        },
+        "easyhome": {
+            "handlers": ["console"],
+            "level": LOG_LEVEL,
+        },
+        "django.server": {
+            "handlers": ["null"],
+        },
+        "apscheduler": {
+            "handlers": ["null"],
+        },
+        "django.db.backends": {
+            "level": "ERROR",
+            "handlers": ["console"],
+            "propagate": False,
+        },
+        "sentry.errors": {
+            "level": "DEBUG",
+            "handlers": ["console"],
+            "propagate": False,
+        },
+        "django.security.DisallowedHost": {
+            "handlers": ["null"],
+            "propagate": False,
+        },
+        # Log errors from the Elastic APM module to the console (recommended)
+        "elasticapm.errors": {
+            "level": "ERROR",
+            "handlers": ["console"],
+            "propagate": False,
+        },
+    },
+}
+
 # LOCALIZATION
 # ----------------------------------------------------------------------------
 LANGUAGE_CODE = "en-us"
@@ -133,19 +221,14 @@ RECAPTCHA_PRIVATE_KEY = env.str("RECAPTCHA_PRIVATE_KEY", default="")
 
 # Telegram
 # ----------------------------------------------------------------------------
-TG_NAME = env.str("TG_NAME", default="hsearch_dev_bot")
+TG_NAME = env.str("TG_NAME", default="easyhome_dev_bot")
 TG_TOKEN = env.str("TG_TOKEN", default="")
 TG_CHAT_ID = env.int("TG_CHAT_ID", default=-1001248414108)
 TG_LOGIN_REDIRECT_URL = "/auth/complete/telegram/"
 
-# Celery
+# Scheduler
 # ----------------------------------------------------------------------------
-CELERY_TIMEZONE = TIME_ZONE
-CELERY_TASK_TRACK_STARTED = True
-CELERY_TASK_TIME_LIMIT = 30 * 60
-
-CELERY_BROKER_URL = env.str("CELERY_BROKER_URL", default="redis://localhost:26379/0")
-CELERY_RESULT_BACKEND = env.str("CELERY_RESULT_BACKEND", default="redis://localhost:26379/1")
+RUN_PARSER_EVERY_MINUTES = env.int("PARSE_INTERVAL", default=1)
 
 # Parser
 # ----------------------------------------------------------------------------

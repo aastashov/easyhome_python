@@ -1,7 +1,7 @@
 version: '2'
 
 networks:
-  hsearch:
+  easyhome:
     external: true
 
 services:
@@ -17,13 +17,13 @@ services:
       - /opt/docker/nginx/config/vhost.d:/etc/nginx/vhost.d
       - /opt/docker/nginx/config/html:/usr/share/nginx/html
       - /opt/docker/nginx/config/certs:/etc/nginx/certs:ro
-      - /opt/docker/hsearch/static/:/app/ik.kg/static/
+      - /opt/docker/easyhome/static/:/app/ik.kg/static/
     logging:
       driver: syslog
       options:
         tag: "docker/nginx"
     networks:
-      - hsearch
+      - easyhome
 
   nginx-gen:
     container_name: nginx-gen
@@ -40,7 +40,7 @@ services:
       options:
         tag: "docker/gen"
     networks:
-      - hsearch
+      - easyhome
     depends_on:
       - nginx
 
@@ -61,6 +61,6 @@ services:
       options:
         tag: "docker/nginx-letsencrypt"
     networks:
-      - hsearch
+      - easyhome
     depends_on:
       - nginx-gen

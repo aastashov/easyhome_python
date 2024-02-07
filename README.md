@@ -1,6 +1,6 @@
-# hsearch
+# EasyHome
 
-[![Run Tests and Linters](https://github.com/comov/hsearch/actions/workflows/test-and-lint.yml/badge.svg)](https://github.com/comov/hsearch/actions/workflows/test-and-lint.yml)
+[![Run Tests and Linters](https://github.com/aastashov/easyhome/actions/workflows/test-and-lint.yml/badge.svg)](https://github.com/aastashov/easyhome/actions/workflows/test-and-lint.yml)
 
 По сути парсер ресурсов для создания объявлений о сдаче квартир в аренду. Ресурсы для парсинга:
 
@@ -9,7 +9,6 @@
 - [lalafo.kg](https://lalafo.kg/)
 
 - [Telegram ссылка на бота](https://t.me/house_search_assistant_bot)
-- [Docker образ бота](https://hub.docker.com/r/comov/hsearch)
 
 ## Какую проблему решает бот?
 Ни один из ресурсов, не предоставляет инструментов для отсеивания уже просмотренных тем, так
@@ -23,7 +22,7 @@
  квартира тебе и отправляет ее. Все просто.
 
 ## Чего-то в боте не хватает?
-И ты скорее всего прав! Можешь зайти [сюда](https://github.com/comov/hsearch/issues), нажать "New Issue"
+И ты скорее всего прав! Можешь зайти [сюда](https://github.com/aastashov/easyhome/issues), нажать "New Issue"
  и создать задачу в которой мы обсудим то, что тебе не хватает.
 
 ## Developer documentation
@@ -35,8 +34,8 @@ Content manager ходит за объявлениями раз в N минут 
 The project supports go modules
 
 ```shell script
-git clone https://github.com/comov/hsearch.git
-cd hsearch
+git clone https://github.com/aastashov/easyhome.git
+cd easyhome
 make mod
 make migrate
 make run
@@ -53,13 +52,13 @@ For more information, take a look at Makefile
 ## we use sentry
 
 [Sentry](https://sentry.io) is a cool bug tracker! But in GoLang I don't know how it is used. So I decided,
- that errors will be caught in the top-level of the trimmings. Hsearch has the following top-level components :
+ that errors will be caught in the top-level of the trimmings. EasyHome has the following top-level components :
  
  - grabber - the need to fill the database with new data
  - parser - we got new data from HTML, so we need the html parser 
  - matcher - agent to find new data for each user and send him a message    
  - garbage - all data can be older, so we need to clean up him
- - bot - telegram interface for communication with hsearch
+ - bot - telegram interface for communication with easyhome
  - api (beta) - HTTP Api for the WEB and Mobile
 
 
@@ -84,13 +83,13 @@ $FileCreateMode 0640
 ## Postgres backup
 ```shell
 
-pg_dump -h 157.245.16.242 --dbname hsearch -U hsearch --port 45432 -W --no-acl --format=t > backup.tar
-pg_restore --no-owner --if-exists -c -d hsearch -F t -W -h 127.0.0.1 --port 25432 -U hsearch_srv backup.tar
+pg_dump -h 157.245.16.242 --dbname easyhome -U easyhome --port 45432 -W --no-acl --format=t > backup.tar
+pg_restore --no-owner --if-exists -c -d easyhome -F t -W -h 127.0.0.1 --port 25432 -U easyhome_srv backup.tar
 ```
 
 ## Infra
 ```shell
-docker network create hsearch
+docker network create easyhome
 mkdir -p /opt/docker/nginx/config/{certs,conf.d,html,vhost.d}
 ```
 

@@ -1,50 +1,40 @@
 #!make
-UNAME_S := $(shell uname -s)
-PYTHON_FILES := $(find {tests,config,hsearch} -name '*.py' -not -path '*/migrations/*')
-ifeq ($(UNAME_S),Darwin)
-	PYTHON_FILES = $$(find {tests,config,hsearch} -name '*.py' -not -path '*/migrations/*')
-endif
 
 install:
-	poetry install --only main,local,qa --no-root
+	@if [ -f .env ]; then \
+        echo "The project already installed."; \
+    else \
+		poetry install --only main,local,qa --no-root; \
+      	cp .env.example .env; \
+        echo "Installed!"; \
+    fi
 
 install-ci:
 	poetry config virtualenvs.create false
 	poetry install --only main,qa --no-root
-
-	# Dirty hack to prevent mypy overwriting basedmypy executable
-	pip uninstall -y basedmypy
-	poetry install -vv
 
 install-deploy:
 	poetry config virtualenvs.create false
 	poetry install --only main,prod --no-root --no-cache
 
 test-ci:
-	pytest tests -vv --doctest-modules --junitxml=junit/test-results.xml --cov=hsearch --cov-report=xml --cov-report=html
+	pytest tests -vv --doctest-modules --junitxml=junit/test-results.xml --cov=easyhome --cov-report=xml --cov-report=html
 
 lint:
 	mypy .
-	pycln -c .
-	isort -c .
-	black --check --diff .
+	ruff check easyhome/
+	ruff check tests/
 
 # Development
 # ----------------------------------------------------------------------------
 test:
-	pytest tests -vv --cov=hsearch
+	pytest tests -vv --cov=easyhome --cov-report html
 
 format:
-	pycln -a .
-	isort .
-	black .
-	add-trailing-comma ${PYTHON_FILES}
+	ruff check --fix easyhome/
+	ruff check --fix tests/
 
 ignore:
 	mypy --write-baseline .
-
-run-flower:
-	@celery --app config flower --port=5566
-
-run-celery:
-	@celery -A config worker --beat --loglevel=info --max-tasks-per-child=100 -n worker@%h
+	ruff check --add-noqa easyhome/
+	ruff check --add-noqa tests/

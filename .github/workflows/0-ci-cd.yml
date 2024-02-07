@@ -20,4 +20,4 @@ jobs:
 #    needs: [ build ]
 #    uses: ./.github/workflows/3-deploy-prod.yml
 #    with:
-#      version: ${{ github.run_number }}
+#      version: v.${{ github.run_number }}

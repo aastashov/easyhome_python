@@ -5,25 +5,27 @@ ENV PYTHONUNBUFFERED 1
 
 # Install base libs
 RUN apt update \
-    && apt install -y python3-dev curl gcc g++ make
+    && apt install -y python3-dev gcc g++ make \
+    && pip install --no-cache-dir --upgrade pip
 
-# Install python libs and poetry
+# Install poetry
 ENV POETRY_HOME /usr/local
-RUN pip install --no-cache-dir --upgrade pip \
-    && curl -sSL https://install.python-poetry.org | python3 - --version 1.3.2
+ADD https://install.python-poetry.org install_poetry.py
+RUN python install_poetry.py --version 1.7.1 \
+    && rm install_poetry.py
 
 # Clean cache
 RUN apt-get clean autoclean \
-    && apt-get autoremove --yes curl \
+    && apt-get autoremove --yes \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf $(pip cache dir)
 
-ARG REVISION
-ENV REVISION=${REVISION}
+ARG RELEASE
+ENV RELEASE=${RELEASE}
 
 WORKDIR /src/
 
-COPY pyproject.toml poetry.lock Makefile /src/
+COPY ["pyproject.toml", "poetry.lock", "Makefile", "/src/"]
 RUN make install-deploy
 
 COPY . /src/

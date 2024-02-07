@@ -1,20 +1,9 @@
 version: '3.3'
 
 services:
-  bot:
-    image: ghcr.io/comov/hsearch_bot:dev
-    container_name: hsearch_bot
-    build:
-      context: go_parser
-      dockerfile: Dockerfile
-    env_file:
-      .env
-    depends_on:
-      - postgres
-
   app:
-    image: ghcr.io/comov/hsearch:dev
-    container_name: hsearch
+    image: ghcr.io/aastashov/easyhome:dev
+    container_name: easyhome
     command: /src/bin/gunicorn.sh
     build:
       context: .
@@ -22,27 +11,27 @@ services:
     env_file:
       .env
     ports:
-      - "8000:8080"
+      - "127.0.0.1:8000:8080"
     depends_on:
       - postgres
 
   postgres:
-    image: postgres:14.2-alpine
-    container_name: hsearch_postgres
+    image: postgres:16.1-alpine
+    container_name: easyhome_postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: pass1234
-      POSTGRES_DB: hsearch
-      POSTGRES_USER: hsearch_srv
+      POSTGRES_DB: easyhome
+      POSTGRES_USER: easyhome_srv
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "25432:5432"
 
   redis:
-    image: redis:7.0-alpine
+    image: redis:7-alpine
     restart: always
-    container_name: hsearch_redis
+    container_name: easyhome_redis
     ports:
       - "26379:6379"
 

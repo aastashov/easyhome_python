@@ -1,32 +1,19 @@
 version: '3.3'
 
 services:
-  bot:
-    image: ghcr.io/comov/hsearch_bot:latest
-    container_name: hsearch_bot
-    restart: always
-    env_file:
-      - .env
-    networks:
-      - my_house
-    logging:
-      driver: syslog
-      options:
-        tag: docker/hsearch
-
   app:
-    image: ghcr.io/comov/hsearch:latest
-    container_name: hsearch
+    image: ghcr.io/aastashov/easyhome:latest
+    container_name: easyhome
     restart: always
     command: /src/bin/gunicorn.sh
     env_file:
       - .env
     environment:
-      VIRTUAL_HOST: hsearch.ik.kg
-      LETSENCRYPT_HOST: hsearch.ik.kg
+      VIRTUAL_HOST: easyhome.ik.kg
+      LETSENCRYPT_HOST: easyhome.ik.kg
       LETSENCRYPT_EMAIL: alexander.astashov.vl@gmail.com
     networks:
-      - hsearch
+      - easyhome
     volumes:
       - ./static:/src/static
     expose:
@@ -34,11 +21,11 @@ services:
     logging:
       driver: syslog
       options:
-        tag: docker/hsearch_api
+        tag: docker/easyhome_api
 
   postgres:
     image: postgres:13-alpine
-    container_name: hsearch_db
+    container_name: easyhome_db
     restart: always
     env_file:
       - .env
@@ -46,13 +33,13 @@ services:
       - pgdata:/var/lib/postgresql/data
     networks:
       - my_house
-      - hsearch
+      - easyhome
     ports:
       - "45432:5432"
     logging:
       driver: syslog
       options:
-        tag: docker/hsearch_db
+        tag: docker/easyhome_db
 
 volumes:
   pgdata:
@@ -60,5 +47,5 @@ volumes:
 networks:
   my_house:
     external: true
-  hsearch:
+  easyhome:
     external: true

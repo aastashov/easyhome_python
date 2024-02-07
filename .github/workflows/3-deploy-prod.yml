@@ -7,7 +7,7 @@ on:
         type: string
 
 env:
-  IMAGE_NAME: hsearch
+  IMAGE_NAME: easyhome
 
 jobs:
   deploy:
@@ -19,8 +19,8 @@ jobs:
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: 157.245.16.242
-          username: ${{ secrets.HSEARCH_SSH_USER }}
-          key: ${{ secrets.HSEARCH_SSH_PRIVATE_KEY }}
+          username: ${{ secrets.EASYHOME_SSH_USER }}
+          key: ${{ secrets.EASYHOME_SSH_PRIVATE_KEY }}
           port: 22
           script: |
             IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME            
@@ -29,5 +29,4 @@ jobs:
             docker pull $IMAGE_ID:${{ inputs.version }}
             
 #            docker run --rm -it --log-driver=syslog --log-opt tag=docker/$CONTAINER_NAME_API $PARAMS_API $CI_REGISTRY_IMAGE_API:v.$CI_PIPELINE_IID python manage.py migrate" || tru
-#            docker rm -f $CONTAINER_NAME_BOT || true && docker run -d --name=$CONTAINER_NAME_BOT --restart=always --log-driver=syslog --log-opt tag=docker/$CONTAINER_NAME_BOT $PARAMS_BOT $CI_REGISTRY_IMAGE:v.$CI_PIPELINE_IID
 #            docker rm -f $CONTAINER_NAME_API || true && docker run -d --name=$CONTAINER_NAME_API --restart=always --log-driver=syslog --log-opt tag=docker/$CONTAINER_NAME_API $PARAMS_API $CI_REGISTRY_IMAGE_API:v.$CI_PIPELINE_IID

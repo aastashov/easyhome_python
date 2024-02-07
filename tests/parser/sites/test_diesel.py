@@ -1,10 +1,10 @@
-from collections.abc import Callable
+from collections.abc import Callable  # noqa: I002
 
 from bs4 import BeautifulSoup
 
-from hsearch.hsearch.models import Currency, Site
-from hsearch.parser.entity import ApartmentEntity
-from hsearch.parser.sites.diesel import Diesel
+from easyhome.easyhome.models import Currency, Site
+from easyhome.parser.entity import ApartmentEntity
+from easyhome.parser.sites.diesel import Diesel
 
 
 def test_get_announcement_pages_map(parser_datasets: Callable[[str], BeautifulSoup]) -> None:
@@ -13,45 +13,45 @@ def test_get_announcement_pages_map(parser_datasets: Callable[[str], BeautifulSo
     diesel_site = Diesel()
     announcement_map = diesel_site.get_announcement_pages_map(parsed_first_page)
     assert announcement_map == {
-        240572895: "https://diesel.elcat.kg/index.php?showtopic=240572895",
-        292456984: "https://diesel.elcat.kg/index.php?showtopic=292456984",
-        292507681: "https://diesel.elcat.kg/index.php?showtopic=292507681",
-        292507687: "https://diesel.elcat.kg/index.php?showtopic=292507687",
-        293062641: "https://diesel.elcat.kg/index.php?showtopic=293062641",
-        293089164: "https://diesel.elcat.kg/index.php?showtopic=293089164",
-        293100958: "https://diesel.elcat.kg/index.php?showtopic=293100958",
-        293129136: "https://diesel.elcat.kg/index.php?showtopic=293129136",
-        293129317: "https://diesel.elcat.kg/index.php?showtopic=293129317",
-        293129481: "https://diesel.elcat.kg/index.php?showtopic=293129481",
-        293140886: "https://diesel.elcat.kg/index.php?showtopic=293140886",
-        293163352: "https://diesel.elcat.kg/index.php?showtopic=293163352",
-        293163975: "https://diesel.elcat.kg/index.php?showtopic=293163975",
-        293164134: "https://diesel.elcat.kg/index.php?showtopic=293164134",
-        293164247: "https://diesel.elcat.kg/index.php?showtopic=293164247",
-        293165978: "https://diesel.elcat.kg/index.php?showtopic=293165978",
-        293166229: "https://diesel.elcat.kg/index.php?showtopic=293166229",
-        293166810: "https://diesel.elcat.kg/index.php?showtopic=293166810",
-        293167491: "https://diesel.elcat.kg/index.php?showtopic=293167491",
-        293167502: "https://diesel.elcat.kg/index.php?showtopic=293167502",
-        293167736: "https://diesel.elcat.kg/index.php?showtopic=293167736",
-        293167738: "https://diesel.elcat.kg/index.php?showtopic=293167738",
-        293168003: "https://diesel.elcat.kg/index.php?showtopic=293168003",
-        293168127: "https://diesel.elcat.kg/index.php?showtopic=293168127",
-        293168161: "https://diesel.elcat.kg/index.php?showtopic=293168161",
-        293168221: "https://diesel.elcat.kg/index.php?showtopic=293168221",
-        293168435: "https://diesel.elcat.kg/index.php?showtopic=293168435",
-        293168580: "https://diesel.elcat.kg/index.php?showtopic=293168580",
-        293168645: "https://diesel.elcat.kg/index.php?showtopic=293168645",
-        293168685: "https://diesel.elcat.kg/index.php?showtopic=293168685",
-        293168825: "https://diesel.elcat.kg/index.php?showtopic=293168825",
-        293168843: "https://diesel.elcat.kg/index.php?showtopic=293168843",
-        293168854: "https://diesel.elcat.kg/index.php?showtopic=293168854",
-        293168860: "https://diesel.elcat.kg/index.php?showtopic=293168860",
-        293168869: "https://diesel.elcat.kg/index.php?showtopic=293168869",
-        293168882: "https://diesel.elcat.kg/index.php?showtopic=293168882",
-        293168888: "https://diesel.elcat.kg/index.php?showtopic=293168888",
-        293168890: "https://diesel.elcat.kg/index.php?showtopic=293168890",
-        293168895: "https://diesel.elcat.kg/index.php?showtopic=293168895",
+        "240572895": "https://diesel.elcat.kg/index.php?showtopic=240572895",
+        "292456984": "https://diesel.elcat.kg/index.php?showtopic=292456984",
+        "292507681": "https://diesel.elcat.kg/index.php?showtopic=292507681",
+        "292507687": "https://diesel.elcat.kg/index.php?showtopic=292507687",
+        "293062641": "https://diesel.elcat.kg/index.php?showtopic=293062641",
+        "293089164": "https://diesel.elcat.kg/index.php?showtopic=293089164",
+        "293100958": "https://diesel.elcat.kg/index.php?showtopic=293100958",
+        "293129136": "https://diesel.elcat.kg/index.php?showtopic=293129136",
+        "293129317": "https://diesel.elcat.kg/index.php?showtopic=293129317",
+        "293129481": "https://diesel.elcat.kg/index.php?showtopic=293129481",
+        "293140886": "https://diesel.elcat.kg/index.php?showtopic=293140886",
+        "293163352": "https://diesel.elcat.kg/index.php?showtopic=293163352",
+        "293163975": "https://diesel.elcat.kg/index.php?showtopic=293163975",
+        "293164134": "https://diesel.elcat.kg/index.php?showtopic=293164134",
+        "293164247": "https://diesel.elcat.kg/index.php?showtopic=293164247",
+        "293165978": "https://diesel.elcat.kg/index.php?showtopic=293165978",
+        "293166229": "https://diesel.elcat.kg/index.php?showtopic=293166229",
+        "293166810": "https://diesel.elcat.kg/index.php?showtopic=293166810",
+        "293167491": "https://diesel.elcat.kg/index.php?showtopic=293167491",
+        "293167502": "https://diesel.elcat.kg/index.php?showtopic=293167502",
+        "293167736": "https://diesel.elcat.kg/index.php?showtopic=293167736",
+        "293167738": "https://diesel.elcat.kg/index.php?showtopic=293167738",
+        "293168003": "https://diesel.elcat.kg/index.php?showtopic=293168003",
+        "293168127": "https://diesel.elcat.kg/index.php?showtopic=293168127",
+        "293168161": "https://diesel.elcat.kg/index.php?showtopic=293168161",
+        "293168221": "https://diesel.elcat.kg/index.php?showtopic=293168221",
+        "293168435": "https://diesel.elcat.kg/index.php?showtopic=293168435",
+        "293168580": "https://diesel.elcat.kg/index.php?showtopic=293168580",
+        "293168645": "https://diesel.elcat.kg/index.php?showtopic=293168645",
+        "293168685": "https://diesel.elcat.kg/index.php?showtopic=293168685",
+        "293168825": "https://diesel.elcat.kg/index.php?showtopic=293168825",
+        "293168843": "https://diesel.elcat.kg/index.php?showtopic=293168843",
+        "293168854": "https://diesel.elcat.kg/index.php?showtopic=293168854",
+        "293168860": "https://diesel.elcat.kg/index.php?showtopic=293168860",
+        "293168869": "https://diesel.elcat.kg/index.php?showtopic=293168869",
+        "293168882": "https://diesel.elcat.kg/index.php?showtopic=293168882",
+        "293168888": "https://diesel.elcat.kg/index.php?showtopic=293168888",
+        "293168890": "https://diesel.elcat.kg/index.php?showtopic=293168890",
+        "293168895": "https://diesel.elcat.kg/index.php?showtopic=293168895",
     }
 
 
@@ -61,7 +61,7 @@ def test_parse_apartment(parser_datasets: Callable[[str], BeautifulSoup]) -> Non
     diesel_site = Diesel()
     apartment = diesel_site.parse_apartment(parsed_apartment)
     assert apartment == ApartmentEntity(
-        external_id=293168645,
+        external_id="293168645",
         site=Site.diesel,
         external_url="https://diesel.elcat.kg/index.php?showtopic=293168645",
         title="Сдаю на длительный срок 2 комнатную квартиру район старого аэропорта",
