@@ -70,7 +70,7 @@ class Currency(models.IntegerChoices):
 class Apartment(models.Model):
     """Use this model to store the apartment data."""
 
-    external_id = models.BigIntegerField()  # FIXME: Change to CharField
+    external_id = models.BigIntegerField()  # FIXME: Change to CharField  # noqa: FIX001, TD001, TD002, TD003
     url = models.CharField(max_length=255, default="")
     topic = models.CharField(max_length=255, default="")
     phone = models.CharField(max_length=255, default="", blank=True)
@@ -88,12 +88,12 @@ class Apartment(models.Model):
     lat = models.FloatField(default=0.0, blank=True)
     lon = models.FloatField(default=0.0, blank=True)
 
-    images_count = models.IntegerField(default=0)  # FIXME: Redundant field
-    is_deleted = models.BooleanField(default=False)  # FIXME: Change to datetime field
+    images_count = models.IntegerField(default=0)  # FIXME: Redundant field  # noqa: FIX001, TD001, TD002, TD003
+    is_deleted = models.BooleanField(default=False)  # FIXME: Change to datetime field  # noqa: FIX001, TD001, TD002, TD003
 
-    created = UnixTimeStampField(auto_now=True, auto_now_add=True)  # FIXME: Rename to created_at and change to datetime
+    created = UnixTimeStampField(auto_now=True, auto_now_add=True)  # FIXME: Rename to created_at and change to datetime  # noqa: FIX001, TD001, TD002, TD003
 
-    # TODO: Need to add a field for the last update and last seen
+    # TODO: Need to add a field for the last update and last seen  # noqa: FIX002, TD002, TD003
 
     def __str__(self) -> str:
         """Return the string representation of the Apartment model."""

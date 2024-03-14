@@ -62,7 +62,7 @@ class ImageInline(BaseReadOnly):  # noqa: D101
     readonly_fields = (
         "created",
     )
-    formfield_overrides = {models.CharField: {"widget": AdminImageWidget}}
+    formfield_overrides = {models.CharField: {"widget": AdminImageWidget}}  # noqa: RUF012
 
     def has_change_permission(self, request: HttpRequest, obj=None) -> bool:  # noqa: ANN001, D102
         return True

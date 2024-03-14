@@ -30,7 +30,7 @@ class EasyHomeConfig(AppConfig):
 
         if settings.SCHEDULER_ENABLED:
             scheduler: BackgroundScheduler = APP_CONTAINER.services.background_scheduler()
-            
+
             if settings.SCHEDULER_LALAFO_ENABLED:
                 scheduler.add_job(
                     APP_CONTAINER.services.lalafo_service().parse,

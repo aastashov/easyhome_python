@@ -1,4 +1,4 @@
-from __future__ import annotations
+from __future__ import annotations  # noqa: D100
 
 from graphene import relay
 from graphene_django import DjangoObjectType
@@ -16,6 +16,7 @@ class ApartmentNode(DjangoObjectType):
         model = Apartment
         filterset_class = ApartmentFilter
         interfaces = (relay.Node,)
+        exclude = ()
 
 
 class ImageNode(DjangoObjectType):
@@ -27,3 +28,4 @@ class ImageNode(DjangoObjectType):
         model = Image
         filterset_class = ImageFilter
         interfaces = (relay.Node,)
+        exclude = ()

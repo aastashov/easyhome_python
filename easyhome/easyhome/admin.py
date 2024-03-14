@@ -131,7 +131,7 @@ class ApartmentAdmin(admin.ModelAdmin):  # noqa: D101
         qs = super().get_queryset(request)
         res = qs.values("phone").annotate(models.Count("pk")).order_by()
 
-        # FIXME: You can't store the cache in the admin class because it's a singleton.
+        # FIXME: You can't store the cache in the admin class because it's a singleton.  # noqa: FIX001, TD001, TD002, TD003
         #  You need to append count of phones to the each apartment object. But you should do it in the paginator to
         #  avoid traversing all entries and only do it on the current page.
         self._phones_cache = {i["phone"]: i["pk__count"] for i in res}

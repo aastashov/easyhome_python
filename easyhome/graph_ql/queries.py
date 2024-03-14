@@ -1,4 +1,4 @@
-from __future__ import annotations
+from __future__ import annotations  # noqa: D100
 
 from graphene import ObjectType, Schema, relay
 from graphene_django.filter import DjangoFilterConnectionField

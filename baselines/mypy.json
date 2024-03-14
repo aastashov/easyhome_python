@@ -68,24 +68,6 @@
         "target": "config.settings.production"
       }
     ],
-    "config/urls.py": [
-      {
-        "code": "arg-type",
-        "column": 13,
-        "message": "Argument 2 to \"path\" has incompatible type \"(request: Untyped) -> None\"; expected \"(...) -> HttpResponseBase\"",
-        "offset": 16,
-        "src": "path(\"\", index_page),",
-        "target": "config.urls"
-      },
-      {
-        "code": "arg-type",
-        "column": 19,
-        "message": "Argument 2 to \"path\" has incompatible type \"(request: Untyped) -> None\"; expected \"(...) -> HttpResponseBase\"",
-        "offset": 1,
-        "src": "path(\"login/\", login_page),",
-        "target": "config.urls"
-      }
-    ],
     "easyhome/api/v1/handlers/profile.py": [
       {
         "code": "redundant-expr",
@@ -135,7 +117,7 @@
         "code": "type-arg",
         "column": 16,
         "message": "Missing type parameters for generic type \"ModelAdmin\"",
-        "offset": 19,
+        "offset": 21,
         "src": "class ChatAdmin(admin.ModelAdmin):  # noqa: D101",
         "target": "easyhome.easyhome.admin"
       },
@@ -148,19 +130,19 @@
         "target": "easyhome.easyhome.admin"
       },
       {
-        "code": "var-annotated",
-        "column": 4,
-        "message": "Need type annotation for \"phones_cache\" (hint: \"phones_cache: dict[<type>, <type>] = ...\")",
-        "offset": 48,
-        "src": "phones_cache = {}",
-        "target": "easyhome.easyhome.admin"
-      },
-      {
         "code": "explicit-override",
         "column": 4,
         "message": "Method \"get_queryset\" is not using @override but is overriding a method in class \"django.contrib.admin.options.BaseModelAdmin\"",
-        "offset": 2,
-        "src": "def get_queryset(self, request: HttpRequest) -> QuerySet[Apartment]:  # noqa: D102",
+        "offset": 50,
+        "src": "def get_queryset(self, request: HttpRequest) -> QuerySet[Apartment]:",
+        "target": "easyhome.easyhome.admin.ApartmentAdmin.get_queryset"
+      },
+      {
+        "code": "misc",
+        "column": 8,
+        "message": "Cannot assign to class variable \"_phones_cache\" via instance",
+        "offset": 8,
+        "src": "self._phones_cache = {i[\"phone\"]: i[\"pk__count\"] for i in res}",
         "target": "easyhome.easyhome.admin.ApartmentAdmin.get_queryset"
       },
       {
@@ -175,7 +157,7 @@
         "code": "type-arg",
         "column": 20,
         "message": "Missing type parameters for generic type \"ModelAdmin\"",
-        "offset": 25,
+        "offset": 29,
         "src": "class FeedbackAdmin(admin.ModelAdmin):  # noqa: D101",
         "target": "easyhome.easyhome.admin"
       },
@@ -183,7 +165,7 @@
         "code": "type-arg",
         "column": 17,
         "message": "Missing type parameters for generic type \"ModelAdmin\"",
-        "offset": 31,
+        "offset": 34,
         "src": "class ImageAdmin(admin.ModelAdmin):  # noqa: D101",
         "target": "easyhome.easyhome.admin"
       },
@@ -191,7 +173,7 @@
         "code": "type-arg",
         "column": 21,
         "message": "Missing type parameters for generic type \"ModelAdmin\"",
-        "offset": 32,
+        "offset": 35,
         "src": "class TgMessageAdmin(admin.ModelAdmin):  # noqa: D101",
         "target": "easyhome.easyhome.admin"
       }
@@ -341,65 +323,57 @@
         "code": "explicit-override",
         "column": 4,
         "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
-        "offset": 29,
-        "src": "def __str__(self) -> str:  # noqa: D105",
+        "offset": 33,
+        "src": "def __str__(self) -> str:",
         "target": "easyhome.easyhome.models.Chat.__str__"
       },
       {
         "code": "explicit-override",
         "column": 4,
         "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
-        "offset": 10,
-        "src": "def __str__(self) -> str:  # noqa: D105",
+        "offset": 15,
+        "src": "def __str__(self) -> str:",
         "target": "easyhome.easyhome.models.Image.__str__"
-      },
-      {
-        "code": "type-arg",
-        "column": 35,
-        "message": "Missing type parameters for generic type \"list\"",
-        "offset": 9,
-        "src": "def to_dict(self, fields_list: list) -> dict:  # noqa: D102",
-        "target": "easyhome.easyhome.models.Image.to_dict"
-      },
-      {
-        "code": "type-arg",
-        "column": 44,
-        "message": "Missing type parameters for generic type \"dict\"",
-        "offset": 0,
-        "src": "def to_dict(self, fields_list: list) -> dict:  # noqa: D102",
-        "target": "easyhome.easyhome.models.Image.to_dict"
       },
       {
         "code": "explicit-override",
         "column": 4,
         "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
-        "offset": 55,
-        "src": "def __str__(self) -> str:  # noqa: D105",
+        "offset": 50,
+        "src": "def __str__(self) -> str:",
         "target": "easyhome.easyhome.models.Apartment.__str__"
       },
       {
         "code": "explicit-override",
         "column": 4,
         "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
-        "offset": 10,
-        "src": "def __str__(self) -> str:  # noqa: D105",
+        "offset": 15,
+        "src": "def __str__(self) -> str:",
         "target": "easyhome.easyhome.models.Answer.__str__"
       },
       {
         "code": "explicit-override",
         "column": 4,
         "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
-        "offset": 10,
-        "src": "def __str__(self) -> str:  # noqa: D105",
+        "offset": 15,
+        "src": "def __str__(self) -> str:",
         "target": "easyhome.easyhome.models.Feedback.__str__"
       },
       {
         "code": "return-value",
         "column": 15,
         "message": "Incompatible return value type (got \"str | Chat\", expected \"str\")",
-        "offset": 1,
+        "offset": 2,
         "src": "return self.username if self.username else self.chat",
         "target": "easyhome.easyhome.models.Feedback.__str__"
+      },
+      {
+        "code": "explicit-override",
+        "column": 4,
+        "message": "Method \"__str__\" is not using @override but is overriding a method in class \"builtins.object\"",
+        "offset": 22,
+        "src": "def __str__(self) -> str:",
+        "target": "easyhome.easyhome.models.TgMessage.__str__"
       }
     ],
     "easyhome/parser/http_client.py": [
@@ -719,7 +693,7 @@
         "code": "explicit-override",
         "column": 4,
         "message": "Method \"parse_apartment\" is not using @override but is overriding a method in class \"easyhome.parser.sites.base.AbstractSite\"",
-        "offset": 10,
+        "offset": 12,
         "src": "def parse_apartment(self, parsed_response: BeautifulSoup) -> ApartmentEntity:",
         "target": "easyhome.parser.sites.lalafo.Lalafo.parse_apartment"
       },
@@ -730,74 +704,6 @@
         "offset": 3,
         "src": "elem_json: dict[str, Any] = json.loads(apartment_script_elem.getText())",
         "target": "easyhome.parser.sites.lalafo.Lalafo.parse_apartment"
-      }
-    ],
-    "easyhome/sso/admin.py": [
-      {
-        "code": "return-value",
-        "column": 8,
-        "message": "No return value expected",
-        "offset": 18,
-        "src": "return default_site._registry  # noqa: SLF001",
-        "target": "easyhome.sso.admin.AdminSite._registry_getter"
-      },
-      {
-        "code": "no-untyped-def",
-        "column": 4,
-        "message": "Function is missing a type annotation for one or more arguments",
-        "offset": 2,
-        "src": "def _registry_setter(self, value) -> None:  # noqa: ANN001",
-        "target": "easyhome.sso.admin.AdminSite._registry_setter"
-      },
-      {
-        "code": "assignment",
-        "column": 16,
-        "message": "Incompatible types in assignment (expression has type \"property\", base class \"AdminSite\" defined the type as \"dict[type[Model], ModelAdmin[Untyped]]\")",
-        "offset": 3,
-        "src": "_registry = property(_registry_getter, _registry_setter)",
-        "target": "easyhome.sso.admin"
-      }
-    ],
-    "easyhome/sso/views.py": [
-      {
-        "code": "no-untyped-def",
-        "column": 0,
-        "message": "Function is missing a type annotation for one or more arguments",
-        "offset": 8,
-        "src": "def index_page(request):  # noqa: ANN001, ANN201, D103",
-        "target": "easyhome.sso.views.index_page"
-      },
-      {
-        "code": "return-value",
-        "column": 4,
-        "message": "No return value expected",
-        "offset": 5,
-        "src": "return render(request, \"index.html\", context=context)",
-        "target": "easyhome.sso.views.index_page"
-      },
-      {
-        "code": "no-untyped-def",
-        "column": 0,
-        "message": "Function is missing a type annotation for one or more arguments",
-        "offset": 3,
-        "src": "def login_page(request):  # noqa: ANN001, ANN201, D103",
-        "target": "easyhome.sso.views.login_page"
-      },
-      {
-        "code": "return-value",
-        "column": 8,
-        "message": "No return value expected",
-        "offset": 2,
-        "src": "return JsonResponse(",
-        "target": "easyhome.sso.views.login_page"
-      },
-      {
-        "code": "return-value",
-        "column": 4,
-        "message": "No return value expected",
-        "offset": 6,
-        "src": "return JsonResponse(",
-        "target": "easyhome.sso.views.login_page"
       }
     ],
     "unixtimestampfield/fields.py": [
