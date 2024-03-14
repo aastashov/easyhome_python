@@ -15,9 +15,9 @@ if TYPE_CHECKING:
 
 class BaseReadOnly(admin.TabularInline):  # noqa: D101
     extra = 0
-    classes = [  # noqa: RUF012
+    classes = (
         "collapse",
-    ]
+    )
 
     def has_delete_permission(self, request, obj=None) -> bool:  # noqa: ANN001, D102
         return False
@@ -38,31 +38,31 @@ class AdminImageWidget(Widget):  # noqa: D101
 
 class FeedbackInline(BaseReadOnly):  # noqa: D101
     model = Feedback
-    fields = [  # noqa: RUF012
+    fields = (
         "body",
         "created",
-    ]
+    )
 
 
 class AnswerInline(BaseReadOnly):  # noqa: D101
     model = Answer
-    fields = [  # noqa: RUF012
+    fields = (
         "apartment",
         "dislike",
         "created",
-    ]
+    )
 
 
 class ImageInline(BaseReadOnly):  # noqa: D101
     model = Image
-    fields = [  # noqa: RUF012
+    fields = (
         "path",
         "created",
-    ]
-    readonly_fields = [  # noqa: RUF012
+    )
+    readonly_fields = (
         "created",
-    ]
-    formfield_overrides = {models.CharField: {"widget": AdminImageWidget}}  # noqa: RUF012
+    )
+    formfield_overrides = {models.CharField: {"widget": AdminImageWidget}}
 
     def has_change_permission(self, request: HttpRequest, obj=None) -> bool:  # noqa: ANN001, D102
         return True

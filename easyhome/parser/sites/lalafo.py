@@ -76,7 +76,7 @@ class Lalafo(AbstractSite):
 
         elem_json = json.loads(next_script_elem.getText())
         props = elem_json.get("props", self._default_next_data_json)
-        items: list[ItemDef] = props["initialState"]["listing"]["listingFeed"]["items"]
+        items: list[ItemDef] = props["initialState"]["listing"]["listingFeed"]["data"]["items"]
 
         announcement_map: dict[str, str] = {}
         for item in items:

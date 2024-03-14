@@ -6,6 +6,8 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls import include, path
 from django.utils.functional import lazy
+from django.views.decorators.csrf import csrf_exempt
+from graphene_django.views import GraphQLView
 
 from easyhome.sso.views import index_page, login_page
 
@@ -17,6 +19,7 @@ urlpatterns = [
     path("login/", login_page),
     path("logout/", LogoutView.as_view()),
     path("easyhome/", admin.site.urls),
+    path("graphql/", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
 ]
 

@@ -5,18 +5,20 @@ from django.db import models
 from unixtimestampfield.fields import UnixTimeStampField
 
 
-class Chat(models.Model):  # noqa: D101
-    PRIVATE = "private"
-    SUPERGROUP = "supergroup"
-    TYPE_CHOICES = (
-        (PRIVATE, "private"),
-        (SUPERGROUP, "supergroup"),
-    )
-    user = models.OneToOneField(to="auth.User", on_delete=models.CASCADE, null=True, related_name="chat")
+class ChatType(models.TextChoices):
+    """Use this class to define the chat type choices."""
+
+    private = "private"
+    supergroup = "supergroup"
+
+
+class Chat(models.Model):
+    """Use this model to store the chat data."""
+
     chat_id = models.BigIntegerField(default=0, blank=True)
     username = models.CharField(max_length=100, default="", blank=True)
     title = models.CharField(max_length=100, default="", blank=True)
-    c_type = models.CharField(max_length=20, choices=TYPE_CHOICES, default=PRIVATE)
+    c_type = models.CharField(max_length=20, choices=ChatType.choices, default=ChatType.private)
     created = UnixTimeStampField(auto_now=True, auto_now_add=True)
     enable = models.BooleanField(default=True)
     diesel = models.BooleanField(default=True)
@@ -26,44 +28,49 @@ class Chat(models.Model):  # noqa: D101
     usd = models.CharField(max_length=100, default="0:0")
     kgs = models.CharField(max_length=100, default="0:0")
 
-    def __str__(self) -> str:  # noqa: D105
+    user = models.OneToOneField(to="auth.User", on_delete=models.CASCADE, null=True, related_name="chat")
+
+    def __str__(self) -> str:
+        """Return the string representation of the Chat model."""
         name = self.title if self.title else self.username
         return f"{name} {self.get_c_type_display()!r} (#{self.pk})"
 
 
-class Image(models.Model):  # noqa: D101
-    apartment = models.ForeignKey("easyhome.Apartment", on_delete=models.CASCADE, related_name="images")
+class Image(models.Model):
+    """Use this model to store the images' data."""
+
     path = models.CharField(max_length=255, default="", unique=True)
+
+    apartment = models.ForeignKey("easyhome.Apartment", on_delete=models.CASCADE, related_name="images")
+
     created = UnixTimeStampField(auto_now=True, auto_now_add=True)
 
-    def __str__(self) -> str:  # noqa: D105
+    def __str__(self) -> str:
+        """Return the string representation of the Image model."""
         return f"{self.apartment.topic} ({self.path})"
 
-    available_fields = [  # noqa: RUF012
-        "apartment_id",
-        "path",
-        "created",
-    ]
 
-    def to_dict(self, fields_list: list) -> dict:  # noqa: D102
-        return {field: getattr(self, field, None) for field in fields_list}
+class Site(models.TextChoices):
+    """Use this class to define the site choices."""
 
-
-class Site(models.TextChoices):  # noqa: D101
     undefined = "", "Undefined"
     diesel = "diesel", "diesel"
     lalafo = "lalafo", "lalafo"
     house = "house", "house"
 
 
-class Currency(models.IntegerChoices):  # noqa: D101
+class Currency(models.IntegerChoices):
+    """Use this class to define the currency choices."""
+
     undefined = 0, "-"
     usd = 1, "USD"
     kgs = 2, "KGS"
 
 
-class Apartment(models.Model):  # noqa: D101
-    external_id = models.BigIntegerField()
+class Apartment(models.Model):
+    """Use this model to store the apartment data."""
+
+    external_id = models.BigIntegerField()  # FIXME: Change to CharField
     url = models.CharField(max_length=255, default="")
     topic = models.CharField(max_length=255, default="")
     phone = models.CharField(max_length=255, default="", blank=True)
@@ -81,60 +88,67 @@ class Apartment(models.Model):  # noqa: D101
     lat = models.FloatField(default=0.0, blank=True)
     lon = models.FloatField(default=0.0, blank=True)
 
-    images_count = models.IntegerField(default=0)
-    is_deleted = models.BooleanField(default=False)
+    images_count = models.IntegerField(default=0)  # FIXME: Redundant field
+    is_deleted = models.BooleanField(default=False)  # FIXME: Change to datetime field
 
-    created = UnixTimeStampField(auto_now=True, auto_now_add=True)
+    created = UnixTimeStampField(auto_now=True, auto_now_add=True)  # FIXME: Rename to created_at and change to datetime
 
-    # Inner information
-    # deleted_at = models.DateTimeField(  # noqa: ERA001, RUF100
-    #     verbose_name="Дата удаления на сайте.",  # noqa: ERA001
-    #     null=True,  # noqa: ERA001
-    #     blank=True,  # noqa: ERA001
-    #     help_text="Если парсер получил 404 ошибку, то мы помечаем объявление как удаленное.",  # noqa: ERA001
-    # )  # noqa: ERA001, RUF100
-    # viewed_at = models.DateTimeField(  # noqa: ERA001, RUF100
-    #     verbose_name="Дата последнего просмотра.",  # noqa: ERA001
-    #     null=True,  # noqa: ERA001
-    #     blank=True,  # noqa: ERA001
-    #     help_text="Дата, когда парсер в последний раз видел это объявление на сайте.",  # noqa: ERA001
-    # )  # noqa: ERA001, RUF100
+    # TODO: Need to add a field for the last update and last seen
 
-    def __str__(self) -> str:  # noqa: D105
+    def __str__(self) -> str:
+        """Return the string representation of the Apartment model."""
         return f"{self.topic} {self.get_site_display()!r} (#{self.pk})"
 
 
-class Answer(models.Model):  # noqa: D101
+class Answer(models.Model):
+    """Use this model to store the answers' data."""
+
+    dislike = models.BooleanField(default=False)
+
     chat = models.ForeignKey("easyhome.Chat", on_delete=models.CASCADE, related_name="answers")
     apartment = models.ForeignKey("easyhome.Apartment", on_delete=models.CASCADE, related_name="answers")
-    dislike = models.BooleanField(default=False)
+
     created = UnixTimeStampField(auto_now=True, auto_now_add=True)
 
-    def __str__(self) -> str:  # noqa: D105
+    def __str__(self) -> str:
+        """Return the string representation of the Answer model."""
         return f"{self.chat_id} => {self.apartment_id} ({self.dislike})"
 
 
-class Feedback(models.Model):  # noqa: D101
+class Feedback(models.Model):
+    """Use this model to store the feedback data."""
+
     username = models.CharField(max_length=100, default="")
-    chat = models.ForeignKey("easyhome.Chat", on_delete=models.CASCADE, related_name="feedbacks")
     body = models.TextField(default="")
+
+    chat = models.ForeignKey("easyhome.Chat", on_delete=models.CASCADE, related_name="feedbacks")
+
     created = UnixTimeStampField(auto_now=True, auto_now_add=True)
 
-    def __str__(self) -> str:  # noqa: D105
+    def __str__(self) -> str:
+        """Return the string representation of the Feedback model."""
         return self.username if self.username else self.chat
 
 
-class TgMessage(models.Model):  # noqa: DJ008, D101
-    APARTMENT = "apartment"
-    PHOTO = "photo"
-    DESCRIPTION = "description"
-    KIND_CHOICES = (
-        (APARTMENT, "Apartment"),
-        (PHOTO, "Photo"),
-        (DESCRIPTION, "Description"),
-    )
-    created = UnixTimeStampField(auto_now=True, auto_now_add=True)
+class TelegramMessageKind(models.TextChoices):
+    """Use this class to define the telegram message kind choices."""
+
+    apartment = "Apartment"
+    photo = "Photo"
+    description = "Description"
+
+
+class TgMessage(models.Model):
+    """Use this model to store the telegram messages."""
+
     message_id = models.IntegerField(default=0)
+    kind = models.CharField(max_length=50, choices=TelegramMessageKind.choices, default=TelegramMessageKind.apartment)
+
     apartment = models.ForeignKey("easyhome.Apartment", on_delete=models.CASCADE, related_name="messages")
     chat = models.ForeignKey("easyhome.Chat", on_delete=models.CASCADE, related_name="messages")
-    kind = models.CharField(max_length=50, choices=KIND_CHOICES, default=APARTMENT)
+
+    created = UnixTimeStampField(auto_now=True, auto_now_add=True)
+
+    def __str__(self) -> str:
+        """Return the string representation of the TgMessage model."""
+        return f"{self.message_id}"

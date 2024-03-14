@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     "easyhome.easyhome",
     "easyhome.parser",
 
+    "corsheaders",
     "elasticapm.contrib.django",
+    "graphene_django",
 ]
 
 # MIDDLEWARE
@@ -49,6 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -228,8 +231,25 @@ TG_LOGIN_REDIRECT_URL = "/auth/complete/telegram/"
 
 # Scheduler
 # ----------------------------------------------------------------------------
-RUN_PARSER_EVERY_MINUTES = env.int("PARSE_INTERVAL", default=1)
+SCHEDULER_LALAFO_ENABLED = env.bool("SCHEDULER_LALAFO_ENABLED", default=False)
+SCHEDULER_DIESEL_ENABLED = env.bool("SCHEDULER_DIESEL_ENABLED", default=False)
+SCHEDULER_ENABLED = SCHEDULER_LALAFO_ENABLED or SCHEDULER_DIESEL_ENABLED
+SCHEDULER_PARSE_INTERVAL = env.int("SCHEDULER_PARSE_INTERVAL", default=1)
 
 # Parser
 # ----------------------------------------------------------------------------
 AIOHTTP_REQUEST_LIMIT = env.int("AIOHTTP_REQUEST_LIMIT", default=15)
+
+# graphene-django
+# ----------------------------------------------------------------------------
+GRAPHENE = {
+    "SCHEMA": "easyhome.graph_ql.queries.schema",
+}
+
+# django-cors-headers
+# ----------------------------------------------------------------------------
+CORS_ORIGIN_REGEX_WHITELIST = [
+    r"^http://(127.0.0.1|localhost):[0-9]00[0-9]",
+]
+
+CORS_ALLOW_CREDENTIALS = True

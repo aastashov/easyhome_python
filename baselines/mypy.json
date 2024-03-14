@@ -152,7 +152,7 @@
         "column": 4,
         "message": "Need type annotation for \"phones_cache\" (hint: \"phones_cache: dict[<type>, <type>] = ...\")",
         "offset": 48,
-        "src": "phones_cache = {}  # noqa: RUF012",
+        "src": "phones_cache = {}",
         "target": "easyhome.easyhome.admin"
       },
       {

@@ -28,17 +28,21 @@ class EasyHomeConfig(AppConfig):
             ],
         )
 
-        scheduler: BackgroundScheduler = APP_CONTAINER.services.background_scheduler()
-        scheduler.add_job(
-            APP_CONTAINER.services.lalafo_service().parse,
-            IntervalTrigger(minutes=APP_CONTAINER.config.RUN_PARSER_EVERY_MINUTES()),
-            max_instances=1,
-        )
+        if settings.SCHEDULER_ENABLED:
+            scheduler: BackgroundScheduler = APP_CONTAINER.services.background_scheduler()
+            
+            if settings.SCHEDULER_LALAFO_ENABLED:
+                scheduler.add_job(
+                    APP_CONTAINER.services.lalafo_service().parse,
+                    IntervalTrigger(minutes=APP_CONTAINER.config.SCHEDULER_PARSE_INTERVAL()),
+                    max_instances=1,
+                )
 
-        scheduler.add_job(
-            APP_CONTAINER.services.diesel_service().parse,
-            IntervalTrigger(minutes=APP_CONTAINER.config.RUN_PARSER_EVERY_MINUTES()),
-            max_instances=1,
-        )
+            if settings.SCHEDULER_DIESEL_ENABLED:
+                scheduler.add_job(
+                    APP_CONTAINER.services.diesel_service().parse,
+                    IntervalTrigger(minutes=APP_CONTAINER.config.SCHEDULER_PARSE_INTERVAL()),
+                    max_instances=1,
+                )
 
-        scheduler.start()
+            scheduler.start()
